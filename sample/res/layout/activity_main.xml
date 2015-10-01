@@ -1,45 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#009600">
+    android:background="#ffffff">
 
-    <TextView android:id="@+id/interstitial_text"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="@string/init_note"
-        android:textSize="18sp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#003300"/>
-
-    <Button android:id="@+id/play_btn_def"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/interstitial_text"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="Play Ad (default)"/>
-
-    <Button android:id="@+id/play_btn_opt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/play_btn_def"
-        android:layout_centerInParent="true"
-        android:text="Play Ad (options)"/>
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
         android:id="@+id/imageView"
-        android:layout_above="@+id/interstitial_text"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="45dp"
-        android:layout_marginTop="45dp"
-        android:src="@drawable/vungle350x180"/>
+        android:src="@drawable/vungle_logo"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1" />
 
 
-</RelativeLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:id="@+id/btnWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="4"
+        android:layout_gravity="center_horizontal">
+
+
+
+        <ImageButton
+            android:id="@+id/button_play_ad"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/play_default_ad_button"
+            android:background="#ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+        <ImageButton
+            android:id="@+id/button_play_ad_options"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_below="@id/button_play_ad"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/play_custom_ad_button"
+            android:background="#ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+        <ImageButton
+            android:id="@+id/button_play_ad_incentivized"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_below="@id/button_play_ad_options"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/play_incentivized_bd_button"
+            android:background="#ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>
