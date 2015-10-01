@@ -1,2 +1,4 @@
 sample/local.properties
 sample/sample.iml
+sample/bin
+sample/gen

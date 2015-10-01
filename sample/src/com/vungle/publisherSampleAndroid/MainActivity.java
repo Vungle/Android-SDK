@@ -2,16 +2,29 @@ package com.vungle.publisherSampleAndroid;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Debug;
+import android.util.Log;
+import android.view.View.OnClickListener;
+
+import com.vungle.publisher.Orientation;
 import com.vungle.publisher.VunglePub;
 import android.widget.Button;
 import android.view.View;
+import android.widget.ImageButton;
+
 import com.vungle.publisher.EventListener;
 import com.vungle.publisher.AdConfig;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnClickListener {
 
 	// get the VunglePub instance
 	final VunglePub vunglePub = VunglePub.getInstance();
+
+	// buttons
+	private ImageButton buttonPlayAd;
+	private ImageButton buttonPlayAdOptions;
+	private ImageButton buttonPlayAdIncentivized;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -26,34 +39,15 @@ public class MainActivity extends Activity {
 
 		vunglePub.setEventListeners(vungleListener);
 
-		// PLAY AD WITH DEFAULT OPTIONS
+		// initialize buttons
+		buttonPlayAd = (ImageButton) findViewById(R.id.button_play_ad);
+		buttonPlayAdOptions = (ImageButton) findViewById(R.id.button_play_ad_options);
+		buttonPlayAdIncentivized = (ImageButton) findViewById(R.id.button_play_ad_incentivized);
 
-		Button playBtnDef = (Button) findViewById(R.id.play_btn_def);
-		playBtnDef.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				vunglePub.playAd();
-			}
-		});
-
-		// PLAY AD WITH CUSTOM OPTIONS
-
-		// create a new AdConfig object
-		final AdConfig overrideConfig = new AdConfig();
-
-		// set any configuration options you like.
-		overrideConfig.setIncentivized(true);
-		overrideConfig.setSoundEnabled(false);
-
-		Button playBtnOpt = (Button) findViewById(R.id.play_btn_opt);
-		playBtnOpt.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				// the overrideConfig object will only affect this ad play.
-				vunglePub.playAd(overrideConfig);
-			}
-		});
-
+		// attach listener to buttons
+		buttonPlayAd.setOnClickListener(this);
+		buttonPlayAdOptions.setOnClickListener(this);
+		buttonPlayAdIncentivized.setOnClickListener(this);
 	}
 
 	private final EventListener vungleListener = new EventListener() {
@@ -82,6 +76,64 @@ public class MainActivity extends Activity {
 			// Called when ad playability changes.
 		}
 	};
+
+	public void onClick(View view) {
+		// Check if Vungle Ad is available
+		if(!vunglePub.isAdPlayable()) {
+			return;
+		}
+
+		switch ((view.getId())){
+			// PLAY AD WITH DEFAULT OPTIONS
+			case R.id.button_play_ad:
+				PlayAd();
+				break;
+
+			// PLAY AD WITH CUSTOM OPTIONS
+			case R.id.button_play_ad_options:
+				PlayAdOptions();
+				break;
+
+			// PLAY INCENTIVIZED AD
+			case R.id.button_play_ad_incentivized:
+				PlayAdIncentivized();
+				break;
+		}
+	}
+
+	private void PlayAd() {
+		vunglePub.playAd();
+	}
+
+	private void PlayAdOptions() {
+		// create a new AdConfig object
+		final AdConfig overrideConfig = new AdConfig();
+
+		// set any configuration options you like.
+		overrideConfig.setOrientation(Orientation.matchVideo);
+		overrideConfig.setSoundEnabled(false);
+		overrideConfig.setBackButtonImmediatelyEnabled(false);
+		overrideConfig.setPlacement("StoreFront");
+		//overrideConfig.setExtra1("LaunchedFromNotification");
+
+		// the overrideConfig object will only affect this ad play.
+		vunglePub.playAd(overrideConfig);
+	}
+
+	private void PlayAdIncentivized() {
+		// create a new AdConfig object
+		final AdConfig overrideConfig = new AdConfig();
+
+		// set incentivized option on
+		overrideConfig.setIncentivized(true);
+		overrideConfig.setIncentivizedCancelDialogTitle("Careful!");
+		overrideConfig.setIncentivizedCancelDialogBodyText("If the video isn't completed you won't get your reward! Are you sure you want to close early?");
+		overrideConfig.setIncentivizedCancelDialogCloseButtonText("Close");
+		overrideConfig.setIncentivizedCancelDialogKeepWatchingButtonText("Keep Watching");
+
+		// the overrideConfig object will only affect this ad play.
+		vunglePub.playAd(overrideConfig);
+	}
 
 	@Override
 	protected void onPause() {
