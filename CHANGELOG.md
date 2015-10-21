@@ -1,5 +1,8 @@
 ## Changelog
 
+### VERSION 3.3.3
+* Added support for Android Marshmallow by simplifying the required app permissions
+
 ### VERSION 3.3.2
 * Fixed a bug that might cause ad to crash when returning to foreground
 
