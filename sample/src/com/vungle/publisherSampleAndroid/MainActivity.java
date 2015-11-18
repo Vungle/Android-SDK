@@ -25,6 +25,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	private ImageButton buttonPlayAdOptions;
 	private ImageButton buttonPlayAdIncentivized;
 
+	// constant string for app id
+	private final static String APP_ID = "56423fc5ae9355e074000016";
+	// private final static String APP_ID = "Test App";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,16 +35,17 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 
 		// get your App ID from the app's main page on the Vungle Dashboard after setting up your app
-		final String app_id = "Test_Android";
+		final String app_id = APP_ID;
 
 		// initialize the Publisher SDK
 		vunglePub.init(this, app_id);
 
-		vunglePub.setEventListeners(vungleListener);
+		// registering multiple eventlistners.
+		vunglePub.setEventListeners(vungleDefaultListener, vungleSecondListener);
 
 		// initialize buttons
-		buttonPlayAd = (ImageButton) findViewById(R.id.button_play_ad);
-		buttonPlayAdOptions = (ImageButton) findViewById(R.id.button_play_ad_options);
+		buttonPlayAd             = (ImageButton) findViewById(R.id.button_play_ad);
+		buttonPlayAdOptions      = (ImageButton) findViewById(R.id.button_play_ad_options);
 		buttonPlayAdIncentivized = (ImageButton) findViewById(R.id.button_play_ad_incentivized);
 
 		// attach listener to buttons
@@ -50,7 +54,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		buttonPlayAdIncentivized.setOnClickListener(this);
 	}
 
-	private final EventListener vungleListener = new EventListener() {
+	private final EventListener vungleDefaultListener = new EventListener() {
 		@Override
 		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
 			// Called each time a video completes.  isCompletedView is true if >= 80% of the video was watched.
@@ -74,6 +78,35 @@ public class MainActivity extends Activity implements OnClickListener {
 		@Override
 		public void onAdPlayableChanged(boolean isAdPlayable) {
 			// Called when ad playability changes.
+			Log.d("DefaultListner", "This is a default eventlistner.");
+		}
+	};
+
+	private final EventListener vungleSecondListener = new EventListener() {
+		@Override
+		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
+			// Called each time a video completes.  isCompletedView is true if >= 80% of the video was watched.
+		}
+
+		@Override
+		public void onAdStart() {
+			// Called before playing an ad.
+		}
+
+		@Override
+		public void onAdUnavailable(String reason) {
+			// Called when VunglePub.playAd() was called but no ad is available to show to the user.
+		}
+
+		@Override
+		public void onAdEnd(boolean wasCallToActionClicked) {
+			// Called when the user leaves the ad and control is returned to your application.
+		}
+
+		@Override
+		public void onAdPlayableChanged(boolean isAdPlayable) {
+			// Called when ad playability changes.
+			Log.d("SecondListner", "This is a second eventlistner.");
 		}
 	};
 
@@ -145,5 +178,12 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 		vunglePub.onResume();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// onDestroying objects, remove eventlistners.
+		vunglePub.removeEventListeners(vungleDefaultListener, vungleSecondListener);
+		super.onDestroy();
 	}
 }
