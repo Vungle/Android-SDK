@@ -26,8 +26,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private ImageButton buttonPlayAdIncentivized;
 
 	// constant string for app id
-	private final static String APP_ID = "56423fc5ae9355e074000016";
-	// private final static String APP_ID = "Test App";
+	private final static String APP_ID = "Test App";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,12 +39,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		// initialize the Publisher SDK
 		vunglePub.init(this, app_id);
 
-		// registering multiple eventlistners.
 		vunglePub.setEventListeners(vungleDefaultListener, vungleSecondListener);
 
 		// initialize buttons
-		buttonPlayAd             = (ImageButton) findViewById(R.id.button_play_ad);
-		buttonPlayAdOptions      = (ImageButton) findViewById(R.id.button_play_ad_options);
+		buttonPlayAd = (ImageButton) findViewById(R.id.button_play_ad);
+		buttonPlayAdOptions = (ImageButton) findViewById(R.id.button_play_ad_options);
 		buttonPlayAdIncentivized = (ImageButton) findViewById(R.id.button_play_ad_incentivized);
 
 		// attach listener to buttons
@@ -182,7 +180,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onDestroy() {
-		// onDestroying objects, remove eventlistners.
+		// onDestroy(), remove eventlistners.
 		vunglePub.removeEventListeners(vungleDefaultListener, vungleSecondListener);
 		super.onDestroy();
 	}
