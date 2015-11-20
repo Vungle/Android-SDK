@@ -1,5 +1,7 @@
 package com.vungle.publisherSampleAndroid;
 
+import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Debug;
@@ -11,6 +13,7 @@ import com.vungle.publisher.VunglePub;
 import android.widget.Button;
 import android.view.View;
 import android.widget.ImageButton;
+import android.graphics.Color;
 
 import com.vungle.publisher.EventListener;
 import com.vungle.publisher.AdConfig;
@@ -26,7 +29,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private ImageButton buttonPlayAdIncentivized;
 
 	// constant string for app id
-	private final static String APP_ID = "Test App";
+	private final static String APP_ID = "Test_Android";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,10 +49,22 @@ public class MainActivity extends Activity implements OnClickListener {
 		buttonPlayAdOptions = (ImageButton) findViewById(R.id.button_play_ad_options);
 		buttonPlayAdIncentivized = (ImageButton) findViewById(R.id.button_play_ad_incentivized);
 
+		boolean buttonsEnabled = vunglePub.isAdPlayable();
+		setButtonState(buttonPlayAd, buttonsEnabled);
+		setButtonState(buttonPlayAdIncentivized, buttonsEnabled);
+		setButtonState(buttonPlayAdOptions, buttonsEnabled);
+
 		// attach listener to buttons
 		buttonPlayAd.setOnClickListener(this);
 		buttonPlayAdOptions.setOnClickListener(this);
 		buttonPlayAdIncentivized.setOnClickListener(this);
+	}
+
+	private void setButtonState(ImageButton button, boolean enabled) {
+		button.setEnabled(enabled);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			button.setAlpha(enabled ? 1.0f : 0.5f);
+		}
 	}
 
 	private final EventListener vungleDefaultListener = new EventListener() {
@@ -77,6 +92,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		public void onAdPlayableChanged(boolean isAdPlayable) {
 			// Called when ad playability changes.
 			Log.d("DefaultListner", "This is a default eventlistner.");
+			final boolean enabled = isAdPlayable;
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					// Called when ad playability changes.
+					setButtonState(buttonPlayAd, enabled);
+					setButtonState(buttonPlayAdIncentivized, enabled);
+					setButtonState(buttonPlayAdOptions, enabled);
+				}
+			});
 		}
 	};
 
