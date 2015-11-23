@@ -28,16 +28,13 @@ public class MainActivity extends Activity implements OnClickListener {
 	private ImageButton buttonPlayAdOptions;
 	private ImageButton buttonPlayAdIncentivized;
 
-	// constant string for app id
-	private final static String APP_ID = "Test_Android";
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
 		// get your App ID from the app's main page on the Vungle Dashboard after setting up your app
-		final String app_id = APP_ID;
+		final String app_id = "Test_Android";
 
 		// initialize the Publisher SDK
 		vunglePub.init(this, app_id);
@@ -91,7 +88,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		@Override
 		public void onAdPlayableChanged(boolean isAdPlayable) {
 			// Called when ad playability changes.
-			Log.d("DefaultListner", "This is a default eventlistner.");
+			Log.d("DefaultListener", "This is a default eventlistener.");
 			final boolean enabled = isAdPlayable;
 			runOnUiThread(new Runnable() {
 				@Override
@@ -106,30 +103,27 @@ public class MainActivity extends Activity implements OnClickListener {
 	};
 
 	private final EventListener vungleSecondListener = new EventListener() {
+		// Vungle SDK allows for multiple listeners to be attached. This secondary event listener is only
+		// going to print some logs for now, but it could be used to Pause music, update a badge icon, etc.
 		@Override
 		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
-			// Called each time a video completes.  isCompletedView is true if >= 80% of the video was watched.
 		}
 
 		@Override
 		public void onAdStart() {
-			// Called before playing an ad.
 		}
 
 		@Override
 		public void onAdUnavailable(String reason) {
-			// Called when VunglePub.playAd() was called but no ad is available to show to the user.
 		}
 
 		@Override
 		public void onAdEnd(boolean wasCallToActionClicked) {
-			// Called when the user leaves the ad and control is returned to your application.
 		}
 
 		@Override
 		public void onAdPlayableChanged(boolean isAdPlayable) {
-			// Called when ad playability changes.
-			Log.d("SecondListner", "This is a second eventlistner.");
+			Log.d("SecondListener", String.format("This is a second event listener! Ad playability has changed, and is now: %s", isAdPlayable));
 		}
 	};
 
@@ -205,7 +199,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onDestroy() {
-		// onDestroy(), remove eventlistners.
+		// onDestroy(), remove eventlisteners.
 		vunglePub.removeEventListeners(vungleDefaultListener, vungleSecondListener);
 		super.onDestroy();
 	}
