@@ -1,17 +1,17 @@
-# VungleSDK- Android Developer Guide - v3.3.0
+# VungleSDK- Android Developer Guide - v4.0.0
 
 This guide will show you how you can easily integrate our SDK into your app so you can start monetizing!
 
 ### Requirements
 
-* Android 2.3 (Gingerbread - API version 9) or later
+* Android 3.0 (Honeycomb - API version 1) or later
 * If your application is written in C/C++, you'll need to use JNI to interface with the Publisher SDK written in Java
 
 ### Here are a few important tips:
 
 * If you haven't already done so, head over to our [dashboard](https://v.vungle.com/dashboard/login) and add your app to your account. You need to do this so that you can get your App ID that you’ll be adding to your app with our SDK. It’s in **red** on your app’s page.
 
-* If you’d rather just jump right in with our sample app, head [here](https://github.com/Vungle/publisher-sample-android). 
+* If you’d rather just jump right in with our sample app, see the `sample` folder [here](https://github.com/Vungle/Android-SDK). 
 
 * If you’re using **Adobe Air**, **Unity**, or **Corona**, check out our [plugins page](https://v.vungle.com/dev/plugins).
 
@@ -28,8 +28,6 @@ Copy all of the libraries from the unzipped `/libs` directory into your project'
 This should include the following libraries:
 * `dagger-[version].jar`
 * `javax.inject-[version].jar`
-* `nineoldandroids-[version].jar`
-* `support-v4-[version].jar`
 * `vungle-publisher-[version].jar`
 
 If you already including the same versions of any of the above libraries, you don't need to include them again. If you are using a different version of any of the libraries, please test your app to determine which version works best.
