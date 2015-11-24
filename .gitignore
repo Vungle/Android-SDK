@@ -1,4 +1,9 @@
+**/.gradle
+**/.DS_Store
+**/build
+**/.classpath
+**/.project
 sample/local.properties
 sample/sample.iml
-sample/bin
-sample/gen
+**/bin
+**/gen

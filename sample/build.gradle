@@ -30,8 +30,8 @@ android {
 
 	defaultConfig {
 		applicationId "com.vungle.publisherSampleAndroid"
-		minSdkVersion 10
-		targetSdkVersion 19
+		minSdkVersion 11
+		targetSdkVersion 23
 		versionCode 1
 		versionName "1.0"
 	}
@@ -48,16 +48,6 @@ android {
 
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
-	compile('com.android.support:appcompat-v7:21.0.3') {
-		// (1) either copy the  Android support-v4.jar from the Vungle Publisher SDK /libs directory
-		// to your project /libs directory, or
-		// (2) remove this 'exclude' line
-		exclude group: 'com.android.support', module: 'support-v4'
-	}
-	compile('com.google.android.gms:play-services:4.0.30') {
-		// (1) either copy the  Android support-v4.jar from the Vungle Publisher SDK /libs directory
-		// to your project /libs directory, or
-		// (2) remove this 'exclude' line
-		exclude group: 'com.android.support', module: 'support-v4'
-	}
+	// we recommend using the latest version of play-services, but this should work too!
+	compile('com.google.android.gms:play-services:4.0.30')
 }
