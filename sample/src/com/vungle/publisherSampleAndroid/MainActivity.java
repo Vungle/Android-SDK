@@ -28,7 +28,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	private ImageButton buttonPlayAdOptions;
 	private ImageButton buttonPlayAdIncentivized;
 
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,7 +39,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		// initialize the Publisher SDK
 		vunglePub.init(this, app_id);
 
-		vunglePub.setEventListeners(vungleListener);
+		vunglePub.setEventListeners(vungleDefaultListener, vungleSecondListener);
 
 		// initialize buttons
 		buttonPlayAd = (ImageButton) findViewById(R.id.button_play_ad);
@@ -65,7 +64,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	private final EventListener vungleListener = new EventListener() {
+	private final EventListener vungleDefaultListener = new EventListener() {
 		@Override
 		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
 			// Called each time a video completes.  isCompletedView is true if >= 80% of the video was watched.
@@ -88,6 +87,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		@Override
 		public void onAdPlayableChanged(boolean isAdPlayable) {
+			// Called when ad playability changes.
+			Log.d("DefaultListener", "This is a default eventlistener.");
 			final boolean enabled = isAdPlayable;
 			runOnUiThread(new Runnable() {
 				@Override
@@ -98,6 +99,31 @@ public class MainActivity extends Activity implements OnClickListener {
 					setButtonState(buttonPlayAdOptions, enabled);
 				}
 			});
+		}
+	};
+
+	private final EventListener vungleSecondListener = new EventListener() {
+		// Vungle SDK allows for multiple listeners to be attached. This secondary event listener is only
+		// going to print some logs for now, but it could be used to Pause music, update a badge icon, etc.
+		@Override
+		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
+		}
+
+		@Override
+		public void onAdStart() {
+		}
+
+		@Override
+		public void onAdUnavailable(String reason) {
+		}
+
+		@Override
+		public void onAdEnd(boolean wasCallToActionClicked) {
+		}
+
+		@Override
+		public void onAdPlayableChanged(boolean isAdPlayable) {
+			Log.d("SecondListener", String.format("This is a second event listener! Ad playability has changed, and is now: %s", isAdPlayable));
 		}
 	};
 
@@ -169,5 +195,12 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 		vunglePub.onResume();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// onDestroy(), remove eventlisteners.
+		vunglePub.removeEventListeners(vungleDefaultListener, vungleSecondListener);
+		super.onDestroy();
 	}
 }
