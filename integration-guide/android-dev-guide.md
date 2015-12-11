@@ -32,9 +32,27 @@ This should include the following libraries:
 
 If you already including the same versions of any of the above libraries, you don't need to include them again. If you are using a different version of any of the libraries, please test your app to determine which version works best.
 
-## 3. Update `AndroidManifest.xml`
+## 3. Update `styles.xml`
 
-1) Add the following lines:
+The main Vungle activity requires the following style to function correctly. Add this style element in your `res/values/styles.xml` file.
+
+```xml
+<resources>
+
+	...
+
+	<style name="Vungle.Theme.FullScreenAd" parent="android:Theme.NoTitleBar.Fullscreen">
+		<item name="android:windowIsTranslucent">true</item>
+	</style>
+
+	...
+
+</resources>
+```
+
+## 4. Update `AndroidManifest.xml`
+
+Add the following lines to your AndroidManifest.xml:
 
 ```xml
 <manifest>
@@ -51,12 +69,12 @@ If you already including the same versions of any of the above libraries, you do
     ...
     
     <!--
-      Required Activity for playback of Vungle video ads
+      Required Activity for playback of Vungle video ads. Note the theme is the one you defined in the previous step.
     -->
     <activity
       android:name="com.vungle.publisher.FullScreenAdActivity"
       android:configChanges="keyboardHidden|orientation|screenSize"
-      android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+      android:theme="@style/Vungle.Theme.FullScreenAd"/>
     
   </application>
   
@@ -74,7 +92,7 @@ http://developer.android.com/google/play-services/setup.html#ensure
 
 [Vungle's Google Play Services FAQs](http://www.vungle.com/google-advertising-id-faqs/)
 
-## 4. Initialize & Integrate the SDK
+## 5. Initialize & Integrate the SDK
 
 ### Application Startup
 
@@ -127,7 +145,7 @@ public class EachActivity extends android.app.Activity {
 }
 ```
 
-## 5. Play an Ad!
+## 6. Play an Ad!
 
 ### Default Configuration
 
