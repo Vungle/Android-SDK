@@ -11,6 +11,11 @@ Once you've created an account you can follow our [Getting Started for Andriod G
 * Java 1.7 - For Android 5.+ compatibility purposes, JDK 7 is required on the development system 
 
 ## Release Notes
+### 3.3.4
+* Persist sleeps across app restart
+* Fixed a bug that crashes app on devices with Android 4.2 or lower
+* Fixed a bug to resume the video ad properly when screenlock is set to none
+
 ### 3.3.3  
 * Added support for Android Marshmallow by simplifying the required app permissions
 
