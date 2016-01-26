@@ -1,4 +1,4 @@
-# VungleSDK- Android Advanced Settings - v3.3.0
+# VungleSDK- Android Advanced Settings - v3.3.4
 
 ## Please note:
 

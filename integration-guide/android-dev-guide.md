@@ -1,4 +1,4 @@
-# VungleSDK- Android Developer Guide - v3.3.0
+# VungleSDK- Android Developer Guide - v3.3.4
 
 This guide will show you how you can easily integrate our SDK into your app so you can start monetizing!
 
