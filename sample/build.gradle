@@ -47,7 +47,10 @@ android {
 }
 
 dependencies {
-	compile fileTree(dir: 'libs', include: ['*.jar'])
+	// uncomment the line below to manually include the Vungle libraries
+	// compile fileTree(dir: 'libs', include: ['*.jar'])
+	// or preferably, use this line to pull the latest Vungle SDK version from jcenter
+	compile('com.vungle:publisher-sdk-android-adaptive-id:+')
 	// we recommend using the latest version of play-services, but this should work too!
-	compile('com.google.android.gms:play-services:4.0.30')
+	compile('com.google.android.gms:play-services:8.3.0')
 }
