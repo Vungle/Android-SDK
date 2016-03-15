@@ -43,10 +43,13 @@
 			</intent-filter>
 		</activity>
 
-		<!-- required Activity to show Vungle video ads -->
-		<activity android:name="com.vungle.publisher.FullScreenAdActivity"
+		<!-- required Activities to show Vungle ads -->
+		<activity android:name="com.vungle.publisher.VideoFullScreenAdActivity"
 			android:configChanges="keyboardHidden|orientation|screenSize"
-			android:theme="@style/Vungle.Theme.FullScreenAd"/>
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+		<activity android:name="com.vungle.publisher.MraidFullScreenAdActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
 
 	</application>
 

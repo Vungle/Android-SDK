@@ -32,24 +32,6 @@ This should include the following libraries:
 
 If you already including the same versions of any of the above libraries, you don't need to include them again. If you are using a different version of any of the libraries, please test your app to determine which version works best.
 
-## 3. Update `styles.xml`
-
-The main Vungle activity requires the following style to function correctly. Add this style element in your `res/values/styles.xml` file.
-
-```xml
-<resources>
-
-	...
-
-	<style name="Vungle.Theme.FullScreenAd" parent="android:Theme.NoTitleBar.Fullscreen">
-		<item name="android:windowIsTranslucent">true</item>
-	</style>
-
-	...
-
-</resources>
-```
-
 ## 4. Update `AndroidManifest.xml`
 
 Add the following lines to your AndroidManifest.xml:
@@ -69,12 +51,14 @@ Add the following lines to your AndroidManifest.xml:
     ...
     
     <!--
-      Required Activity for playback of Vungle video ads. Note the theme is the one you defined in the previous step.
+      Required Activities for playback of Vungle video ads
     -->
-    <activity
-      android:name="com.vungle.publisher.FullScreenAdActivity"
+    <activity android:name="com.vungle.publisher.VideoFullScreenAdActivity"
       android:configChanges="keyboardHidden|orientation|screenSize"
-      android:theme="@style/Vungle.Theme.FullScreenAd"/>
+      android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+    <activity android:name="com.vungle.publisher.MraidFullScreenAdActivity"
+      android:configChanges="keyboardHidden|orientation|screenSize"
+      android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
     
   </application>
   
@@ -82,7 +66,7 @@ Add the following lines to your AndroidManifest.xml:
 ```
 
 ### Google Play Services (Optional)
-Including Google Play Services with your project will allow Vungle to provide a more customized ad experience to the end-user, but it's not required.  We recommend using version 4.0.30 or higher.
+Including Google Play Services with your project will allow Vungle to provide a more customized ad experience to the end-user, but it's not required.  We recommend using the current version from Google.
 
 http://developer.android.com/google/play-services/setup.html#Setup
 
