@@ -1,4 +1,4 @@
-# VungleSDK- Android Advanced Settings - v3.3.4
+# VungleSDK- Android Advanced Settings - v4.0.0
 
 ## Please note:
 
@@ -112,12 +112,10 @@ public class FirstActivity extends android.app.Activity {
 
   private final EventListener vungleListener = new EventListener(){
 
+	@Deprecated
     @Override
     public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
-        // Called each time an ad completes. isCompletedView is true if at least  
-        // 80% of the video was watched, which constitutes a completed view.  
-        // watchedMillis is for the longest video view (if the user replayed the 
-        // video).
+        // This method is deprecated and will be removed. Please do not use it.
     }
 
     @Override
@@ -126,8 +124,10 @@ public class FirstActivity extends android.app.Activity {
     }
 
     @Override
-    public void onAdEnd(boolean wasCallToActionClicked) {
+    public void onAdEnd(boolean wasSuccessfulView, boolean wasCallToActionClicked) {
         // Called when the user leaves the ad and control is returned to your application
+		// if wasSuccessfulView is true, the user watched the ad and should be rewarded (if this was a rewarded ad).
+		// if wasCallToActionClicked is true, the user clicked the call to action button in the ad.
     }
 
     @Override

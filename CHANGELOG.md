@@ -1,5 +1,12 @@
 ## Changelog
 
+### 4.0.0
+* Added support for interstitial MRAID ads
+* Updated `EventListener.onAdEnd()` api to include wasSuccessfulView parameter
+* Deprecated `EventListener.onVideoView()` api
+* Increased min Android API level to 3.0 (Honeycomb - version 11)
+* Removed dependency on support-v4 library and nineoldandroids library
+
 ### VERSION 3.3.4
 * Fixed a bug that might cause a crash on devices with Android 4.2 or lower OS
 * Fixed a bug to resume the video ad upon unlocking the screen on devices with screenlock set to none
