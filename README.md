@@ -16,6 +16,7 @@ Once you've created an account you can follow our [Getting Started for Andriod G
 * Increased minimum supported Android SDK level from API 9 to API 11
 * Upgraded maximum Google Play Services version to 8.3.0
 * Removed dependencies on support-v4 library and nineoldandroids library
+* Fixed black screen issue with Unity plugin
 
 ### 3.3.4
 * Fixed a bug that might cause a crash on devices with Android 4.2 or lower OS
