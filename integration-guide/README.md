@@ -1,15 +1,12 @@
+## Android Resources
+
+Documentation for our current release can be found [here](./current-release). 
+
+Get started with the dev guide, which will help you integrate and play an ad. Once you've done that, our advanced settings doc will help you customize.
+
+You can find our sample app [here](https://github.com/Vungle/publisher-sample-android). Check out the code, or run it for a demo of our ad experience!
+
 ## Changelog
-
-### VERSION 3.3.4
-* Fixed a bug that might cause a crash on devices with Android 4.2 or lower OS
-* Fixed a bug to resume the video ad upon unlocking the screen on devices with screenlock set to none
-* Persist sleeps across app restarts
-
-### VERSION 3.3.3
-* Added support for Android Marshmallow by simplifying the required app permissions
-
-### VERSION 3.3.2
-* Fixed a bug that might cause ad to crash when returning to foreground
 
 ### VERSION 3.3.1
 

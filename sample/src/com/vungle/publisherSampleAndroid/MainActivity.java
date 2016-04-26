@@ -1,17 +1,22 @@
 package com.vungle.publisherSampleAndroid;
 
-import android.app.Activity;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
+import android.app.Activity;
+import android.os.Debug;
 import android.util.Log;
-import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
 
-import com.vungle.publisher.AdConfig;
-import com.vungle.publisher.EventListener;
 import com.vungle.publisher.Orientation;
 import com.vungle.publisher.VunglePub;
+import android.widget.Button;
+import android.view.View;
+import android.widget.ImageButton;
+import android.graphics.Color;
+
+import com.vungle.publisher.EventListener;
+import com.vungle.publisher.AdConfig;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -60,10 +65,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	private final EventListener vungleDefaultListener = new EventListener() {
-		@Deprecated
 		@Override
 		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
-			// This method is deprecated and will be removed. Please use onAdEnd() instead.
+			// Called each time a video completes.  isCompletedView is true if >= 80% of the video was watched.
 		}
 
 		@Override
@@ -77,7 +81,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 
 		@Override
-		public void onAdEnd(boolean wasSuccessfulView, boolean wasCallToActionClicked) {
+		public void onAdEnd(boolean wasCallToActionClicked) {
 			// Called when the user leaves the ad and control is returned to your application.
 		}
 
@@ -101,18 +105,21 @@ public class MainActivity extends Activity implements OnClickListener {
 	private final EventListener vungleSecondListener = new EventListener() {
 		// Vungle SDK allows for multiple listeners to be attached. This secondary event listener is only
 		// going to print some logs for now, but it could be used to Pause music, update a badge icon, etc.
-		@Deprecated
 		@Override
-		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {}
+		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
+		}
 
 		@Override
-		public void onAdStart() {}
+		public void onAdStart() {
+		}
 
 		@Override
-		public void onAdUnavailable(String reason) {}
+		public void onAdUnavailable(String reason) {
+		}
 
 		@Override
-		public void onAdEnd(boolean wasSuccessfulView, boolean wasCallToActionClicked) {}
+		public void onAdEnd(boolean wasCallToActionClicked) {
+		}
 
 		@Override
 		public void onAdPlayableChanged(boolean isAdPlayable) {

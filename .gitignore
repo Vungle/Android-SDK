@@ -1,10 +1,4 @@
-**/project.properties
-**/.gradle
-**/.DS_Store
-**/build
-**/.classpath
-**/.project
 sample/local.properties
 sample/sample.iml
-**/bin
-**/gen
+sample/bin
+sample/gen

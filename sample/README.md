@@ -77,4 +77,4 @@ Supported build systems:
   ```
 
 ### Note
-The sample app from [GitHub](http://github.com/Vungle/publisher-sample-android) is no longer supported. You should use this sample app instead.
+If you downloaded the the sample app from [GitHub](http://github.com/Vungle/publisher-sample-android), you'll need to download the Publisher SDK from the [Vungle Dashboard](https://v.vungle.com) and add it to the `libs` directory.
