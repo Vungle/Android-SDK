@@ -11,12 +11,12 @@ Once you've created an account you can follow our [Getting Started for Andriod G
 * Java 1.7 - For Android 5.+ compatibility purposes, JDK 7 is required on the development system 
 
 ## Release Notes
-### 4.0.0
-* Added support for interstitial MRAID ads
-* Updated `EventListener.onAdEnd()` api to include wasSuccessfulView parameter
-* Deprecated `EventListener.onVideoView()` api
-* Increased min Android API level to 3.0 (Honeycomb - version 11)
-* Removed dependency on support-v4 library and nineoldandroids library
+### 3.3.5
+* Added support for Dagger 2
+* Increased minimum supported Android SDK level from API 9 to API 11
+* Upgraded maximum Google Play Services version to 8.3.0
+* Removed dependencies on support-v4 library and nineoldandroids library
+* Fixed black screen issue with Unity plugin
 
 ### 3.3.4
 * Fixed a bug that might cause a crash on devices with Android 4.2 or lower OS
