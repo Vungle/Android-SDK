@@ -11,6 +11,9 @@ Once you've created an account you can follow our [Getting Started for Andriod G
 * Java 1.7 - For Android 5.+ compatibility purposes, JDK 7 is required on the development system 
 
 ## Release Notes
+### 3.3.5.1
+* Fixed an injection bug that crashes with a runtime exception
+
 ### 3.3.5
 * Added support for Dagger 2
 * Increased minimum supported Android SDK level from API 9 to API 11
