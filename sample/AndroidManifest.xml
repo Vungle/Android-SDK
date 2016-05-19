@@ -17,22 +17,6 @@
 		android:icon="@drawable/ic_launcher"
 		android:label="@string/app_name">
 
-		<!--
-			(1) If you are using Eclipse, go to Project > Properties > Android 
-			and add the Google Play Services project as a Library.  Ensure you 
-			have downloaded Google Play Services in Android SDK Manager.  Then 
-			you can find it at:
-			<android-sdk>/extras/google/google_play_services/libproject/google-play-services_lib
-
-			(2) If you are using Ant, open project.propreties, insert the 
-			relative path to the Android SDK, and uncomment the line 
-			"android.library.reference.1"  (Eclipse does this for you in step 1).
-
-			(3) Otherwise, if you do not want to use Google Play Services, you 
-			may comment out this line.
-		-->
-		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-
 		<activity
 			android:name=".MainActivity"
 			android:label="@string/app_name"
