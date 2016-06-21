@@ -11,6 +11,20 @@ Once you've created an account you can follow our [Getting Started for Andriod G
 * Java 1.7 - For Android 5.+ compatibility purposes, JDK 7 is required on the development system 
 
 ## Release Notes
+### 4.0.2
+* Fixed the device ID timeout when play-services is not included
+* Suppressed all location services exceptions making location completely optional
+* Cleaned up all the Proguard filters that are not required after Dagger 2 migration
+
+### 4.0.1
+* Migrate to Dagger 2
+* Fixed Unity black cover issue
+* Added ad config to disable fragment transition animation which is enabled by default
+* Avoid crash when backgrounded app is recreated
+* Handling SSL errors better to prevent Google Play from rejecting apps
+* Made important updates to ReportAd parameters
+* Developers are warned when invalid App ID is used to initialize
+
 ### 4.0.0
 * Added support for interstitial MRAID ads
 * Updated `EventListener.onAdEnd()` api to include wasSuccessfulView parameter
