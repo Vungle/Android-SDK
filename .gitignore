@@ -8,3 +8,5 @@ sample/local.properties
 sample/sample.iml
 **/bin
 **/gen
+
+sample/.idea/
