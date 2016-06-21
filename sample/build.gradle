@@ -48,6 +48,4 @@ android {
 
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
-	// we recommend using the latest version of play-services, but this should work too!
-	compile('com.google.android.gms:play-services:8.3.0')
 }
