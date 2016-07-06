@@ -3,7 +3,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:2.1.0'
+		classpath 'com.android.tools.build:gradle:2.1.2'
 	}
 }
 
@@ -29,7 +29,7 @@ android {
 	}
 
 	defaultConfig {
-		applicationId "com.vungle.publisherSampleAndroid"
+		applicationId "com.vungle.sample"
 		minSdkVersion 11
 		targetSdkVersion 23
 		versionCode 1
@@ -48,4 +48,5 @@ android {
 
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.jakewharton:butterknife:5.1.1'
 }

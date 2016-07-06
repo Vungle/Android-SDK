@@ -1,79 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:id="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/vungle_logo"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1" />
-
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true">
+    <LinearLayout
         android:orientation="vertical"
-        android:id="@+id/btnWrapper"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="4"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
+            android:id="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/vungle_logo"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
+            <TextView
+                android:id="@+id/tvAppId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="App Id" />
+            <EditText
+                android:id="@+id/etAppId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tvAppId"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tvAppId"
+                android:ems="10"
+                android:text="vungleTest"
+                android:hint="app id" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/string_initialize"
+                android:id="@+id/btInit"
+                android:layout_below="@id/etAppId"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/tvUserTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/etAppId"
+                android:layout_below="@+id/btInit"
+                android:text="User Tag" />
+            <EditText
+                android:id="@+id/etUserTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tvUserTag"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tvUserTag"
+                android:text="vungle"
+                android:ems="10"
+                android:hint="user tag" />
+
+            <CheckBox
+                android:id="@+id/cbIncentivized"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/etUserTag"
+                android:layout_below="@+id/etUserTag"
+                android:text="Incentivized" />
+
+            <CheckBox
+                android:id="@+id/cbStartMuted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/cbIncentivized"
+                android:layout_below="@+id/cbIncentivized"
+                android:text="Start Muted" />
+
+            <CheckBox
+                android:id="@+id/cbDisableTransitionAnimation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/cbStartMuted"
+                android:layout_below="@+id/cbStartMuted"
+                android:text="Disable Transition Animation"/>
+
+            <CheckBox
+                android:id="@+id/cbEnableBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/cbDisableTransitionAnimation"
+                android:layout_below="@+id/cbDisableTransitionAnimation"
+                android:text="Enable Back Button Immediately" />
+
+            <TextView
+                android:id="@+id/tvPlacement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/etAppId"
+                android:layout_below="@+id/cbEnableBack"
+                android:text="Placement" />
+            <EditText
+                android:id="@+id/etPlacement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tvPlacement"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tvPlacement"
+                android:ems="10"
+                android:hint="placement" />
+        </RelativeLayout>
 
         <ImageButton
-            android:id="@+id/button_play_ad"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
+            android:id="@+id/btPlayAdWithOptions"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
-            android:scaleType="fitCenter"
-            android:src="@drawable/play_default_ad_button"
-            android:background="#ffffff"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" />
-
-        <ImageButton
-            android:id="@+id/button_play_ad_options"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:layout_below="@id/button_play_ad"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitCenter"
-            android:src="@drawable/play_custom_ad_button"
-            android:background="#ffffff"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" />
-
-        <ImageButton
-            android:id="@+id/button_play_ad_incentivized"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:layout_below="@id/button_play_ad_options"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitCenter"
-            android:src="@drawable/play_incentivized_bd_button"
-            android:background="#ffffff"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" />
-
-
+            android:scaleType="fitXY"
+            android:src="@drawable/play_custom_ad_button" />
     </LinearLayout>
-
-
-
-
-
-
-
-</LinearLayout>
+</ScrollView>

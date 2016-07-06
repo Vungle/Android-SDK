@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Vungle Pub Sample</string>
     <string name="init_note">During startup, Vungle is initialized and an ad is cached. Note that it may take a moment before you can Play Ad.</string>
     <string name="action_settings">action_settings</string>
-
+    <string name="endpoints_prompt">Common Endpoints</string>
+    <string-array name="common_endpoints">
+        <item>select an endpoint...</item>
+        <item>http://ec2-52-12-151-103.us-west-2.compute.amazonaws.com:8080/api/v3/</item>
+        <item>https://api.vungle.com/api/v4/</item>
+        <item>http://private-8196c-androidtest6.apiary-mock.com/api/v1/</item>
+        <item>https://private-b8e89b-privateandroid.apiary-mock.com/api/v1/</item>
+    </string-array>
+    <string name="ingest_endpoints_prompt">Ingest Endpoints</string>
+    <string name="string_initialize">Initialize</string>
+    <string-array name="ingest_endpoints">
+        <item>select an ingest endpoint...</item>
+        <item>https://ingest.vungle.com/</item>
+        <item>http://ingest.vungle.com/</item>
+    </string-array>
 </resources>
