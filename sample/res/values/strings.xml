@@ -12,6 +12,7 @@
         <item>https://private-b8e89b-privateandroid.apiary-mock.com/api/v1/</item>
     </string-array>
     <string name="ingest_endpoints_prompt">Ingest Endpoints</string>
+    <string name="string_initialize">Initialize</string>
     <string-array name="ingest_endpoints">
         <item>select an ingest endpoint...</item>
         <item>https://ingest.vungle.com/</item>
