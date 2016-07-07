@@ -1,6 +1,6 @@
 ## Changelog
 
-### 3.3.5
+### VERSION 3.3.5
 * Added support for Dagger 2
 * Increased minimum supported Android SDK level from API 9 to API 11
 * Upgraded maximum Google Play Services version to 8.3.0
