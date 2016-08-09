@@ -1,5 +1,19 @@
 ## Changelog
 
+### VERSION 4.0.2
+* Fixed the device ID timeout when play-services is not included
+* Suppressed all location services exceptions making location completely optional
+* Cleaned up all the Proguard filters that are not required after Dagger 2 migration
+
+### VERSION 4.0.1
+* Migrate to Dagger 2
+* Fixed Unity black cover issue
+* Added ad config to disable fragment transition animation which is enabled by default
+* Avoid crash when backgrounded app is recreated
+* Handling SSL errors better to prevent Google Play from rejecting apps
+* Made important updates to ReportAd parameters
+* Developers are warned when invalid App ID is used to initialize
+
 ### VERSION 3.3.5
 * Added support for Dagger 2
 * Increased minimum supported Android SDK level from API 9 to API 11
