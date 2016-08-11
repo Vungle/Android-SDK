@@ -21,6 +21,13 @@
 * Increased min Android API level to 3.0 (Honeycomb - version 11)
 * Removed dependency on support-v4 library and nineoldandroids library
 
+### VERSION 3.3.5
+* Added support for Dagger 2
+* Increased minimum supported Android SDK level from API 9 to API 11
+* Upgraded maximum Google Play Services version to 8.3.0
+* Removed dependencies on support-v4 library and nineoldandroids library
+* Fixed black screen issue with Unity plugin
+
 ### VERSION 3.3.4
 * Fixed a bug that might cause a crash on devices with Android 4.2 or lower OS
 * Fixed a bug to resume the video ad upon unlocking the screen on devices with screenlock set to none
