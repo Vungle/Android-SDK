@@ -4,7 +4,7 @@ This guide will show you how you can easily integrate our SDK into your app so y
 
 ### Requirements
 
-* Android 3.0 (Honeycomb - API version 1) or later
+* Android 3.0 (Honeycomb - API version 11) or later
 * If your application is written in C/C++, you'll need to use JNI to interface with the Publisher SDK written in Java
 
 ### Here are a few important tips:
