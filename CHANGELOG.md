@@ -1,5 +1,9 @@
 ## Changelog
 
+### VERSION 4.0.3
+* Added support for Android Nougat (Android v7.0)
+* Sending more device stats to serve better and better ads
+
 ### VERSION 4.0.2
 * Fixed the device ID timeout when play-services is not included
 * Migrate to Dagger 2
