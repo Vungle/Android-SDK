@@ -3,7 +3,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:2.1.0'
+		classpath 'com.android.tools.build:gradle:2.2.1'
 	}
 }
 
@@ -16,8 +16,8 @@ allprojects {
 }
 
 android {
-	compileSdkVersion 21
-	buildToolsVersion "21.1.2"
+	compileSdkVersion 24
+	buildToolsVersion "24.0.2"
 
 	sourceSets {
 		main {
@@ -31,7 +31,7 @@ android {
 	defaultConfig {
 		applicationId "com.vungle.publisherSampleAndroid"
 		minSdkVersion 11
-		targetSdkVersion 23
+		targetSdkVersion 24
 		versionCode 1
 		versionName "1.0"
 	}
