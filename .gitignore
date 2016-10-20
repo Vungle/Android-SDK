@@ -2,3 +2,7 @@ sample/local.properties
 sample/sample.iml
 sample/bin
 sample/gen
+sample/build
+sample/.idea
+sample/.gradle
+.project
