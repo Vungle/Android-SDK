@@ -1,5 +1,18 @@
 ## Changelog
 
+### VERSION 4.0.2
+* Fixed the device ID timeout when play-services is not included
+* Migrate to Dagger 2
+* Cleaned up all the Proguard filters that are not required after Dagger 2 migration
+* Fixed a few minor Unity bugs
+* Handling SSL errors better
+* Developers are warned when invalid App ID is used to initialize
+* Added support for interstitial MRAID ads
+* Updated `EventListener.onAdEnd()` api to include wasSuccessfulView parameter
+* Deprecated `EventListener.onVideoView()` api
+* Increased min Android API level to 3.0 (Honeycomb - version 11)
+* Removed dependency on support-v4 library and nineoldandroids library
+
 ### VERSION 3.3.5
 * Added support for Dagger 2
 * Increased minimum supported Android SDK level from API 9 to API 11

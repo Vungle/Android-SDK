@@ -77,7 +77,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 
 		@Override
-		public void onAdEnd(boolean wasCallToActionClicked) {
+		public void onAdEnd(boolean wasSuccessfulView, boolean wasCallToActionClicked) {
 			// Called when the user leaves the ad and control is returned to your application.
 		}
 
@@ -112,7 +112,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		public void onAdUnavailable(String reason) {}
 
 		@Override
-		public void onAdEnd(boolean wasCallToActionClicked) {}
+		public void onAdEnd(boolean wasSuccessfulView, boolean wasCallToActionClicked) {}
 
 		@Override
 		public void onAdPlayableChanged(boolean isAdPlayable) {
