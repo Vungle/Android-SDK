@@ -1,5 +1,8 @@
 ## Changelog
 
+### VERSION 4.0.2.1
+* Included fix for crash due to SuperNotCalledException in legacy ads 
+
 ### VERSION 4.0.2
 * Fixed the device ID timeout when play-services is not included
 * Suppressed all location services exceptions making location completely optional
