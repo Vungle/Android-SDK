@@ -4,9 +4,9 @@
 **/build
 **/.classpath
 **/.project
-sample/local.properties
-sample/sample.iml
 **/bin
 **/gen
 
 sample/.idea/
+sample/local.properties
+sample/sample.iml
