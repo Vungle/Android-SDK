@@ -16,6 +16,14 @@ allprojects {
 }
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'MyAndroidKey'
+            keyPassword 'myKeyPassword'
+            storeFile file('keystores/android.jks')
+            storePassword 'myStorePassword'
+        }
+    }
 	compileSdkVersion 21
 	buildToolsVersion "21.1.2"
 
@@ -39,6 +47,7 @@ android {
 		release {
 			minifyEnabled true
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            signingConfig signingConfigs.release
 		}
 	}
 	lintOptions {
