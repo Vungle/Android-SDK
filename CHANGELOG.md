@@ -1,11 +1,31 @@
 ## Changelog
 
-### 4.0.0
+### VERSION 4.0.3
+* Added support for Android Nougat (Android v7.0)
+* Reporting more device stats to serve better and better ads
+* Upgraded to Dagger 2.7
+* Added wrapper-framework values for admob, dfp, heyzap, mopub
+* Integrated RxJava architecture for ad preparation
+
+### VERSION 4.0.2
+* Fixed the device ID timeout when play-services is not included
+* Migrate to Dagger 2
+* Cleaned up all the Proguard filters that are not required after Dagger 2 migration
+* Fixed a few minor Unity bugs
+* Handling SSL errors better
+* Developers are warned when invalid App ID is used to initialize
 * Added support for interstitial MRAID ads
 * Updated `EventListener.onAdEnd()` api to include wasSuccessfulView parameter
 * Deprecated `EventListener.onVideoView()` api
 * Increased min Android API level to 3.0 (Honeycomb - version 11)
 * Removed dependency on support-v4 library and nineoldandroids library
+
+### VERSION 3.3.5
+* Added support for Dagger 2
+* Increased minimum supported Android SDK level from API 9 to API 11
+* Upgraded maximum Google Play Services version to 8.3.0
+* Removed dependencies on support-v4 library and nineoldandroids library
+* Fixed black screen issue with Unity plugin
 
 ### VERSION 3.3.4
 * Fixed a bug that might cause a crash on devices with Android 4.2 or lower OS
