@@ -29,7 +29,7 @@ android {
 	}
 
 	defaultConfig {
-		applicationId "com.vungle.publisherSampleAndroid"
+		applicationId "com.publisher.sample"
 		minSdkVersion 11
 		targetSdkVersion 24
 		versionCode 1
