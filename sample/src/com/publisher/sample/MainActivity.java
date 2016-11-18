@@ -1,4 +1,4 @@
-package com.vungle.publisherSampleAndroid;
+package com.publisher.sample;
 
 import android.app.Activity;
 import android.os.Build;

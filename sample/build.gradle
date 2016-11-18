@@ -16,6 +16,14 @@ allprojects {
 }
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'MyAndroidKey'
+            keyPassword 'myKeyPassword'
+            storeFile file('keystores/android.jks')
+            storePassword 'myStorePassword'
+        }
+    }
 	compileSdkVersion 24
 	buildToolsVersion "24.0.2"
 
@@ -29,7 +37,7 @@ android {
 	}
 
 	defaultConfig {
-		applicationId "com.vungle.publisherSampleAndroid"
+		applicationId "com.publisher.sample"
 		minSdkVersion 11
 		targetSdkVersion 24
 		versionCode 1
@@ -39,6 +47,7 @@ android {
 		release {
 			minifyEnabled true
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            signingConfig signingConfigs.release
 		}
 	}
 	lintOptions {
