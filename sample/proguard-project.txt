@@ -16,5 +16,6 @@
 #   public *;
 #}
 -dontwarn com.vungle.**
+-dontnote com.vungle.**
 -keep class com.vungle.** { *; }
 -keep class javax.inject.*

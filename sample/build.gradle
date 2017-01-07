@@ -3,7 +3,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:2.2.2'
+		classpath 'com.android.tools.build:gradle:2.2.3'
 	}
 }
 
@@ -50,6 +50,7 @@ android {
             signingConfig signingConfigs.release
 		}
 	}
+    dataBinding.enabled = true
 	lintOptions {
 		abortOnError false
 	}

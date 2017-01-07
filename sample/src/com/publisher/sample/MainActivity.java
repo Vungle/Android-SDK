@@ -1,6 +1,7 @@
 package com.publisher.sample;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
+import com.publisher.sample.databinding.ActivityMainBinding;
 import com.vungle.publisher.AdConfig;
 import com.vungle.publisher.EventListener;
 import com.vungle.publisher.Orientation;
@@ -18,15 +20,12 @@ public class MainActivity extends Activity implements OnClickListener {
 	// get the VunglePub instance
 	final VunglePub vunglePub = VunglePub.getInstance();
 
-	// buttons
-	private ImageButton buttonPlayAd;
-	private ImageButton buttonPlayAdOptions;
-	private ImageButton buttonPlayAdIncentivized;
+    private ActivityMainBinding binding;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
 		// get your App ID from the app's main page on the Vungle Dashboard after setting up your app
 		final String app_id = "Test_Android";
@@ -36,20 +35,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		vunglePub.setEventListeners(vungleDefaultListener, vungleSecondListener);
 
-		// initialize buttons
-		buttonPlayAd = (ImageButton) findViewById(R.id.button_play_ad);
-		buttonPlayAdOptions = (ImageButton) findViewById(R.id.button_play_ad_options);
-		buttonPlayAdIncentivized = (ImageButton) findViewById(R.id.button_play_ad_incentivized);
-
 		boolean buttonsEnabled = vunglePub.isAdPlayable();
-		setButtonState(buttonPlayAd, buttonsEnabled);
-		setButtonState(buttonPlayAdIncentivized, buttonsEnabled);
-		setButtonState(buttonPlayAdOptions, buttonsEnabled);
+		setButtonState(binding.buttonPlayAd, buttonsEnabled);
+		setButtonState(binding.buttonPlayAdIncentivized, buttonsEnabled);
+		setButtonState(binding.buttonPlayAdOptions, buttonsEnabled);
 
 		// attach listener to buttons
-		buttonPlayAd.setOnClickListener(this);
-		buttonPlayAdOptions.setOnClickListener(this);
-		buttonPlayAdIncentivized.setOnClickListener(this);
+        binding.buttonPlayAd.setOnClickListener(this);
+        binding.buttonPlayAdOptions.setOnClickListener(this);
+        binding.buttonPlayAdIncentivized.setOnClickListener(this);
 	}
 
 	private void setButtonState(ImageButton button, boolean enabled) {
@@ -90,9 +84,9 @@ public class MainActivity extends Activity implements OnClickListener {
 				@Override
 				public void run() {
 					// Called when ad playability changes.
-					setButtonState(buttonPlayAd, enabled);
-					setButtonState(buttonPlayAdIncentivized, enabled);
-					setButtonState(buttonPlayAdOptions, enabled);
+					setButtonState(binding.buttonPlayAd, enabled);
+					setButtonState(binding.buttonPlayAdIncentivized, enabled);
+					setButtonState(binding.buttonPlayAdOptions, enabled);
 				}
 			});
 		}
@@ -192,7 +186,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onDestroy() {
-		// onDestroy(), remove eventlisteners.
+		// onDestroy(), remove event listeners.
 		vunglePub.removeEventListeners(vungleDefaultListener, vungleSecondListener);
 		super.onDestroy();
 	}
