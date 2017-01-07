@@ -1,79 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff">
-
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:id="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/vungle_logo"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:id="@+id/btnWrapper"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="4"
-        android:layout_gravity="center_horizontal">
-
-
-
-        <ImageButton
-            android:id="@+id/button_play_ad"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="91dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitCenter"
-            android:src="@drawable/play_default_ad_button"
-            android:background="#ffffff"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" />
+            android:src="@drawable/vungle_logo"/>
+        
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:id="@+id/btnWrapper"
+                      android:layout_width="match_parent"
+                      android:layout_height="fill_parent"
+                      android:layout_gravity="center_horizontal"
+                      android:layout_weight="4"
+                      android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/button_play_ad_options"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:layout_below="@id/button_play_ad"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitCenter"
-            android:src="@drawable/play_custom_ad_button"
-            android:background="#ffffff"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" />
+            <ImageButton
+                android:id="@+id/button_play_ad"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:scaleType="fitCenter"
+                android:src="@drawable/play_default_ad_button"/>
 
-        <ImageButton
-            android:id="@+id/button_play_ad_incentivized"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:layout_below="@id/button_play_ad_options"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitCenter"
-            android:src="@drawable/play_incentivized_bd_button"
-            android:background="#ffffff"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" />
+            <ImageButton
+                android:id="@+id/button_play_ad_options"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/button_play_ad"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:scaleType="fitCenter"
+                android:src="@drawable/play_custom_ad_button"/>
 
-
+            <ImageButton
+                android:id="@+id/button_play_ad_incentivized"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/button_play_ad_options"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:scaleType="fitCenter"
+                android:src="@drawable/play_incentivized_bd_button"/>
+        </LinearLayout>
     </LinearLayout>
-
-
-
-
-
-
-
-</LinearLayout>
+</layout>
