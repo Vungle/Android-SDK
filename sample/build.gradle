@@ -54,8 +54,9 @@ android {
 
 	buildTypes {
 		release {
-			minifyEnabled false
-			proguardFiles getDefaultProguardFile('proguard-android.txt')
+			minifyEnabled true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+			signingConfig signingConfigs.release
 		}
 	}
 	lintOptions {
