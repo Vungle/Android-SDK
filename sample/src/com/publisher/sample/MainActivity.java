@@ -60,11 +60,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	private final EventListener vungleDefaultListener = new EventListener() {
-		@Deprecated
-		@Override
-		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {
-			// This method is deprecated and will be removed. Please use onAdEnd() instead.
-		}
 
 		@Override
 		public void onAdStart() {
@@ -101,9 +96,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	private final EventListener vungleSecondListener = new EventListener() {
 		// Vungle SDK allows for multiple listeners to be attached. This secondary event listener is only
 		// going to print some logs for now, but it could be used to Pause music, update a badge icon, etc.
-		@Deprecated
-		@Override
-		public void onVideoView(boolean isCompletedView, int watchedMillis, int videoDurationMillis) {}
 
 		@Override
 		public void onAdStart() {}
