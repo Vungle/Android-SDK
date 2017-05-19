@@ -145,7 +145,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		final AdConfig overrideConfig = new AdConfig();
 
 		// set any configuration options you like.
-		overrideConfig.setOrientation(Orientation.matchVideo);
+		overrideConfig.setOrientation(Orientation.autoRotate);
 		overrideConfig.setSoundEnabled(false);
 		overrideConfig.setBackButtonImmediatelyEnabled(false);
 		overrideConfig.setPlacement("StoreFront");
