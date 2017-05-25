@@ -1,20 +1,12 @@
 allprojects {
 	repositories {
 		jcenter()
-		mavenCentral()
-		flatDir{
-			dirs 'libs'
-		}
 	}
 }
 
 buildscript {
 	repositories {
-		mavenCentral()
-		jcenter()
-		flatDir{
-			dirs 'libs'
-		}
+        jcenter()
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:2.3.2'
