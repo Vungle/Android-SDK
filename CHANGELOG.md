@@ -1,13 +1,11 @@
 ## Changelog
 
 ### VERSION 4.1.0
-* Fixed View Discrepancy in reporting
-* Fixed call-to-action reporting issue on CloudUX ads
-* Revamped the audio behavior and fixed a few issues
-* Removed Mac Address Tracking
-* Removed the deprecated `EventListener.onVideoView()` api
-* Removed unused publisher extras aka extraInfo fields
+* Made cache improvements
+* Implemented a robust Vungle SDK audio policy
+* Removed MAC address tracking
 * Added wrapper-framework support for Fyber, Ironsource, Upsight, Appodeal, Aerserv, Adtoapp
+* Removed the deprecated `EventListener.onVideoView()` API
 
 ### VERSION 4.0.3
 * Added support for Android Nougat (Android v7.0)
