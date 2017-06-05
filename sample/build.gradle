@@ -1,19 +1,22 @@
-buildscript {
-	repositories {
-		jcenter()
-	}
-	dependencies {
-		classpath 'com.android.tools.build:gradle:2.2.2'
-	}
-}
-
-apply plugin: 'com.android.application'
-
 allprojects {
 	repositories {
 		jcenter()
 	}
 }
+
+buildscript {
+	repositories {
+        jcenter()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:2.3.2'
+
+		// NOTE: Do not place your application dependencies here; they belong
+		// in the individual module build.gradle files
+	}
+}
+
+apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
@@ -24,8 +27,8 @@ android {
             storePassword 'myStorePassword'
         }
     }
-	compileSdkVersion 24
-	buildToolsVersion "24.0.2"
+	compileSdkVersion 25
+	buildToolsVersion "25.0.2"
 
 	sourceSets {
 		main {
@@ -43,11 +46,12 @@ android {
 		versionCode 1
 		versionName "1.0"
 	}
+
 	buildTypes {
 		release {
 			minifyEnabled true
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
-            signingConfig signingConfigs.release
+			signingConfig signingConfigs.release
 		}
 	}
 	lintOptions {
