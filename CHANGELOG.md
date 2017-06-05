@@ -1,5 +1,12 @@
 ## Changelog
 
+### VERSION 4.1.0
+* Made cache improvements
+* Implemented a robust Vungle SDK audio policy
+* Removed MAC address tracking
+* Added wrapper-framework support for Fyber, Ironsource, Upsight, Appodeal, Aerserv, Adtoapp
+* Removed the deprecated `EventListener.onVideoView()` API
+
 ### VERSION 4.0.3
 * Added support for Android Nougat (Android v7.0)
 * Reporting more device stats to serve better and better ads

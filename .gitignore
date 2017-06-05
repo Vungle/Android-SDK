@@ -6,7 +6,7 @@
 **/.project
 **/bin
 **/gen
+**/.idea
 
-sample/.idea/
 sample/local.properties
 sample/sample.iml
