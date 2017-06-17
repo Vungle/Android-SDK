@@ -111,24 +111,27 @@ public class MainActivity extends Activity implements OnClickListener {
 		@Override
 		public void onAdEnd(String placementId, boolean wasSuccessfulView, boolean wasCallToActionClicked) {
 			// Called when the user leaves the ad and control is returned to your application.
+      Log.d(TAG, String.format("This is a second event listener. Ad finished playing, wasSuccessfulView - %s, wasCallToActionClicked - %s", wasSuccessfulView, wasCallToActionClicked));
 		}
 
 		@Override
 		public void onAdStart(String placementId) {
 			// Called before playing an ad.
+      Log.d(TAG, "This is a second event listener. Ad is about to play now!");
 		}
 
 		@Override
 		public void onUnableToPlayAd(String placementId, String reason) {
 			// Called when VunglePub.playAd() was called but no ad is available to show to the user.
+      Log.d(TAG, String.format("This is a second event listener. Unable to play Ad - %s", reason));
 		}
 
 		@Override
 		public void onAdAvailabilityUpdate(String placementId, boolean isAdAvailable) {
 			// Called when ad playability changes.
 			Log.d(TAG, String.format("This is a second event listener! Ad playability has changed, and is now: %s", isAdAvailable));
-		}
 	};
+
 	public void onClick(View view) {
 		// Check if Vungle Ad is available
 		if(!vunglePub.isAdPlayable(DEFAULT_PLACEMENT_ID)) {
@@ -162,7 +165,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		final AdConfig overrideConfig = new AdConfig();
 
 		// set any configuration options you like.
-		overrideConfig.setOrientation(Orientation.matchVideo);
+		overrideConfig.setOrientation(Orientation.autoRotate);
 		overrideConfig.setSoundEnabled(false);
 		overrideConfig.setBackButtonImmediatelyEnabled(false);
 		//overrideConfig.setExtra1("LaunchedFromNotification");
