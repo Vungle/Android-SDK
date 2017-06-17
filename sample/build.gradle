@@ -2,6 +2,9 @@ allprojects {
 	repositories {
 		jcenter()
 	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:2.3.1'
+	}
 }
 
 buildscript {
@@ -61,4 +64,11 @@ android {
 
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
+
+	/// Dependency injection
+	compile('javax.inject:javax.inject:1',
+			'com.google.dagger:dagger:2.7',
+			'de.greenrobot:eventbus:2.2.1',
+			'io.reactivex:rxjava:1.2.0',
+			'io.reactivex:rxandroid:1.2.1')
 }
