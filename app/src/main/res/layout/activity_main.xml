@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+        <ImageView
+            android:id="@+id/vungle_logo"
+            android:layout_width="100dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="5dp"
+            android:layout_weight="3"
+            android:scaleType="fitCenter"
+            android:src="@drawable/vungle_logo" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor" />
+
+    <LinearLayout
+        android:id="@+id/topMenuWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="4"
+        android:background="#f9fafc"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/vungle_app_id"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="App ID:"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/init_button"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/vungle_app_id"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/green_button_bg"
+            android:text="Init SDK"
+            android:textColor="@color/buttonText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:gravity="bottom"
+            android:background="@color/lineColor" />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/placement_view1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/autoCacheLabel"
+                android:gravity="left"
+                android:paddingBottom="2dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="2dp"
+                android:text="AUTO CACHE"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/placement_id1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="placement ID 1"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/placement_load1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Load"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/placement_play1"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/blue_button_bg"
+                android:gravity="center"
+                android:text="play"
+                android:textColor="@color/buttonText" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:gravity="bottom"
+            android:background="@color/lineColor" />
+
+        <RelativeLayout
+            android:id="@+id/placement_view2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter">
+
+            <TextView
+                android:id="@+id/placement_id2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="placement ID 2" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/placement_id2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:scaleType="fitCenter">
+
+                <Button
+                    android:id="@+id/placement_load2"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/blue_button_bg"
+                    android:text="load"
+                    android:textColor="@color/buttonText" />
+
+                <Button
+                    android:id="@+id/placement_play2"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/blue_button_bg"
+                    android:text="play"
+                    android:textColor="@color/buttonText" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:gravity="bottom"
+            android:background="@color/lineColor" />
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/placement_view3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter">
+
+            <TextView
+                android:id="@+id/placement_id3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="placement ID 3" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/placement_id3"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:scaleType="fitCenter">
+
+                <Button
+                    android:id="@+id/placement_load3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/blue_button_bg"
+                    android:text="load"
+                    android:textColor="@color/buttonText" />
+
+                <Button
+                    android:id="@+id/placement_play3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/blue_button_bg"
+                    android:text="play"
+                    android:textColor="@color/buttonText" />
+            </LinearLayout>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:gravity="bottom"
+            android:background="@color/lineColor" />
+
+    </LinearLayout>
+
+</LinearLayout>
