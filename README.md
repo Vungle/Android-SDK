@@ -4,7 +4,7 @@ Please refer to https://support.vungle.com/hc/en-us/articles/115000468071
 
 ## Release Notes
 ### VERSION 5.1.0
-* PLaunched new Placements feature.
+* Launched new Placements feature.
 * Added Native Flex View ad unit.
 * Added Moat Viewability technology to provide viewership data on ads.
 
