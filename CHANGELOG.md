@@ -1,11 +1,9 @@
 ## Changelog
 
-### VERSION 4.1.0
-* Made cache improvements
-* Implemented a robust Vungle SDK audio policy
-* Removed MAC address tracking
-* Added wrapper-framework support for Fyber, Ironsource, Upsight, Appodeal, Aerserv, Adtoapp
-* Removed the deprecated `EventListener.onVideoView()` API
+### VERSION 5.1.0
+* PLaunched new Placements feature.
+* Added Native Flex View ad unit.
+* Added Moat Viewability technology to provide viewership data on ads.
 
 ### VERSION 4.0.3
 * Added support for Android Nougat (Android v7.0)
