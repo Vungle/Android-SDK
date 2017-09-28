@@ -1,5 +1,12 @@
 ## Changelog
 
+### VERSION 5.3.0
+* Added support for Amazon appstore/platform and Amazon Advertising ID
+* Android Oreo compatibility.
+* Ability to detect and target Apps for ‘Allow unknown sources’ on devices
+  to enable sideload of apk's
+* Bug-fixes for Stability
+
 ### VERSION 5.1.0
 * Launched new Placements feature.
 * Added Native Flex View ad unit.
