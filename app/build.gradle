@@ -43,4 +43,17 @@ dependencies {
     compile 'com.google.android.gms:play-services-location:11.0.1'
 
     compile 'com.github.vungle:vungle-android-sdk:5.3.0'
+
+    // List of libraries for manual integration
+    // compile files('libs/publisher-sdk-android-5.3.0.jar')
+    // compile files('libs/dagger-2.7.jar')
+    // compile files('libs/javax.inject-1.jar')
+    // compile files('libs/eventbus-2.2.1.jar')
+    // compile files('libs/rxjava-1.2.0.jar')
+    // compile files('libs/retrofit-2.2.0.jar')
+    // compile files('libs/converter-gson-2.2.0.jar')
+    // compile files('libs/adapter-rxjava-2.2.0.jar')
+    // compile files('libs/okhttp-3.6.0.jar')
+    // compile files('libs/okio-1.11.0.jar')
+    // compile files('libs/gson-2.7.jar')
 }
