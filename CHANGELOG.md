@@ -1,5 +1,11 @@
 ## Changelog
 
+### VERSION 5.3.2
+* Sleep code to be enforced at placement level
+* Ability to close Flex-View ads through API and timer
+* Ordinal data reporting
+* Bug fixes and performance improvements
+
 ### VERSION 5.3.0
 * Added support for Amazon appstore/platform and Amazon Advertising ID
 * Android Oreo compatibility.
