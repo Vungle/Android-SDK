@@ -42,7 +42,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-basement:11.0.4'
     compile 'com.google.android.gms:play-services-location:11.0.4'
 
-    compile 'com.github.vungle:vungle-android-sdk:5.3.0'
+    compile 'com.github.vungle:vungle-android-sdk:5.3.2'
 
     // List of libraries for manual integration
     /*
@@ -54,7 +54,7 @@ dependencies {
     compile files('libs/javax.inject-1.jar')
     compile files('libs/okhttp-3.6.0.jar')
     compile files('libs/okio-1.11.0.jar')
-    compile files('libs/publisher-sdk-android-5.3.0.jar')
+    compile files('libs/publisher-sdk-android-5.3.jar')
     compile files('libs/retrofit-2.2.0.jar')
     compile files('libs/rxjava-1.2.0.jar')
     */
