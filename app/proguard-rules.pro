@@ -55,3 +55,7 @@
 -keep class com.moat.** {
    public protected private *;
 }
+
+# Retrofit
+-dontwarn okio.**
+-dontwarn retrofit2.Platform$Java8
