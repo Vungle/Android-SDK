@@ -6,24 +6,37 @@ buildscript {
         mavenCentral() // or jcenter()
     }
     dependencies {
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.2'
     }
 }
 
 android {
-    compileSdkVersion 26
+    signingConfigs {
+        release {
+            keyAlias 'MyAndroidKey'
+            keyPassword 'myKeyPassword'
+            storeFile file('keystores/android.jks')
+            storePassword 'myStorePassword'
+        }
+    }
+    compileSdkVersion 27
     defaultConfig {
-        applicationId "com.publisher.sample"
+        applicationId "com.publisher.vungle.sample"
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -35,22 +48,28 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    // Vungle SDK
+    compile 'com.github.vungle:vungle-android-sdk:6.2.5';
+    // Optional Google Play Services - Location and Basement
     compile 'com.google.android.gms:play-services-basement:11.0.4'
     compile 'com.google.android.gms:play-services-location:11.0.4'
-    compile 'com.github.vungle:vungle-android-sdk:6.1.6'
 
-    // List of libraries for manual integration
-    /*
-    compile files('libs/adapter-rxjava-2.2.0.jar')
-    compile files('libs/converter-gson-2.2.0.jar')
-    compile files('libs/dagger-2.7.jar')
-    compile files('libs/eventbus-2.2.1.jar')
-    compile files('libs/gson-2.7.jar')
-    compile files('libs/javax.inject-1.jar')
-    compile files('libs/okhttp-3.6.0.jar')
-    compile files('libs/okio-1.11.0.jar')
-    compile files('libs/publisher-sdk-android-5.3.2.jar')
-    compile files('libs/retrofit-2.2.0.jar')
-    compile files('libs/rxjava-1.2.0.jar')
-    */
+    // Manual JAR Integration
+//    compile files('libs/vungle-android-sdk-6.2.5.jar')          // Vungle SDK
+//
+//    compile files('libs/android-job-1.2.0.jar')                 // Required Third-party Dependencies
+//    compile files('libs/cat-1.0.5.jar')
+//    compile files('libs/converter-gson-2.2.0.jar')
+//    compile files('libs/fetch-1.1.5.jar')
+//    compile files('libs/gson-2.7.jar')
+//    compile files('libs/logging-interceptor-3.7.0.jar')
+//    compile files('libs/okhttp-3.7.0.jar')
+//    compile files('libs/okio-1.12.0.jar')
+//    compile files('libs/retrofit-2.2.0.jar')
+//    compile files('libs/VNG-moat-mobile-app-kit-2.2.0.jar')
+//
+//    compile 'com.google.android.gms:play-services-gcm:11.0.4'       // Required
+//    compile 'com.google.android.gms:play-services-basement:11.0.4'  // Optional
+//    compile 'com.google.android.gms:play-services-location:11.0.4'  // Optional
 }

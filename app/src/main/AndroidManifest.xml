@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--Optional permissions-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -24,5 +26,97 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
+
+<!--Use below manifest for JAR integration-->
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<manifest xmlns:android="http://schemas.android.com/apk/res/android"-->
+          <!--package="com.publisher.sample">-->
+
+    <!--&lt;!&ndash;Required Permissions&ndash;&gt;-->
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <!--<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />-->
+    <!--<uses-permission android:name="android.permission.WAKE_LOCK" />-->
+
+    <!--&lt;!&ndash;Optional Permissions&ndash;&gt;-->
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+
+    <!--<application-->
+        <!--android:allowBackup="true"-->
+        <!--android:icon="@mipmap/ic_launcher"-->
+        <!--android:label="@string/app_name"-->
+        <!--android:roundIcon="@mipmap/ic_launcher_round"-->
+        <!--android:supportsRtl="true"-->
+        <!--android:theme="@style/AppTheme"-->
+        <!--android:networkSecurityConfig="@xml/network_security_config" >-->
+
+        <!--<activity android:name=".MainActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <!--&lt;!&ndash; Google Play Services &ndash;&gt;-->
+        <!--<meta-data android:name="com.google.android.gms.version"-->
+                   <!--android:value="@integer/google_play_services_version" />-->
+
+        <!--&lt;!&ndash; Vungle &ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name="com.vungle.warren.ui.VungleActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
+            <!--android:launchMode="singleTop"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+
+        <!--&lt;!&ndash; android-job &ndash;&gt;-->
+        <!--<service-->
+            <!--android:name="com.evernote.android.job.v21.PlatformJobService"-->
+            <!--android:exported="false"-->
+            <!--android:permission="android.permission.BIND_JOB_SERVICE" />-->
+        <!--<service-->
+            <!--android:name="com.evernote.android.job.v14.PlatformAlarmService"-->
+            <!--android:exported="false"-->
+            <!--android:permission="android.permission.BIND_JOB_SERVICE" />-->
+        <!--<service-->
+            <!--android:name="com.evernote.android.job.v14.PlatformAlarmServiceExact"-->
+            <!--android:exported="false" />-->
+        <!--<receiver-->
+            <!--android:name="com.evernote.android.job.v14.PlatformAlarmReceiver"-->
+            <!--android:exported="false" >-->
+            <!--<intent-filter>-->
+                <!--&lt;!&ndash; Keep the filter for legacy intents &ndash;&gt;-->
+                <!--<action android:name="com.evernote.android.job.v14.RUN_JOB" />-->
+                <!--<action android:name="net.vrallev.android.job.v14.RUN_JOB" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+        <!--<receiver-->
+            <!--android:name="com.evernote.android.job.JobBootReceiver"-->
+            <!--android:exported="false" >-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+                <!--<action android:name="android.intent.action.QUICKBOOT_POWERON" />-->
+                <!--<action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />-->
+                <!--<action android:name="android.intent.action.MY_PACKAGE_REPLACED" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+        <!--<service-->
+            <!--android:name="com.evernote.android.job.gcm.PlatformGcmService"-->
+            <!--android:enabled="false"-->
+            <!--android:exported="true"-->
+            <!--android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE" >-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />-->
+            <!--</intent-filter>-->
+        <!--</service>-->
+        <!--<service-->
+            <!--android:name="com.evernote.android.job.JobRescheduleService"-->
+            <!--android:exported="false"-->
+            <!--android:permission="android.permission.BIND_JOB_SERVICE" />-->
+
+    <!--</application>-->
+
+<!--</manifest>-->

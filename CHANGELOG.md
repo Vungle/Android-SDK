@@ -1,5 +1,13 @@
 ## Changelog
 
+
+### VERSION 6.2.5
+* GDPR compliance
+* License update
+* Redesigned SDK to lower method count and SDK size
+* Reduced time needed to initialize and play a cached Ad
+* Deprecated generic callback and introduced API specific callbacks to simplify integration. Please refer Migration section of V6 SDK documentation
+
 ### VERSION 5.3.2
 * Sleep code to be enforced at placement level
 * Ability to close Flex-View ads through API and timer
