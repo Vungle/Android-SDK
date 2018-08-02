@@ -1,6 +1,11 @@
 ## Changelog
 
 
+### VERSION 6.3.12
+* Optional placement list during initialization, support for zero auto-cached Placement
+* Removal of Evernote and related transitive dependencies
+* Stability fixes
+
 ### VERSION 6.2.5
 * GDPR compliance
 * License update
