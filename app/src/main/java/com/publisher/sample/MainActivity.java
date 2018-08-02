@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     final String LOG_TAG = "VungleSampleApp";
 
     final String app_id = "5ae0db55e2d43668c97bd65e";
-    private final String autocachePlacementReferenceID = "LEGACY_REWARDED-2115035";
+    private final String autocachePlacementReferenceID = "DEFAULT-6595425";
     private final List<String> placementsList =
             Arrays.asList(autocachePlacementReferenceID, "DYNAMIC_TEMPLATE_INTERSTITIAL-6969365", "FLEX_FEED-2416159");
 
@@ -53,18 +53,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initSDK() {
-        Vungle.init(placementsList, app_id, getApplicationContext(), new InitCallback() {
+        Vungle.init(app_id, getApplicationContext(), new InitCallback() {
             @Override
             public void onSuccess() {
                 Log.d(LOG_TAG, "InitCallback - onSuccess");
 
-//                // Optional GDPR API
-//                // Set consent as opted in
-//                Vungle.updateConsentStatus(Vungle.Consent.OPTED_IN);
-//                // Set consent as opted out
-//                Vungle.updateConsentStatus(Vungle.Consent.OPTED_OUT);
-//                // To obtain current consent information
-//                Vungle.Consent vungleConsent = Vungle.getConsentStatus();
+//                // Usage example of GDPR API
+//                // To set the user's consent status to opted in:
+//                Vungle.updateConsentStatus(Vungle.Consent.OPTED_IN, “1.0.0”);
+//
+//                // To set the user's consent status to opted out:
+//                Vungle.updateConsentStatus(Vungle.Consent.OPTED_OUT, “1.0.0”);
+//
+//                // To find out what the user's current consent status is:
+//                // This will return null if the GDPR Consent status has not been set
+//                // Otherwise, it will return Vungle.Consent.OPTED_IN or Vungle.Consent.OPTED_OUT
+//                Vungle.Consent currentStatus = Vungle.getConsentStatus();
+//                String consentMessageVersion = Vungle.getConsentMessageVersion();
 
                 runOnUiThread(new Runnable() {
                     @Override

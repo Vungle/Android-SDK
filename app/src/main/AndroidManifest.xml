@@ -28,7 +28,7 @@
     </application>
 </manifest>
 
-<!--Use below manifest for JAR integration-->
+<!--&lt;!&ndash;Use below manifest for JAR integration&ndash;&gt;-->
 <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<manifest xmlns:android="http://schemas.android.com/apk/res/android"-->
           <!--package="com.publisher.sample">-->
@@ -59,61 +59,22 @@
             <!--</intent-filter>-->
         <!--</activity>-->
 
-        <!--&lt;!&ndash; Google Play Services &ndash;&gt;-->
-        <!--<meta-data android:name="com.google.android.gms.version"-->
-                   <!--android:value="@integer/google_play_services_version" />-->
-
-        <!--&lt;!&ndash; Vungle &ndash;&gt;-->
+        <!--&lt;!&ndash;Vungle Activities&ndash;&gt;-->
         <!--<activity-->
             <!--android:name="com.vungle.warren.ui.VungleActivity"-->
             <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
             <!--android:launchMode="singleTop"-->
             <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
-
-        <!--&lt;!&ndash; android-job &ndash;&gt;-->
-        <!--<service-->
-            <!--android:name="com.evernote.android.job.v21.PlatformJobService"-->
-            <!--android:exported="false"-->
-            <!--android:permission="android.permission.BIND_JOB_SERVICE" />-->
-        <!--<service-->
-            <!--android:name="com.evernote.android.job.v14.PlatformAlarmService"-->
-            <!--android:exported="false"-->
-            <!--android:permission="android.permission.BIND_JOB_SERVICE" />-->
-        <!--<service-->
-            <!--android:name="com.evernote.android.job.v14.PlatformAlarmServiceExact"-->
-            <!--android:exported="false" />-->
-        <!--<receiver-->
-            <!--android:name="com.evernote.android.job.v14.PlatformAlarmReceiver"-->
-            <!--android:exported="false" >-->
-            <!--<intent-filter>-->
-                <!--&lt;!&ndash; Keep the filter for legacy intents &ndash;&gt;-->
-                <!--<action android:name="com.evernote.android.job.v14.RUN_JOB" />-->
-                <!--<action android:name="net.vrallev.android.job.v14.RUN_JOB" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
-        <!--<receiver-->
-            <!--android:name="com.evernote.android.job.JobBootReceiver"-->
-            <!--android:exported="false" >-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
-                <!--<action android:name="android.intent.action.QUICKBOOT_POWERON" />-->
-                <!--<action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />-->
-                <!--<action android:name="android.intent.action.MY_PACKAGE_REPLACED" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
-        <!--<service-->
-            <!--android:name="com.evernote.android.job.gcm.PlatformGcmService"-->
-            <!--android:enabled="false"-->
-            <!--android:exported="true"-->
-            <!--android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE" >-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />-->
-            <!--</intent-filter>-->
-        <!--</service>-->
-        <!--<service-->
-            <!--android:name="com.evernote.android.job.JobRescheduleService"-->
-            <!--android:exported="false"-->
-            <!--android:permission="android.permission.BIND_JOB_SERVICE" />-->
+        <!--<activity-->
+            <!--android:name="com.vungle.warren.ui.VungleWebViewActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
+            <!--android:launchMode="singleTop"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+        <!--<activity-->
+            <!--android:name="com.vungle.warren.ui.VungleFlexViewActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
+            <!--android:launchMode="singleTop"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
 
     <!--</application>-->
 

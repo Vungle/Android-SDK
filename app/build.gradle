@@ -45,31 +45,40 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
 
     // Vungle SDK
-    compile 'com.github.vungle:vungle-android-sdk:6.2.5';
-    // Optional Google Play Services - Location and Basement
-    compile 'com.google.android.gms:play-services-basement:11.0.4'
-    compile 'com.google.android.gms:play-services-location:11.0.4'
+    implementation 'com.github.vungle:vungle-android-sdk:6.3.12'
 
-    // Manual JAR Integration
-//    compile files('libs/vungle-android-sdk-6.2.5.jar')          // Vungle SDK
+    // Recommended Google Play Services
+    implementation 'com.google.android.gms:play-services-basement:15.0.1'
+
+    // Optional Google Play Services
+    implementation 'com.google.android.gms:play-services-ads-identifier:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+
+//    // Manual JAR Integration
+//    // Vungle SDK
+//    compile files('libs/vungle-android-sdk-6.3.12.jar')
 //
-//    compile files('libs/android-job-1.2.0.jar')                 // Required Third-party Dependencies
-//    compile files('libs/cat-1.0.5.jar')
+//    // Required Third-party Dependencies
 //    compile files('libs/converter-gson-2.2.0.jar')
 //    compile files('libs/fetch-1.1.5.jar')
 //    compile files('libs/gson-2.7.jar')
 //    compile files('libs/logging-interceptor-3.7.0.jar')
 //    compile files('libs/okhttp-3.7.0.jar')
 //    compile files('libs/okio-1.12.0.jar')
-//    compile files('libs/retrofit-2.2.0.jar')
 //    compile files('libs/VNG-moat-mobile-app-kit-2.2.0.jar')
 //
-//    compile 'com.google.android.gms:play-services-gcm:11.0.4'       // Required
-//    compile 'com.google.android.gms:play-services-basement:11.0.4'  // Optional
-//    compile 'com.google.android.gms:play-services-location:11.0.4'  // Optional
+//    // Support library
+//    compile 'com.android.support:support-v4:26.1.0'
+//
+//    // Recommended Google Play Services
+//    compile 'com.google.android.gms:play-services-basement:15.0.1'
+//
+//    // Optional Google Play Services
+//    compile 'com.google.android.gms:play-services-ads-identifier:15.0.1'
+//    compile 'com.google.android.gms:play-services-location:15.0.1'
 }
