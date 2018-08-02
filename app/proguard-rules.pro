@@ -26,22 +26,28 @@
 
 # Vungle
 -keep class com.vungle.warren.** { *; }
-
-# Evernote
--dontwarn com.evernote.android.job.gcm.**
--dontwarn com.evernote.android.job.GcmAvailableHelper
-
--dontwarn com.google.android.gms.ads.identifier.**
-
--keep public class com.evernote.android.job.v21.PlatformJobService
--keep public class com.evernote.android.job.v14.PlatformAlarmService
--keep public class com.evernote.android.job.v14.PlatformAlarmReceiver
--keep public class com.evernote.android.job.JobBootReceiver
--keep public class com.evernote.android.job.JobRescheduleService
-
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
--keep class com.google.android.gms.internal.** { *; }
+-dontwarn com.vungle.warren.error.VungleError$ErrorCode
 
 # Moat SDK
 -keep class com.moat.** { *; }
 -dontwarn com.moat.**
+
+# Okio
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+# Retrofit
+-dontwarn okio.**
+-dontwarn retrofit2.Platform$Java8
+
+# Gson
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn sun.misc.**
+-keep class com.google.gson.examples.android.model.** { *; }
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Google Android Advertising ID
+-keep class com.google.android.gms.internal.** { *; }
+-dontwarn com.google.android.gms.ads.identifier.**
