@@ -25,37 +25,29 @@
 #-renamesourcefileattribute SourceFile
 
 # Vungle
--dontwarn com.vungle.**
--dontnote com.vungle.**
--keep class com.vungle.** { *; }
--keep class javax.inject.*
+-keep class com.vungle.warren.** { *; }
+-dontwarn com.vungle.warren.error.VungleError$ErrorCode
 
-# GreenRobot
--dontwarn de.greenrobot.event.util.**
-
-# RxJava
--dontwarn rx.internal.util.unsafe.**
--keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
-   long producerIndex;
-   long consumerIndex;
-}
--keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
-   rx.internal.util.atomic.LinkedQueueNode producerNode;
-}
--keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
-   rx.internal.util.atomic.LinkedQueueNode consumerNode;
-}
--keep class rx.schedulers.Schedulers { public static <methods>; }
--keep class rx.schedulers.ImmediateScheduler { public <methods>; }
--keep class rx.schedulers.TestScheduler { public <methods>; }
--keep class rx.schedulers.Schedulers { public static ** test(); }
-
-# Moat
+# Moat SDK
+-keep class com.moat.** { *; }
 -dontwarn com.moat.**
--keep class com.moat.** {
-   public protected private *;
-}
+
+# Okio
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 
 # Retrofit
 -dontwarn okio.**
 -dontwarn retrofit2.Platform$Java8
+
+# Gson
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn sun.misc.**
+-keep class com.google.gson.examples.android.model.** { *; }
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Google Android Advertising ID
+-keep class com.google.android.gms.internal.** { *; }
+-dontwarn com.google.android.gms.ads.identifier.**

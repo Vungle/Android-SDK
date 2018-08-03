@@ -2,68 +2,187 @@ package com.publisher.sample;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.vungle.publisher.VungleAdEventListener;
-import com.vungle.publisher.VungleInitListener;
-import com.vungle.publisher.VunglePub;
+import com.vungle.warren.AdConfig;
+import com.vungle.warren.InitCallback;
+import com.vungle.warren.LoadAdCallback;
+import com.vungle.warren.PlayAdCallback;
+import com.vungle.warren.Vungle;
+import com.vungle.warren.VungleNativeAd;
+import com.vungle.warren.Vungle.Consent;
+import com.vungle.warren.error.VungleException;
+
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    private final static String LOG_TAG = "Vungle Sample App";
-    final VunglePub vunglePub = VunglePub.getInstance();
 
     // UI elements
     private Button initButton;
     private Button[] load_buttons = new Button[3];
     private Button[] play_buttons = new Button[3];
+    private Button close_ff_button;
+    private Button pause_ff_button;
+    private Button resume_ff_button;
 
     // Get your Vungle App ID and Placement ID information from Vungle Dashboard
-    final String app_id = "5916309cb46f6b5a3e00009c";
-    final String DEFAULT_PLACEMENT_ID = "DEFAULT32590";
-    private final String[] placement_list = { DEFAULT_PLACEMENT_ID, "TESTREW28799", "TESTINT07107" };
+    final String LOG_TAG = "VungleSampleApp";
+
+    final String app_id = "5ae0db55e2d43668c97bd65e";
+    private final String autocachePlacementReferenceID = "DEFAULT-6595425";
+    private final List<String> placementsList =
+            Arrays.asList(autocachePlacementReferenceID, "DYNAMIC_TEMPLATE_INTERSTITIAL-6969365", "FLEX_FEED-2416159");
+
+    private RelativeLayout flexfeed_container;
+    private VungleNativeAd vungleNativeAd;
+    private View nativeAdView;
+
+    private AdConfig adConfig = new AdConfig();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         initUIElements();
     }
 
     private void initSDK() {
-
-        // Initialize Vungle SDK with Vungle App ID, Placement ID list and VungleInitListener
-        vunglePub.init(this, app_id, placement_list, new VungleInitListener() {
+        Vungle.init(app_id, getApplicationContext(), new InitCallback() {
             @Override
             public void onSuccess() {
-                Log.d(LOG_TAG, "init success");
-                vunglePub.clearAndSetEventListeners(vungleDefaultListener);
+                Log.d(LOG_TAG, "InitCallback - onSuccess");
+
+//                // Usage example of GDPR API
+//                // To set the user's consent status to opted in:
+//                Vungle.updateConsentStatus(Vungle.Consent.OPTED_IN, “1.0.0”);
+//
+//                // To set the user's consent status to opted out:
+//                Vungle.updateConsentStatus(Vungle.Consent.OPTED_OUT, “1.0.0”);
+//
+//                // To find out what the user's current consent status is:
+//                // This will return null if the GDPR Consent status has not been set
+//                // Otherwise, it will return Vungle.Consent.OPTED_IN or Vungle.Consent.OPTED_OUT
+//                Vungle.Consent currentStatus = Vungle.getConsentStatus();
+//                String consentMessageVersion = Vungle.getConsentMessageVersion();
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         setButtonState(initButton, false);
                         for (int i = 0; i < 3; i++) {
-                            setButtonState(play_buttons[i], vunglePub.isAdPlayable(placement_list[i]));
-                            setButtonState(load_buttons[i], !vunglePub.isAdPlayable(placement_list[i]));
+                            if (i != 0) {
+                                setButtonState(load_buttons[i], !Vungle.canPlayAd(placementsList.get(i)));
+                            }
+                            setButtonState(play_buttons[i], Vungle.canPlayAd(placementsList.get(i)));
                         }
                     }
                 });
             }
 
             @Override
-            public void onFailure(Throwable error) {
-                Log.d(LOG_TAG, "init failure: " );
+            public void onError(Throwable throwable) {
+                Log.d(LOG_TAG, "InitCallback - onError: " + throwable.getLocalizedMessage());
+            }
+
+            @Override
+            public void onAutoCacheAdAvailable(final String placementReferenceID) {
+                Log.d(LOG_TAG, "InitCallback - onAutoCacheAdAvailable" +
+                        "\n\tPlacement Reference ID = " + placementReferenceID);
+                // SDK will request auto cache placement ad immediately upon initialization
+                // This callback is triggered every time the auto-cached placement is available
+                // This is the best place to add your own listeners and propagate them to any UI logic bearing class
+                setButtonState(play_buttons[0], true);
             }
         });
     }
 
+    private final PlayAdCallback vunglePlayAdCallback = new PlayAdCallback() {
+        @Override
+        public void onAdStart(final String placementReferenceID) {
+            Log.d(LOG_TAG, "PlayAdCallback - onAdStart" +
+                    "\n\tPlacement Reference ID = " + placementReferenceID);
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    final int index = placementsList.indexOf(placementReferenceID);
+
+                    if (placementReferenceID != autocachePlacementReferenceID) {
+                        setButtonState(load_buttons[index], true);
+                    }
+
+                    setButtonState(play_buttons[index], false);
+                }
+            });
+        }
+
+        @Override
+        public void onAdEnd(final String placementReferenceID, final boolean completed, final boolean isCTAClicked) {
+            Log.d(LOG_TAG, "PlayAdCallback - onAdEnd" +
+                    "\n\tPlacement Reference ID = " + placementReferenceID +
+                    "\n\tView Completed = " + completed + "" +
+                    "\n\tDownload Clicked = " + isCTAClicked);
+        }
+
+        @Override
+        public void onError(final String placementReferenceID, Throwable throwable) {
+            Log.d(LOG_TAG, "PlayAdCallback - onError" +
+                    "\n\tPlacement Reference ID = " + placementReferenceID +
+                    "\n\tError = " + throwable.getLocalizedMessage());
+
+            checkInitStatus(throwable);
+        }
+    };
+
+    private final LoadAdCallback vungleLoadAdCallback = new LoadAdCallback() {
+        @Override
+        public void onAdLoad(final String placementReferenceID) {
+
+            Log.d(LOG_TAG,"LoadAdCallback - onAdLoad" +
+                    "\n\tPlacement Reference ID = " + placementReferenceID);
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setButtonState(play_buttons[placementsList.indexOf(placementReferenceID)], true);
+                }
+            });
+
+            setButtonState(load_buttons[placementsList.indexOf(placementReferenceID)], false);
+        }
+
+        @Override
+        public void onError(final String placementReferenceID, Throwable throwable) {
+            Log.d(LOG_TAG, "LoadAdCallback - onError" +
+                    "\n\tPlacement Reference ID = " + placementReferenceID +
+                    "\n\tError = " + throwable.getLocalizedMessage());
+
+            checkInitStatus(throwable);
+        }
+    };
+
+
+    private void checkInitStatus(Throwable throwable) {
+        try {
+            VungleException ex = (VungleException) throwable;
+            Log.d(LOG_TAG, ex.getExceptionCode() + "");
+
+            if (ex.getExceptionCode() == VungleException.VUNGLE_NOT_INTIALIZED) {
+                initSDK();
+            }
+        } catch (ClassCastException cex) {
+            Log.d(LOG_TAG, cex.getMessage());
+        }
+    }
+
     private void initUIElements() {
+        setContentView(R.layout.activity_main);
         TextView vungle_app_id = (TextView)findViewById(R.id.vungle_app_id);
         vungle_app_id.setText("App ID: " + app_id);
 
@@ -76,31 +195,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         TextView[] placement_id_texts = new TextView[3];
 
         placement_id_texts[0] = (TextView)findViewById(R.id.placement_id1);
-        placement_id_texts[0].setText("Placement ID: " + placement_list[0]);
-
         placement_id_texts[1] = (TextView)findViewById(R.id.placement_id2);
-        placement_id_texts[1].setText("Placement ID: " + placement_list[1]);
-
         placement_id_texts[2] = (TextView)findViewById(R.id.placement_id3);
-        placement_id_texts[2].setText("Placement ID: " + placement_list[2]);
 
         load_buttons[0] = (Button)findViewById(R.id.placement_load1);
-        setButtonState(load_buttons[0], false);
         load_buttons[1] = (Button)findViewById(R.id.placement_load2);
-        setButtonState(load_buttons[1], false);
         load_buttons[2] = (Button)findViewById(R.id.placement_load3);
-        setButtonState(load_buttons[2], false);
 
         play_buttons[0] = (Button)findViewById(R.id.placement_play1);
-        setButtonState(play_buttons[0], false);
         play_buttons[1] = (Button)findViewById(R.id.placement_play2);
-        setButtonState(play_buttons[1], false);
         play_buttons[2] = (Button)findViewById(R.id.placement_play3);
-        setButtonState(play_buttons[2], false);
+
+        flexfeed_container = findViewById(R.id.flexfeedcontainer);
+        close_ff_button = findViewById(R.id.flexfeed_close);
+        pause_ff_button = findViewById(R.id.flexfeed_invisible);
+        resume_ff_button = findViewById(R.id.flexfeed_visible);
+
+        setButtonState(close_ff_button, false);
+        setButtonState(pause_ff_button, false);
+        setButtonState(resume_ff_button, false);
+
+        for (int i = 0; i < 3; i++) {
+            placement_id_texts[i].setText("Placement ID: " + placementsList.get(i));
+            setButtonState(load_buttons[i], false);
+            setButtonState(play_buttons[i], false);
+        }
 
         for (int i = 0; i < 3; i++) {
             final int index = i;
@@ -108,10 +230,9 @@ public class MainActivity extends AppCompatActivity {
             load_buttons[index].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (vunglePub != null && vunglePub.isInitialized()) {
-
-                        // Load an ad using a Placement ID
-                        vunglePub.loadAd(placement_list[index]);
+                    if (Vungle.isInitialized() && index != 0) {
+                        setButtonState(load_buttons[index], false);
+                        Vungle.loadAd(placementsList.get(index), vungleLoadAdCallback);
                     }
                 }
             });
@@ -119,18 +240,73 @@ public class MainActivity extends AppCompatActivity {
             play_buttons[index].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (vunglePub != null && vunglePub.isInitialized()) {
+                    if (Vungle.isInitialized() && Vungle.canPlayAd(placementsList.get(index))) {
+                        if (index == 2) {
+                            // Play Flex-Feed ad
+                            vungleNativeAd = Vungle.getNativeAd(placementsList.get(2), vunglePlayAdCallback);
+                            nativeAdView = vungleNativeAd.renderNativeView();
+                            flexfeed_container.addView(nativeAdView);
 
-                        // Check a Placement if it is ready to play the Ad
-                        if (vunglePub.isAdPlayable(placement_list[index])) {
-                            setButtonState(play_buttons[index], false);
-                            // Play a Placement ad with Placement ID, you can pass AdConfig to customize your ad
-                            vunglePub.playAd(placement_list[index], null);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    setButtonState(close_ff_button, true);
+                                    setButtonState(pause_ff_button, true);
+                                    setButtonState(resume_ff_button, true);
+                                }
+                            });
+                        } else if (index == 1) {
+                            // Play Dynamic Template ad
+                            Vungle.playAd(placementsList.get(index), null, vunglePlayAdCallback);
+                        } else {
+                            // Play default placement with ad customization
+                            adConfig.setBackButtonImmediatelyEnabled(true);
+                            adConfig.setAutoRotate(true);
+                            adConfig.setMuted(false);
+                            // Optional settings for rewarded ads
+                            Vungle.setIncentivizedFields("TestUser","RewardedTitle","RewardedBody","RewardedKeepWatching","RewardedClose");
+
+                            Vungle.playAd(placementsList.get(index), adConfig, vunglePlayAdCallback);
                         }
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                setButtonState(play_buttons[index], false);
+                            }
+                        });
                     }
                 }
             });
         }
+
+        close_ff_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setButtonState(close_ff_button, false);
+                        setButtonState(pause_ff_button, false);
+                        setButtonState(resume_ff_button, false);
+                    }
+                });
+                vungleNativeAd.finishDisplayingAd();
+                flexfeed_container.removeView(nativeAdView);
+                vungleNativeAd = null;
+            }
+        });
+
+        resume_ff_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                vungleNativeAd.setAdVisibility(true);
+            }
+        });
+
+        pause_ff_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                vungleNativeAd.setAdVisibility(false);
+            }
+        });
     }
 
     private void setButtonState(Button button, boolean enabled) {
@@ -140,71 +316,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private final VungleAdEventListener vungleDefaultListener = new VungleAdEventListener() {
-
-        @Override
-        public void onAdEnd(@NonNull String placementReferenceId, boolean wasSuccessFulView, boolean wasCallToActionClicked) {
-            // Called when user exits the ad and control is returned to your application
-            // if wasSuccessfulView is true, the user watched the ad and could be rewarded
-            // if wasCallToActionClicked is true, the user clicked the call to action button in the ad.
-            Log.d(LOG_TAG, "onAdEnd: " + placementReferenceId + " ,wasSuccessfulView: " + wasSuccessFulView + " ,wasCallToActionClicked: " + wasCallToActionClicked);
-
-        }
-
-        @Override
-        public void onAdStart(@NonNull String placementReferenceId) {
-            // Called before playing an ad
-            Log.d(LOG_TAG, "onAdStart: " + placementReferenceId);
-        }
-
-        @Override
-        public void onUnableToPlayAd(@NonNull String placementReferenceId, String reason) {
-            // Called after playAd(placementId, adConfig) is unable to play the ad
-            Log.d(LOG_TAG, "onUnableToPlayAd: " + placementReferenceId + " ,reason: " + reason);
-        }
-
-        @Override
-        public void onAdAvailabilityUpdate(@NonNull String placementReferenceId, boolean isAdAvailable) {
-
-            // Notifies ad availability for the indicated placement
-            // There can be duplicate notifications
-            Log.d(LOG_TAG, "onAdAvailabilityUpdate: " + placementReferenceId + " isAdAvailable: " + isAdAvailable);
-
-            final boolean enabled = isAdAvailable;
-            final String placementIdUpdated = placementReferenceId;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (placementIdUpdated.equals(placement_list[0])) {
-                        setButtonState(play_buttons[0], enabled);
-                    } else if (placementIdUpdated.equals(placement_list[1])) {
-                        setButtonState(play_buttons[1], enabled);
-                        setButtonState(load_buttons[1], !enabled);
-                    } else if (placementIdUpdated.equals(placement_list[2])) {
-                        setButtonState(play_buttons[2], enabled);
-                        setButtonState(load_buttons[2], !enabled);
-                    }
-                }
-            });
-        }
-    };
 
     @Override
     protected void onResume() {
         super.onResume();
-        vunglePub.onResume();
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        vunglePub.onPause();
+
+        if (vungleNativeAd != null) {
+            vungleNativeAd.setAdVisibility(false);
+        }
     }
 
     @Override
     protected void onDestroy() {
-        // remove VungleAdEventListeners
-        vunglePub.removeEventListeners(vungleDefaultListener);
         super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (vungleNativeAd != null) {
+            vungleNativeAd.setAdVisibility(false);
+        }
     }
 }

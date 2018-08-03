@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--Optional permissions-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -24,5 +26,56 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
+
+<!--&lt;!&ndash;Use below manifest for JAR integration&ndash;&gt;-->
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<manifest xmlns:android="http://schemas.android.com/apk/res/android"-->
+          <!--package="com.publisher.sample">-->
+
+    <!--&lt;!&ndash;Required Permissions&ndash;&gt;-->
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+
+    <!--&lt;!&ndash;Optional Permissions&ndash;&gt;-->
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+
+    <!--<application-->
+        <!--android:allowBackup="true"-->
+        <!--android:icon="@mipmap/ic_launcher"-->
+        <!--android:label="@string/app_name"-->
+        <!--android:roundIcon="@mipmap/ic_launcher_round"-->
+        <!--android:supportsRtl="true"-->
+        <!--android:theme="@style/AppTheme"-->
+        <!--android:networkSecurityConfig="@xml/network_security_config" >-->
+
+        <!--<activity android:name=".MainActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <!--&lt;!&ndash;Vungle Activities&ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name="com.vungle.warren.ui.VungleActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
+            <!--android:launchMode="singleTop"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+        <!--<activity-->
+            <!--android:name="com.vungle.warren.ui.VungleWebViewActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
+            <!--android:launchMode="singleTop"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+        <!--<activity-->
+            <!--android:name="com.vungle.warren.ui.VungleFlexViewActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
+            <!--android:launchMode="singleTop"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+
+    <!--</application>-->
+
+<!--</manifest>-->

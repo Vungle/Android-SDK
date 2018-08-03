@@ -1,8 +1,20 @@
 ## Getting Started
-Please refer to https://support.vungle.com/hc/en-us/articles/115000468071
+Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 
 
 ## Release Notes
+
+### VERSION 6.3.12
+* Optional placement list during initialization, support for zero auto-cached Placement
+* Removal of Evernote and related transitive dependencies
+* Stability fixes
+
+### VERSION 6.2.5
+* GDPR compliance
+* License update
+* Redesigned SDK to lower method count and SDK size
+* Reduced time needed to initialize and play a cached Ad
+* Deprecated generic callback and introduced API specific callbacks to simplify integration. Please refer Migration section of V6 SDK documentation
 
 ### VERSION 5.3.2
 * Sleep code to be enforced at placement level
