@@ -50,7 +50,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Vungle SDK
-    implementation 'com.github.vungle:vungle-android-sdk:6.3.12'
+    implementation 'com.github.vungle:vungle-android-sdk:6.3.17'
 
     // Recommended Google Play Services
     implementation 'com.google.android.gms:play-services-basement:15.0.1'
