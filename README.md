@@ -4,6 +4,9 @@ Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 
 ## Release Notes
 
+### VERSION 6.3.17
+* Updates for improved performance
+
 ### VERSION 6.3.12
 * Optional placement list during initialization, support for zero auto-cached Placement
 * Removal of Evernote and related transitive dependencies
