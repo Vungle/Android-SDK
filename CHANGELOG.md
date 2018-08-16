@@ -1,5 +1,7 @@
 ## Changelog
 
+### VERSION 6.3.17
+* Updates for improved performance
 
 ### VERSION 6.3.12
 * Optional placement list during initialization, support for zero auto-cached Placement
