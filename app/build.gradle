@@ -50,18 +50,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Vungle SDK
-    implementation 'com.github.vungle:vungle-android-sdk:6.3.17'
+    implementation 'com.github.vungle:vungle-android-sdk:6.3.24'
 
     // Recommended Google Play Services
-    implementation 'com.google.android.gms:play-services-basement:15.0.1'
+    implementation 'com.google.android.gms:play-services-basement:16.0.0'
 
     // Optional Google Play Services
-    implementation 'com.google.android.gms:play-services-ads-identifier:15.0.1'
-    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 
 //    // Manual JAR Integration
 //    // Vungle SDK
-//    compile files('libs/vungle-android-sdk-6.3.17.jar')
+//    compile files('libs/vungle-android-sdk-6.3.24.jar')
 //
 //    // Required Third-party Dependencies
 //    compile files('libs/converter-gson-2.2.0.jar')
@@ -74,7 +74,7 @@ dependencies {
 //    compile files('libs/VNG-moat-mobile-app-kit-2.2.0.jar')
 //
 //    // Support library
-//    compile 'com.android.support:support-v4:26.1.0'
+//    compile 'com.android.support:support-v4:27.1.1'
 //
 //    // Recommended Google Play Services
 //    compile 'com.google.android.gms:play-services-basement:15.0.1'
