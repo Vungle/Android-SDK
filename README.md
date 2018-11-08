@@ -4,6 +4,13 @@ Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 
 ## Release Notes
 
+### VERSION 6.3.24
+* Android 9 Pie is now supported
+* Lighter SDK with a lower method count and fewer external 3rd party dependencies
+* Programmatic ad performance has been improved to address stability issues
+* Improvements in runtime memory usage by SDK
+* Custom Creative performance improvements
+
 ### VERSION 6.3.17
 * Updates for improved performance
 
