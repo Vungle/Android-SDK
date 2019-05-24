@@ -15,7 +15,6 @@ import com.vungle.warren.LoadAdCallback;
 import com.vungle.warren.PlayAdCallback;
 import com.vungle.warren.Vungle;
 import com.vungle.warren.VungleNativeAd;
-import com.vungle.warren.Vungle.Consent;
 import com.vungle.warren.error.VungleException;
 
 import java.util.Arrays;
@@ -92,12 +91,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAutoCacheAdAvailable(final String placementReferenceID) {
-                Log.d(LOG_TAG, "InitCallback - onAutoCacheAdAvailable" +
-                        "\n\tPlacement Reference ID = " + placementReferenceID);
                 // SDK will request auto cache placement ad immediately upon initialization
                 // This callback is triggered every time the auto-cached placement is available
-                // This is the best place to add your own listeners and propagate them to any UI logic bearing class
-                setButtonState(play_buttons[0], true);
+                Log.d(LOG_TAG, "InitCallback - onAutoCacheAdAvailable" +
+                        "\n\tPlacement Reference ID = " + placementReferenceID);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setButtonState(play_buttons[placementsList.indexOf(placementReferenceID)], true);
+                    }
+                });
             }
         });
     }
@@ -143,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
     private final LoadAdCallback vungleLoadAdCallback = new LoadAdCallback() {
         @Override
         public void onAdLoad(final String placementReferenceID) {
-
             Log.d(LOG_TAG,"LoadAdCallback - onAdLoad" +
                     "\n\tPlacement Reference ID = " + placementReferenceID);
 
@@ -151,10 +154,9 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     setButtonState(play_buttons[placementsList.indexOf(placementReferenceID)], true);
+                    setButtonState(load_buttons[placementsList.indexOf(placementReferenceID)], false);
                 }
             });
-
-            setButtonState(load_buttons[placementsList.indexOf(placementReferenceID)], false);
         }
 
         @Override
@@ -162,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "LoadAdCallback - onError" +
                     "\n\tPlacement Reference ID = " + placementReferenceID +
                     "\n\tError = " + throwable.getLocalizedMessage());
-
             checkInitStatus(throwable);
         }
     };
@@ -247,14 +248,10 @@ public class MainActivity extends AppCompatActivity {
                             nativeAdView = vungleNativeAd.renderNativeView();
                             flexfeed_container.addView(nativeAdView);
 
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    setButtonState(close_ff_button, true);
-                                    setButtonState(pause_ff_button, true);
-                                    setButtonState(resume_ff_button, true);
-                                }
-                            });
+                            setButtonState(close_ff_button, true);
+                            setButtonState(pause_ff_button, true);
+                            setButtonState(resume_ff_button, true);
+
                         } else if (index == 1) {
                             // Play Dynamic Template ad
                             Vungle.playAd(placementsList.get(index), null, vunglePlayAdCallback);
@@ -269,12 +266,7 @@ public class MainActivity extends AppCompatActivity {
                             Vungle.playAd(placementsList.get(index), adConfig, vunglePlayAdCallback);
                         }
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                setButtonState(play_buttons[index], false);
-                            }
-                        });
+                        setButtonState(play_buttons[index], false);
                     }
                 }
             });
@@ -282,14 +274,10 @@ public class MainActivity extends AppCompatActivity {
 
         close_ff_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        setButtonState(close_ff_button, false);
-                        setButtonState(pause_ff_button, false);
-                        setButtonState(resume_ff_button, false);
-                    }
-                });
+                setButtonState(close_ff_button, false);
+                setButtonState(pause_ff_button, false);
+                setButtonState(resume_ff_button, false);
+
                 vungleNativeAd.finishDisplayingAd();
                 flexfeed_container.removeView(nativeAdView);
                 vungleNativeAd = null;
