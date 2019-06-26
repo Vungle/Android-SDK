@@ -25,21 +25,21 @@
             </intent-filter>
         </activity>
 
-        <!--&lt;!&ndash;Use below manifest for JAR integration&ndash;&gt;-->
-        <!--<activity-->
-            <!--android:name="com.vungle.warren.ui.VungleActivity"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
-            <!--android:launchMode="singleTop"-->
-            <!--android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />-->
+        <!--Use below manifest for JAR integration-->
+        <activity
+            android:name="com.vungle.warren.ui.VungleActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
-        <!--<receiver-->
-            <!--android:name="com.vungle.warren.NetworkProviderReceiver"-->
-            <!--android:enabled="false" >-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
+        <receiver
+            android:name="com.vungle.warren.NetworkProviderReceiver"
+            android:enabled="false" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
 
     </application>
 </manifest>

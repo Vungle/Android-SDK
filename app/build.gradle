@@ -57,7 +57,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Vungle SDK using bintray aar
-    implementation 'vungle-android-beta:publisher-sdk-android:6.4.10'
+    implementation 'vungle-android-beta:publisher-sdk-android:6.4.11'
 
     // Recommended Google Play Services libraries
     implementation 'com.google.android.gms:play-services-basement:16.0.0'
@@ -65,7 +65,8 @@ dependencies {
 
 //    // Manual JAR Integration
 //    // Vungle SDK
-//    implementation files('libs/vungle-android-sdk-6.4.10.jar')
+//    implementation files('libs/vungle-android-sdk-6.4.11.jar')
+//    implementation files('libs/vungle-android-sdk-6.4.11.aar')
 //
 //    // Required Third-party Dependencies
 //    implementation files('libs/converter-gson-2.5.0.jar')
@@ -74,7 +75,7 @@ dependencies {
 //    implementation files('libs/okhttp-3.12.0.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 //    implementation files('libs/retrofit-2.5.0.jar')
-//    implementation files('libs/vng-moat-mobile-app-kit-2.5.1.jar')
+//    implementation files('libs/vng-moat-mobile-app-kit-2.5.1.jar') // Exclude it for AAR integration
 //
 //    // Recommended Google Play Services libraries
 //    implementation 'com.google.android.gms:play-services-basement:16.0.0'
