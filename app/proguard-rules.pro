@@ -16,7 +16,7 @@
 #   public *;
 #}
 
-# Uncomment this to preserve the line number information for
+# Uncomment this to preserve the line number information fo
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable
 
@@ -24,35 +24,36 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+#-dontobfuscate
+
 # Vungle
 -keep class com.vungle.warren.** { *; }
 -keep class com.vungle.warren.downloader.DownloadRequest
 -dontwarn com.vungle.warren.error.VungleError$ErrorCode
 -dontwarn com.vungle.warren.downloader.DownloadRequest$Status
--keepclassmembers enum com.vungle.warren.** { *; }
 
-# Moat SDK
--keep class com.moat.** { *; }
--dontwarn com.moat.**
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
--keepattributes *Annotation*
-
-# Retrofit
--keepattributes Signature, InnerClasses
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
--dontwarn javax.annotation.**
--dontwarn kotlin.Unit
--dontwarn retrofit2.-KotlinExtensions
--keepclassmembers,allowshrinking,allowobfuscation interface * {
-    @retrofit2.http.* <methods>;
-}
-
-# Okio+OkHttp
--dontwarn okhttp3.**
--dontwarn okio.**
--dontwarn javax.annotation.**
--dontwarn org.conscrypt.**
--keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
--keepclassmembers class * extends com.vungle.warren.persistence.Memorable {
-   public <init>(byte[]);
-}
+## Google
+#-keep class com.google.android.gms.internal.** { *; }
+#-dontwarn com.google.android.gms.ads.identifier.**
+#
+## Moat SDK
+#-keep class com.moat.** { *; }
+#-dontwarn com.moat.**
+#
+## OkHttp
+#-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+#-dontwarn okhttp3.internal.platform.ConscryptPlatform
+#
+## Retrofit
+#-dontwarn okio.**
+#-dontwarn retrofit2.Platform$Java8
+#
+### Retrofit2
+#-keepattributes Signature, InnerClasses, EnclosingMethod
+#-keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
+#-keepclassmembers,allowshrinking,allowobfuscation interface * {
+#    @retrofit2.http.* <methods>;
+#}
+#-dontwarn retrofit2.KotlinExtensions
+#-if interface * { @retrofit2.http.* <methods>; }
+#-keep,allowobfuscation interface <1>
