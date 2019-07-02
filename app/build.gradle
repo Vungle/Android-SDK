@@ -66,24 +66,9 @@ dependencies {
 
 
     // Vungle SDK
-
-//    implementation 'com.github.vungle:vungle-android-sdk:feature-AND-2121-skinnybanner-epic-SNAPSHOT'
     implementation 'com.github.vungle:vungle-android-sdk:6.4.11'
 //    implementation 'com.github.vungle:vungle-android-sdk:6.4.10'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.4.8'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.4.7'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.3.24'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.3.22'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.3.17'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.3.12'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.3.18'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.3.7'
 
-//    implementation files('libs/publisher-sdk-android-6.4.10.aar')
-//    implementation files('libs/vungle-android-sdk-6.4.10.jar')
-//    implementation files('libs/vungle-android-sdk-6.4.8.jar')
-//
-//
 //    // Required Third-party Dependencies
 //    implementation files('libs/converter-gson-2.5.0.jar')
 //    implementation files('libs/gson-2.8.2.jar')

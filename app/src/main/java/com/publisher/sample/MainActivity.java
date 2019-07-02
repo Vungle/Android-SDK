@@ -1,17 +1,12 @@
 package com.publisher.sample;
 
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,19 +16,14 @@ import com.vungle.warren.AdConfig;              // Custom ad configurations
 import com.vungle.warren.InitCallback;          // Initialization callback
 import com.vungle.warren.LoadAdCallback;        // Load ad callback
 import com.vungle.warren.PlayAdCallback;        // Play ad callback
-//import com.vungle.warren.VungleBanner;
 import com.vungle.warren.VungleNativeAd;        // Flex-Feed ad
 import com.vungle.warren.Vungle.Consent;        // GDPR consent
 import com.vungle.warren.VungleSettings;
 import com.vungle.warren.error.VungleException; // onError message
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
 
 import static com.vungle.warren.Vungle.getValidPlacements;
 
@@ -152,9 +142,6 @@ public class MainActivity extends AppCompatActivity {
         vungleAds.add(new VungleAd(rewardedVideo));
         vungleAds.add(new VungleAd(rewardedPlayable));
         vungleAds.add(new VungleAd(mrec));
-        vungleAds.add(new VungleAd(banner));
-
-//        Log.d(LOG_TAG + " *DEBUG*", interstitialLegacy.getPlacementReferenceId());
 
         initUiElements();
         initSDK();
@@ -190,17 +177,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-            // 6.5.x banner
-//            @Override
-//            public void onError(VungleException e) {
-//                if (e != null) {
-//                    Log.d(LOG_TAG, "InitCallback - onError: " + e.getLocalizedMessage());
-//                } else {
-//                    Log.d(LOG_TAG, "VungleException is null");
-//                }
-//            }
 
-            // 6.4.11
             @Override
             public void onError(Throwable throwable) {
                 if (throwable != null) {
@@ -246,18 +223,6 @@ public class MainActivity extends AppCompatActivity {
                     "\n\tDownload Clicked = " + isCTAClicked);
         }
 
-        // 6.5.x banner
-//        @Override
-//        public void onError(final String placementReferenceID, VungleException e) {
-//            Log.d(LOG_TAG, "PlayAdCallback - onError" +
-//                    "\n\tPlacement Reference ID = " + placementReferenceID +
-//                    "\n\tError = " + e.getLocalizedMessage());
-//
-//            makeToast(e.getLocalizedMessage());
-//            checkInitStatus(e);
-//        }
-
-        // 6.4.11
         @Override
         public void onError(final String placementReferenceID, Throwable throwable) {
             Log.d(LOG_TAG, "PlayAdCallback - onError" +
@@ -281,18 +246,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // 6.5.x banner
-//        @Override
-//        public void onError(final String placementReferenceID, VungleException e) {
-//            Log.d(LOG_TAG, "LoadAdCallback - onError" +
-//                    "\n\tPlacement Reference ID = " + placementReferenceID +
-//                    "\n\tError = " + e.getLocalizedMessage());
-//
-//            makeToast(e.getLocalizedMessage());
-//            checkInitStatus(e);
-//        }
-
-        // 6.4.11
         @Override
         public void onError(final String placementReferenceID, Throwable throwable) {
             Log.d(LOG_TAG, "LoadAdCallback - onError" +
@@ -304,18 +257,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    // 6.5.x banner
-    private void checkInitStatus(VungleException e) {
-        try {
-            Log.d(LOG_TAG, e.getExceptionCode() + "");
-
-            if (e.getExceptionCode() == VungleException.VUNGLE_NOT_INTIALIZED) {
-                initSDK();
-            }
-        } catch (ClassCastException cex) { }
-    }
-
-    // 6.4.11
     private void checkInitStatus(Throwable throwable) {
         // Do nothing
     }
@@ -345,87 +286,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
-//    private void setBannerAd(final VungleAd ad) {
-//        disableButton(ad.pauseResumeButton);
-//        disableButton(ad.closeButton);
-//
-//        // Loading VungleBanner works same way as fullscreen ad and only requires the placement to be configured properly
-//        ad.loadButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AdConfig adConfig = new AdConfig();
-//                adConfig.setAdSize(AdConfig.AdSize.BANNER);
-//
-//                if (Vungle.isInitialized()) {
-//                    // Play Vungle ad
-////                    Vungle.loadAd("BANNER1-7000", vungleLoadAdCallback);
-//                    Vungle.loadAd(ad.placementReferenceId, adConfig, vungleLoadAdCallback);
-//                    // Button UI
-//                    disableButton(ad.loadButton);
-//                } else {
-//                    makeToast("Vungle SDK not initialized");
-//                }
-//            }
-//        });
-//
-//        ad.playButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (Vungle.isInitialized()) {
-//                    if (Vungle.canPlayAd(ad.placementReferenceId)) {
-//
-//                        vungleBanner = Vungle.getBanner(ad.placementReferenceId, AdConfig.AdSize.BANNER, vunglePlayAdCallback);
-////                        vungleBanner = Vungle.getBanner(ad.placementReferenceId, adConfig.getAdSize(), vunglePlayAdCallback);
-//
-//                        if (vungleBanner != null) {
-//                            ad.container.setVisibility(RelativeLayout.VISIBLE);
-//                            ad.container.addView(vungleBanner);
-//                        }
-//                        // Button UI
-//                        enableButton(ad.loadButton);
-//                        disableButton(ad.playButton);
-//                        enableButton(ad.pauseResumeButton);
-//                        enableButton(ad.closeButton);
-//
-//                        nativeAdPlaying = true;
-//                        ad.pauseResumeButton.setText("PAUSE");
-//                    } else {
-//                        makeToast("Vungle ad not playable for " + ad.placementReferenceId);
-//                    }
-//                } else {
-//                    makeToast("Vungle SDK not initialized");
-//                }
-//            }
-//        });
-//
-//        ad.pauseResumeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                nativeAdPlaying = !nativeAdPlaying;
-//                vungleNativeAd.setAdVisibility(nativeAdPlaying);
-//
-//                if (nativeAdPlaying) {
-//                    ad.pauseResumeButton.setText("PAUSE");
-//                } else {
-//                    ad.pauseResumeButton.setText("RESUME");
-//                }
-//            }
-//        });
-//
-//        ad.closeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                vungleNativeAd.finishDisplayingAd();
-//                vungleNativeAd = null;
-//                ad.container.removeView(nativeAdView);
-//                ad.container.setVisibility(RelativeLayout.GONE);
-//
-//                disableButton(ad.pauseResumeButton);
-//                disableButton(ad.closeButton);
-//            }
-//        });
-//    }
 
     private void setFullscreenAd(final VungleAd ad) {
         // Set custom configuration for rewarded placements

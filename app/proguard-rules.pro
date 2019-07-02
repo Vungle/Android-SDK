@@ -32,28 +32,28 @@
 -dontwarn com.vungle.warren.error.VungleError$ErrorCode
 -dontwarn com.vungle.warren.downloader.DownloadRequest$Status
 
-## Google
-#-keep class com.google.android.gms.internal.** { *; }
-#-dontwarn com.google.android.gms.ads.identifier.**
-#
-## Moat SDK
-#-keep class com.moat.** { *; }
-#-dontwarn com.moat.**
-#
-## OkHttp
-#-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
-#-dontwarn okhttp3.internal.platform.ConscryptPlatform
-#
-## Retrofit
-#-dontwarn okio.**
-#-dontwarn retrofit2.Platform$Java8
-#
-### Retrofit2
-#-keepattributes Signature, InnerClasses, EnclosingMethod
-#-keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
-#-keepclassmembers,allowshrinking,allowobfuscation interface * {
-#    @retrofit2.http.* <methods>;
-#}
-#-dontwarn retrofit2.KotlinExtensions
-#-if interface * { @retrofit2.http.* <methods>; }
-#-keep,allowobfuscation interface <1>
+# Google
+-keep class com.google.android.gms.internal.** { *; }
+-dontwarn com.google.android.gms.ads.identifier.**
+
+# Moat SDK
+-keep class com.moat.** { *; }
+-dontwarn com.moat.**
+
+# OkHttp
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
+
+# Retrofit
+-dontwarn okio.**
+-dontwarn retrofit2.Platform$Java8
+
+## Retrofit2
+-keepattributes Signature, InnerClasses, EnclosingMethod
+-keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+-dontwarn retrofit2.KotlinExtensions
+-if interface * { @retrofit2.http.* <methods>; }
+-keep,allowobfuscation interface <1>
