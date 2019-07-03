@@ -91,3 +91,5 @@ Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 * Added link to Vungle's privacy policy in the ad experience
 * Replaced the countdown timer with a progress bar timer
 * Fixed some minor bugs
+
+## Attributions
