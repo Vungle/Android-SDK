@@ -62,10 +62,10 @@ dependencies {
 
 
     // Vungle SDK
-    implementation 'com.github.vungle:vungle-android-sdk:6.4.11'
+    implementation 'com.vungle:publisher-sdk-android:6.4.11'
 
-//    implementation files('libs/vungle-android-sdk-6.4.11.jar')
-//    implementation files('libs/vungle-android-sdk-6.4.11.aar')
+//    implementation files('libs/publisher-sdk-android-6.4.11.jar')
+//    implementation files('libs/publisher-sdk-android-6.4.11.aar')
 
     // Required Third-party Dependencies
 //    implementation files('libs/converter-gson-2.5.0.jar')
