@@ -93,7 +93,7 @@ Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 * Fixed some minor bugs
 
 ## Attributions
-Vungle SDK uses the following third party components
+
 | Component                         | Version | Description                                                                               | License                                                                        |
 |-----------------------------------|---------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | OkHttp                            | 3.7.0   | An HTTP+HTTP/2 client for Android and  Java applications                                  | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)                      |
