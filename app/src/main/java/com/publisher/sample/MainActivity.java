@@ -191,9 +191,6 @@ public class MainActivity extends AppCompatActivity {
             public void onAutoCacheAdAvailable(final String placementReferenceID) {
                 Log.d(LOG_TAG, "InitCallback - onAutoCacheAdAvailable" +
                         "\n\tPlacement Reference ID = " + placementReferenceID);
-                // SDK will request auto cache placement ad immediately upon initialization
-                // This callback is triggered every time the auto-cached placement is available
-                // This is the best place to add your own listeners and propagate them to any UI logic bearing class
 
                 VungleAd ad = getVungleAd(placementReferenceID);
                 if (ad != null) {
@@ -258,7 +255,16 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void checkInitStatus(Throwable throwable) {
-        // Do nothing
+        try {
+            VungleException ex = (VungleException) throwable;
+            Log.d(LOG_TAG, ex.getExceptionCode() + "");
+
+            if (ex.getExceptionCode() == VungleException.VUNGLE_NOT_INTIALIZED) {
+                initSDK();
+            }
+        } catch (ClassCastException cex) {
+            Log.d(LOG_TAG, cex.getMessage());
+        }
     }
 
     private void setVungleAdUi(final VungleAd ad) {
@@ -277,9 +283,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case mrec:
                 setMrecAd(ad);
-                break;
-            case banner:
-//                setBannerAd(ad);
                 break;
             default:
                 Log.d(LOG_TAG, "Vungle ad type not recognized");
@@ -367,8 +370,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if (Vungle.canPlayAd(ad.placementReferenceId)) {
-                        // Play VungleNativeAd
-
                         if (vungleNativeAd != null) {
                             vungleNativeAd.finishDisplayingAd();
                             vungleNativeAd = null;
@@ -494,14 +495,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-//        if (!Vungle.isInitialized()) {
-//            initSDK();
-//
-//            if (vungleNativeAd != null) {
-//                vungleNativeAd.setAdVisibility(true);
-//            }
-//        }
     }
 
     @Override
