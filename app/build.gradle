@@ -4,13 +4,9 @@ apply plugin: 'com.getkeepsafe.dexcount'
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
     }
     dependencies {
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.5'
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
     }
 }
 
@@ -68,14 +64,17 @@ dependencies {
     // Vungle SDK
     implementation 'com.github.vungle:vungle-android-sdk:6.4.11'
 
-//    // Required Third-party Dependencies
+//    implementation files('libs/vungle-android-sdk-6.4.11.jar')
+//    implementation files('libs/vungle-android-sdk-6.4.11.aar')
+
+    // Required Third-party Dependencies
 //    implementation files('libs/converter-gson-2.5.0.jar')
 //    implementation files('libs/gson-2.8.2.jar')
 //    implementation files('libs/logging-interceptor-3.12.0.jar')
 //    implementation files('libs/okhttp-3.12.0.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 //    implementation files('libs/retrofit-2.5.0.jar')
-//    implementation files('libs/VNG-moat-mobile-app-kit-2.5.1.jar')
+//    implementation files('libs/VNG-moat-mobile-app-kit-2.5.1.jar') // Exclude when using AAR
 
     implementation 'com.google.android.gms:play-services-basement:16.0.0'        // Recommended
     implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'  // Optional
