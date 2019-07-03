@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         @NonNull private final TextView titleTextView;
         @NonNull private final Button loadButton;
         @NonNull final Button playButton;
+        @NonNull private boolean nativeAdPlaying;
         @Nullable private final Button pauseResumeButton;
         @Nullable private final Button closeButton;
         @Nullable private final RelativeLayout container;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             this.pauseResumeButton = getPauseResumeButton();
             this.closeButton = getCloseButton();
             this.container = getContainer();
+            this.nativeAdPlaying = false;
         }
 
         private String getPlacementReferenceId() {
@@ -110,9 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
     private View nativeAdView;
     private VungleNativeAd vungleNativeAd;
-    private boolean nativeAdPlaying = false;
-
-//    private VungleBanner vungleBanner;
 
     private List<VungleAd> vungleAds = new ArrayList<>();
 
@@ -121,12 +120,9 @@ public class MainActivity extends AppCompatActivity {
     final private String rewardedVideo = "rewarded_video";
     final private String rewardedPlayable = "rewarded_playable";
     final private String mrec = "mrec";
-    final private String banner = "banner";
+    final private String inFeed = "in_feed";
 
-    // Get your Vungle App ID and Placement ID information from Vungle Dashboard
     final String LOG_TAG = "VungleSampleApp";
-
-    private RelativeLayout container_flexfeed;
 
     private Consent vungleConsent;
 
@@ -142,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         vungleAds.add(new VungleAd(rewardedVideo));
         vungleAds.add(new VungleAd(rewardedPlayable));
         vungleAds.add(new VungleAd(mrec));
+        vungleAds.add(new VungleAd(inFeed));
 
         initUiElements();
         initSDK();
@@ -282,7 +279,8 @@ public class MainActivity extends AppCompatActivity {
                 setFullscreenAd(ad);
                 break;
             case mrec:
-                setMrecAd(ad);
+            case inFeed:
+                setNativeAd(ad);
                 break;
             default:
                 Log.d(LOG_TAG, "Vungle ad type not recognized");
@@ -331,8 +329,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setMrecAd(final VungleAd ad) {
-
+    private void setNativeAd(final VungleAd ad) {
         disableButton(ad.pauseResumeButton);
         disableButton(ad.closeButton);
 
@@ -357,23 +354,15 @@ public class MainActivity extends AppCompatActivity {
                 if (Vungle.isInitialized()) {
                     AdConfig adConfig = new AdConfig();
 
-                    switch (ad.name) {
-                        case mrec:
-                            adConfig.setAdSize(AdConfig.AdSize.VUNGLE_MREC);
-                            break;
-                        case banner:
-                            break;
-                        default:
-                            vungleNativeAd = null;
-                            Log.d(LOG_TAG, "Vungle AdSize not recognized");
-                            break;
-                    }
-
                     if (Vungle.canPlayAd(ad.placementReferenceId)) {
                         if (vungleNativeAd != null) {
                             vungleNativeAd.finishDisplayingAd();
                             vungleNativeAd = null;
                             ad.container.removeView(nativeAdView);
+                        }
+
+                        if (ad.name == mrec) {
+                            adConfig.setAdSize(AdConfig.AdSize.VUNGLE_MREC);
                         }
 
                         vungleNativeAd = Vungle.getNativeAd(ad.placementReferenceId, adConfig, vunglePlayAdCallback);
@@ -384,13 +373,15 @@ public class MainActivity extends AppCompatActivity {
                             ad.container.setVisibility(RelativeLayout.VISIBLE);
                         }
 
+                        ad.nativeAdPlaying = true;
+
                         // Button UI
                         enableButton(ad.loadButton);
                         disableButton(ad.playButton);
                         enableButton(ad.pauseResumeButton);
                         enableButton(ad.closeButton);
 
-                        nativeAdPlaying = true;
+                        ad.nativeAdPlaying = true;
                         ad.pauseResumeButton.setText("PAUSE");
                     } else {
                         makeToast("Vungle ad not playable for " + ad.placementReferenceId);
@@ -404,10 +395,13 @@ public class MainActivity extends AppCompatActivity {
         ad.pauseResumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nativeAdPlaying = !nativeAdPlaying;
-                vungleNativeAd.setAdVisibility(nativeAdPlaying);
+                ad.nativeAdPlaying = !ad.nativeAdPlaying;
 
-                if (nativeAdPlaying) {
+                if (vungleNativeAd != null) {
+                    vungleNativeAd.setAdVisibility(ad.nativeAdPlaying);
+                }
+
+                if (ad.nativeAdPlaying) {
                     ad.pauseResumeButton.setText("PAUSE");
                 } else {
                     ad.pauseResumeButton.setText("RESUME");
@@ -418,10 +412,12 @@ public class MainActivity extends AppCompatActivity {
         ad.closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vungleNativeAd.finishDisplayingAd();
-                vungleNativeAd = null;
-                ad.container.removeView(nativeAdView);
-                ad.container.setVisibility(RelativeLayout.GONE);
+                if (vungleNativeAd != null) {
+                    vungleNativeAd.finishDisplayingAd();
+                    vungleNativeAd = null;
+                    ad.container.removeView(nativeAdView);
+                    ad.container.setVisibility(RelativeLayout.GONE);
+                }
 
                 disableButton(ad.pauseResumeButton);
                 disableButton(ad.closeButton);

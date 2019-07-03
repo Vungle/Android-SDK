@@ -14,6 +14,6 @@
     <dimen name="text_size_placement">12sp</dimen>
     <dimen name="container_width_mrec">300dp</dimen>
     <dimen name="container_height_mrec">250dp</dimen>
-    <dimen name="container_width_banner">320dp</dimen>
-    <dimen name="container_height_banner">50dp</dimen>
+    <dimen name="container_width_in_feed">350dp</dimen>
+    <dimen name="container_height_in_feed">150dp</dimen>
 </resources>

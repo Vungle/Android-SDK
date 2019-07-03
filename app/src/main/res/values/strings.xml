@@ -11,25 +11,12 @@
     <string name="title_rewarded_video">Rewarded Video</string>
     <string name="title_rewarded_playable">Rewarded Playable</string>
     <string name="title_mrec">MREC 300x250</string>
-    <string name="title_banner">Banner 300x50</string>
-
-    <!--Production-->
-    <!--<string name="app_id">5ae0db55e2d43668c97bd65e</string>-->
-    <!--<string name="placement_id_interstitial_legacy">LEGACY_INTERSTITIAL-4364832</string>-->
-    <!--<string name="placement_id_interstitial_dt">DYNAMIC_TEMPLATE_INTERSTITIAL-6969365</string>-->
-    <!--<string name="placement_id_rewarded_video">REWARDED_VIDEO-4898828</string>-->
-    <!--<string name="placement_id_rewarded_playable">REWARDED_PLAYABLE-1895470</string>-->
-    <!--<string name="placement_id_mrec">MREC-2191415</string>-->
-    <!--<string name="placement_id_banner"></string>-->
-
-    <!--QA - http://dashboard2.qa.vungle.com-->
-    <string name="app_id">5bf49746b1fd5362ddda51e2</string>
-    <string name="placement_id_interstitial_legacy">LOCAL-9231064</string>
-    <string name="placement_id_interstitial_dt">MRAID-3374957</string>
-    <string name="placement_id_rewarded_video">MRAID_REWARDED</string>
-    <string name="placement_id_rewarded_playable">LOCAL_REWARDED-2684470</string>
-    <string name="placement_id_mrec">MREC-3349845</string>
-    <string name="placement_id_banner">BANNER2-4621467</string>
-
-    <!--<string name=""></string>-->
+    <string name="title_in_feed">In-Feed</string>
+    <string name="app_id">5ae0db55e2d43668c97bd65e</string>
+    <string name="placement_id_interstitial_legacy">LEGACY_INTERSTITIAL-4364832</string>
+    <string name="placement_id_interstitial_dt">DYNAMIC_TEMPLATE_INTERSTITIAL-6969365</string>
+    <string name="placement_id_rewarded_video">REWARDED_VIDEO-4898828</string>
+    <string name="placement_id_rewarded_playable">REWARDED_PLAYABLE-1895470</string>
+    <string name="placement_id_mrec">MREC-2191415</string>
+    <string name="placement_id_in_feed">FLEX_FEED-2416159</string>
 </resources>
