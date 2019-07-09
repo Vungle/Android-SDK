@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="view_height_top">30dp</dimen>
+    <dimen name="view_height_single_row">60dp</dimen>
+    <dimen name="view_height_double_row">110dp</dimen>
+    <dimen name="btn_width">100dp</dimen>
+    <dimen name="btn_height">35dp</dimen>
+    <dimen name="btn_row_height">40dp</dimen>
+    <dimen name="btn_margin_horizontal">20dp</dimen>
+    <dimen name="btn_margin_vertical">5dp</dimen>
+    <dimen name="margin_vertical">5dp</dimen>
+    <dimen name="margin_vertical_view">5dp</dimen>
+    <dimen name="padding_horizontal">20dp</dimen>
+    <dimen name="text_size_placement">12sp</dimen>
+    <dimen name="container_width_mrec">300dp</dimen>
+    <dimen name="container_height_mrec">250dp</dimen>
+    <dimen name="container_width_in_feed">350dp</dimen>
+    <dimen name="container_height_in_feed">150dp</dimen>
+</resources>
