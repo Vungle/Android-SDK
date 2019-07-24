@@ -31,6 +31,7 @@
 -keep class com.vungle.warren.downloader.DownloadRequest
 -dontwarn com.vungle.warren.error.VungleError$ErrorCode
 -dontwarn com.vungle.warren.downloader.DownloadRequest$Status
+-keepclassmembers enum com.vungle.warren.** { *; }
 
 # Google
 -keep class com.google.android.gms.internal.** { *; }
