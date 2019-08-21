@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#ffffff"
     android:fillViewport="true"
-    android:background="#ffffff">
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -401,8 +401,7 @@
                     android:layout_gravity="center"
                     android:background="#808080"
                     android:gravity="center"
-                    android:visibility="gone">
-                </RelativeLayout>
+                    android:visibility="gone"></RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -505,8 +504,7 @@
                     android:layout_gravity="center"
                     android:background="#808080"
                     android:gravity="center"
-                    android:visibility="gone">
-                </RelativeLayout>
+                    android:visibility="gone"></RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -514,6 +512,130 @@
                     android:background="@color/line_color"
                     android:gravity="bottom" />
 
+                <LinearLayout
+                    android:id="@+id/view_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/view_height_triple_row"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_vertical_view"
+                    android:layout_marginBottom="@dimen/margin_vertical_view"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter">
+
+                    <TextView
+                        android:id="@+id/tv_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/title_banner"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/text_size_placement" />
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_row_height"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_vertical"
+                        android:layout_marginBottom="@dimen/margin_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_horizontal"
+                        android:paddingRight="@dimen/padding_horizontal"
+                        android:scaleType="fitCenter">
+
+                        <Button
+                            android:id="@+id/btn_load_banner"
+                            android:layout_width="@dimen/btn_width"
+                            android:layout_height="@dimen/btn_height"
+                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
+                            android:layout_marginRight="@dimen/btn_margin_horizontal"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_button_bg"
+                            android:text="load"
+                            android:textColor="@color/buttonText" />
+
+                        <Button
+                            android:id="@+id/btn_play_banner"
+                            android:layout_width="@dimen/btn_width"
+                            android:layout_height="@dimen/btn_height"
+                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
+                            android:layout_marginRight="@dimen/btn_margin_horizontal"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_button_bg"
+                            android:text="play"
+                            android:textColor="@color/buttonText" />
+                    </LinearLayout>
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_row_height"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_vertical"
+                        android:layout_marginBottom="@dimen/margin_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_horizontal"
+                        android:paddingRight="@dimen/padding_horizontal"
+                        android:scaleType="fitCenter">
+
+                        <Button
+                            android:id="@+id/btn_pause_resume_banner"
+                            android:layout_width="@dimen/btn_width"
+                            android:layout_height="@dimen/btn_height"
+                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
+                            android:layout_marginRight="@dimen/btn_margin_horizontal"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_button_bg"
+                            android:text="pause/resume"
+                            android:textColor="@color/buttonText" />
+
+                        <Button
+                            android:id="@+id/btn_close_banner"
+                            android:layout_width="@dimen/btn_width"
+                            android:layout_height="@dimen/btn_height"
+                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
+                            android:layout_marginRight="@dimen/btn_margin_horizontal"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_button_bg"
+                            android:text="close"
+                            android:textColor="@color/buttonText" />
+                    </LinearLayout>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_row_height"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_vertical"
+                        android:layout_marginBottom="@dimen/margin_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_horizontal"
+                        android:paddingRight="@dimen/padding_horizontal"
+                        android:scaleType="fitCenter">
+
+                        <Button
+                            android:id="@+id/btn_list_banner"
+                            android:layout_width="@dimen/btn_width"
+                            android:layout_height="@dimen/btn_height"
+                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
+                            android:layout_marginRight="@dimen/btn_margin_horizontal"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_button_bg"
+                            android:text="Show list"
+                            android:textColor="@color/buttonText" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/container_banner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="#808080"
+                    android:gravity="center"
+                    android:visibility="gone"></RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_color"
+                    android:gravity="bottom" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

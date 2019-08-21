@@ -13,10 +13,12 @@
     <string name="title_mrec">MREC 300x250</string>
     <string name="title_in_feed">In-Feed</string>
     <string name="app_id">5ae0db55e2d43668c97bd65e</string>
+    <string name="title_banner">Banner</string>
     <string name="placement_id_interstitial_legacy">LEGACY_INTERSTITIAL-4364832</string>
     <string name="placement_id_interstitial_dt">DYNAMIC_TEMPLATE_INTERSTITIAL-6969365</string>
     <string name="placement_id_rewarded_video">REWARDED_VIDEO-4898828</string>
     <string name="placement_id_rewarded_playable">REWARDED_PLAYABLE-1895470</string>
     <string name="placement_id_mrec">MREC-2191415</string>
     <string name="placement_id_in_feed">FLEX_FEED-2416159</string>
+    <string name="placement_id_banner">BANNER1-2696914</string>
 </resources>
