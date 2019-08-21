@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onError(Throwable throwable) {
+            public void onError(VungleException throwable) {
                 if (throwable != null) {
                     Log.d(LOG_TAG, "InitCallback - onError: " + throwable.getLocalizedMessage());
                 } else {
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onError(final String placementReferenceID, Throwable throwable) {
+        public void onError(final String placementReferenceID, VungleException throwable) {
             Log.d(LOG_TAG, "PlayAdCallback - onError" +
                     "\n\tPlacement Reference ID = " + placementReferenceID +
                     "\n\tError = " + throwable.getLocalizedMessage());
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onError(final String placementReferenceID, Throwable throwable) {
+        public void onError(final String placementReferenceID, VungleException throwable) {
             Log.d(LOG_TAG, "LoadAdCallback - onError" +
                     "\n\tPlacement Reference ID = " + placementReferenceID +
                     "\n\tError = " + throwable.getLocalizedMessage());
@@ -429,7 +429,6 @@ public class MainActivity extends AppCompatActivity {
         AdConfig adConfig = new AdConfig();
 
         adConfig.setBackButtonImmediatelyEnabled(true);
-        adConfig.setAutoRotate(false);
         adConfig.setMuted(false);
         adConfig.setOrdinal(5);
 

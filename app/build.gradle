@@ -62,7 +62,7 @@ dependencies {
 
 
     // Vungle SDK
-    implementation 'com.vungle:publisher-sdk-android:6.4.11'
+    implementation 'com.github.vungle:vungle-android-sdk:6.5.0-RC3'
 
 //    implementation files('libs/publisher-sdk-android-6.4.11.jar')
 //    implementation files('libs/publisher-sdk-android-6.4.11.aar')
