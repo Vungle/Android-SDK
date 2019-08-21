@@ -48,7 +48,7 @@ public class VungleBannerAdAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             ((OneAdHolder) holder).bind(placementId);
         } else {
             //noinspection unchecked
-            originalAdapter.onBindViewHolder(holder, position);
+            originalAdapter.onBindViewHolder(holder, position < adPosition ? position : position - 1 );
         }
     }
 

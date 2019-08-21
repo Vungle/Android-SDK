@@ -41,8 +41,6 @@ public class BannerListActivity extends AppCompatActivity {
         adapter = new VungleBannerAdAdapter(placement, POSITION, originalAdapter, null);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
-
-        recyclerView.getRecycledViewPool().setMaxRecycledViews(-100, 1);
     }
 
     @Override
