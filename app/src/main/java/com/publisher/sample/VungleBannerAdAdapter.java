@@ -15,7 +15,7 @@ import com.vungle.warren.VungleBanner;
 import com.vungle.warren.error.VungleException;
 
 public class VungleBannerAdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final int BANNED_AD_TYPE = -100;
+    private static final int BANNED_AD_TYPE = R.layout.ad_item;
     private final String placementId;
     private final int adPosition;
     private final RecyclerView.Adapter originalAdapter;
@@ -37,7 +37,7 @@ public class VungleBannerAdAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int type) {
         if (type == BANNED_AD_TYPE) {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.ad_item, viewGroup, false);
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(type, viewGroup, false);
             return new OneAdHolder(view);
         }
         return originalAdapter.onCreateViewHolder(viewGroup, type);

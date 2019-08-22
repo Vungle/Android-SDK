@@ -61,7 +61,7 @@ public class BannerListActivity extends AppCompatActivity {
         @NonNull
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int type) {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rv_item, viewGroup, false);
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(type, viewGroup, false);
             return new ItemHolder(view);
         }
 
@@ -73,6 +73,11 @@ public class BannerListActivity extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return size;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return R.layout.rv_item;
         }
     }
 }
