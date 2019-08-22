@@ -21,6 +21,7 @@ public class VungleBannerAdAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private final RecyclerView.Adapter originalAdapter;
     private final PlayAdCallback playAdCallback;
     private VungleBanner ad;
+    private boolean destroyed;
 
     public VungleBannerAdAdapter(@NonNull String placementId,
                                  int adPosition,
@@ -48,7 +49,7 @@ public class VungleBannerAdAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             ((OneAdHolder) holder).bind(placementId);
         } else {
             //noinspection unchecked
-            originalAdapter.onBindViewHolder(holder, position < adPosition ? position : position - 1 );
+            originalAdapter.onBindViewHolder(holder, position < adPosition ? position : position - 1);
         }
     }
 
@@ -70,9 +71,14 @@ public class VungleBannerAdAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     //must be called
     public void destroy() {
+        destroyed = true;
         if (ad != null) {
             ad.destroyAd();
         }
+    }
+
+    private boolean canStart() {
+        return ad == null && !destroyed;
     }
 
     private class OneAdHolder extends RecyclerView.ViewHolder {
@@ -84,12 +90,12 @@ public class VungleBannerAdAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
 
         void bind(final String placement) {
-            if (ad == null) {
+            if (canStart()) {
                 final AdConfig.AdSize size = AdConfig.AdSize.BANNER;
                 Banners.loadBanner(placement, size, new LoadAdCallback() {
                     @Override
                     public void onAdLoad(String s) {
-                        if (ad == null) {
+                        if (canStart()) {
                             ad = Banners.getBanner(placement, size, playAdCallback);
                             if (ad != null) {
                                 ad.disableLifeCycleManagement(true);
