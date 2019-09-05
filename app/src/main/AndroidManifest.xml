@@ -29,14 +29,26 @@
 
         <!--JAR Integration-->
         <!--<activity-->
-            <!--android:name="com.vungle.warren.ui.VungleActivity"-->
+            <!--android:name=".ui.VungleActivity"-->
             <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
             <!--android:launchMode="singleTop"-->
             <!--android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />-->
 
+        <!--<activity-->
+            <!--android:name=".ui.VungleFlexViewActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
+            <!--android:launchMode="singleTop"-->
+            <!--android:hardwareAccelerated="true"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+
+        <!--<activity-->
+            <!--android:name=".ui.VungleWebViewActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
+            <!--android:launchMode="singleTop" />-->
+
         <!--<receiver-->
-            <!--android:name="com.vungle.warren.NetworkProviderReceiver"-->
-            <!--android:enabled="false" >-->
+            <!--android:name=".NetworkProviderReceiver"-->
+            <!--android:enabled="false">-->
             <!--<intent-filter>-->
                 <!--<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
                 <!--<category android:name="android.intent.category.DEFAULT" />-->

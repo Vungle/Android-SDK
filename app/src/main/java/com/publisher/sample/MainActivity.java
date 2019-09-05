@@ -489,8 +489,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (vungleNativeAd != null) {
+            vungleNativeAd.setAdVisibility(true);
+        }
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+
+        if (vungleNativeAd != null) {
+            vungleNativeAd.setAdVisibility(true);
+        }
     }
 
     @Override

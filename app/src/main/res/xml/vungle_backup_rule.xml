@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <exclude domain="file" path="vungle" />
+    <exclude domain="file" path="vungle_cache" />
+    <exclude domain="external" path="vungle_cache" />
+    <exclude domain="database" path="vungle_db" />
+    <exclude domain="sharedpref" path="com.vungle.sdk.xml" />
+</full-backup-content>
