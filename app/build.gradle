@@ -63,7 +63,7 @@ dependencies {
 
     // Vungle SDK
     //implementation 'com.github.vungle:vungle-android-sdk:6.5.0-RC4'
-    implementation fileTree(dir: 'libs', include: '*.jar')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 //    implementation files('libs/publisher-sdk-android-6.4.11.jar')
 //    implementation files('libs/publisher-sdk-android-6.4.11.aar')
