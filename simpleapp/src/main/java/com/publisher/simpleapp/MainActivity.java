@@ -21,7 +21,7 @@ import java.util.Collection;
 
 public class MainActivity extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private static final String APP_ID = "5bf49746b1fd5362ddda51e2";
+    private static final String APP_ID = "591236625b2480ac40000028";
 
     private String placementID;
     private Spinner spinnerPlacement;
