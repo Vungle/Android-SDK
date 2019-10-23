@@ -165,17 +165,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initSDK() {
-        String url = "https://apiqa.vungle.com/api/v5/";
-        try {
-            Field field = VungleApiClient.class.getDeclaredField("BASE_URL");
-            field.setAccessible(true);
-            field.set(null, url);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-
         final String appId = getString(R.string.app_id);
 
         final long MEGABYTE = 1024L * 1024L;
