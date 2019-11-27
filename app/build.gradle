@@ -3,7 +3,7 @@ apply plugin: 'com.getkeepsafe.dexcount'
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.5'
