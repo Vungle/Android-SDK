@@ -389,6 +389,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (ad.name == mrec) {
                             adConfig.setAdSize(AdConfig.AdSize.VUNGLE_MREC);
+                            adConfig.setMuted(true);
                         }
 
                         vungleNativeAd = Vungle.getNativeAd(ad.placementReferenceId, adConfig, vunglePlayAdCallback);

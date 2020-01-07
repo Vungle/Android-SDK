@@ -3,12 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="initButton">#1db17a</color>
-    <color name="initButtonPressed">#72f9c7</color>
-    <color name="adButton">#3d8fc7</color>
-    <color name="adButtonPressed">#7ec8fb</color>
-    <color name="buttonText">#ffffff</color>
+    <color name="adButton">#72e1de</color>
+    <color name="adButtonPressed">#14cdc8</color>
+    <color name="buttonText">#ffeb7f</color>
     <color name="autoCacheLabel">#f2004b</color>
     <color name="line_color">#e5e6e8</color>
-    <color name="background">#f9fafc</color>
+    <color name="background">#e7faf9</color>
 </resources>

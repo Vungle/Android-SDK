@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 public class BannerListActivity extends AppCompatActivity {
 
     private static final String PLACEMENT_ID = "placement_id";
-    private static final Integer SIZE = 100;
-    private static final int POSITION = 50;
+    private static final Integer SIZE = 40;
+    private static final int POSITION = 20;
 
     private RecyclerView recyclerView;
     private VungleBannerAdAdapter adapter;
