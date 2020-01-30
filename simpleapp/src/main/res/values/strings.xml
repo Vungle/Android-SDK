@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">simpleapp</string>
+    <string name="init_vungle">INIT Vungle</string>
+    <string name="load_ad">Load Ad</string>
+    <string name="play_ad">Play Ad</string>
+    <string name="placements">Placements  </string>
+    <string name="vungle_test_app">Vungle Test App</string>
+</resources>

@@ -3,7 +3,7 @@ apply plugin: 'com.getkeepsafe.dexcount'
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.5'
@@ -19,15 +19,15 @@ android {
             storePassword 'myStorePassword'
         }
     }
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
     defaultConfig {
         applicationId "com.publisher.vungle.sample"
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         debug {
@@ -45,32 +45,47 @@ android {
 }
 
 dependencies {
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
 
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
+    // When appcompat is being used, core and localbroadcastmanager are the dependencies
+    // that is getting included
+    //  implementation "androidx.core:core:1.1.0"
+    //  implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
 
     // Vungle SDK
-    implementation 'com.vungle:publisher-sdk-android:6.4.11'
-//    implementation files('libs/publisher-sdk-android-6.4.11.jar')
+    implementation 'com.vungle:publisher-sdk-android:6.5.1'
 
-    // Required Third-party Dependencies
+    // JAR Integration
+//    implementation files('libs/vungle-android-sdk-6.5.1.jar')
 //    implementation files('libs/converter-gson-2.5.0.jar')
 //    implementation files('libs/gson-2.8.2.jar')
 //    implementation files('libs/logging-interceptor-3.12.0.jar')
 //    implementation files('libs/okhttp-3.12.0.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 //    implementation files('libs/retrofit-2.5.0.jar')
-//    implementation files('libs/VNG-moat-mobile-app-kit-2.5.1.jar') // Exclude when using AAR
+//    implementation files('libs/androidx-vng-moat-mobile-app-kit-2.5.1.jar')
 
-    implementation 'com.google.android.gms:play-services-basement:16.0.0'        // Recommended
-    implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'  // Optional
+    // AAR Integration
+//    implementation files('libs/vungle-android-sdk-6.5.1.aar')
+//    implementation files('libs/converter-gson-2.5.0.jar')
+//    implementation files('libs/gson-2.8.2.jar')
+//    implementation files('libs/logging-interceptor-3.12.0.jar')
+//    implementation files('libs/okhttp-3.12.0.jar')
+//    implementation files('libs/okio-1.15.0.jar')
+//    implementation files('libs/retrofit-2.5.0.jar')
+
+    // Recommended for SDK to be able to get Android Advertising ID
+    implementation 'com.google.android.gms:play-services-basement:17.1.1'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
 }

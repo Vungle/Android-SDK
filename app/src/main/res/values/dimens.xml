@@ -3,6 +3,7 @@
     <dimen name="view_height_top">30dp</dimen>
     <dimen name="view_height_single_row">60dp</dimen>
     <dimen name="view_height_double_row">110dp</dimen>
+    <dimen name="view_height_triple_row">160dp</dimen>
     <dimen name="btn_width">100dp</dimen>
     <dimen name="btn_height">35dp</dimen>
     <dimen name="btn_row_height">40dp</dimen>

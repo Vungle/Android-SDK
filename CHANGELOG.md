@@ -1,12 +1,32 @@
 ## Changelog
 
+### VERSION 6.5.0
+* Included new Target API 29 (Android 10) and AndroidX support (including dependencies based on AndroidX )
+* Optimized caching again to reduce data usage
+* Added addition support for new banner sizes (320x50, 300x50, 728x90)
+* MOAT viewability tracking fix
+* Improved ad playback on Android 7 and below
+* Fixed memory leaks
+* Made background webview of banner transparent
+* Added annotations to lower size of SDK using Proguard
+* Improved how our SDK handles orientation settings and changes
+* Various bugs squashed and stability improvements
+
+### VERSION 6.5.0
+* Android 10 support and build for API 29
+* AndroidX support
+* Introduction of Banner Format
+* Continuous improvements to ad caching
+* Fixed an issue with Moat tracker
+* Critical bug-fixes
+
 ### VERSION 6.4.11
-* Cache Optimization — Automatically optimizes ad caching to ensure ads are available faster. No additional work from developer needed. 
-* Introduced new MREC Video placement type to serve higher performing banners.
-* Privacy by Design — Removed latitude and longitude collection to protect users.
-* Updated Moat to no longer collect location data.
-* Removed Fetch library dependency.
-* Publisher controls to override minimum disk requirements, helping to ensure good user experiences.
+* Cache Optimization — Automatically optimizes ad caching to ensure ads are available faster. No additional work from developer needed
+* Introduced new MREC Video placement type to serve higher performing banners
+* Privacy by Design — Removed latitude and longitude collection to protect users
+* Updated Moat to no longer collect location data
+* Removed Fetch library dependency
+* Publisher controls to override minimum disk requirements, helping to ensure good user experiences
 
 ### VERSION 6.3.24
 * Android 9 Pie is now supported

@@ -15,7 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/network_security_config" >
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:fullBackupContent="@xml/vungle_backup_rule" >
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".BannerListActivity"/>
 
         <activity
             android:name=".MainActivity"
@@ -28,33 +41,27 @@
         </activity>
 
         <!--JAR Integration-->
-        <!--<activity-->
-            <!--android:name="com.vungle.warren.ui.VungleActivity"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
-            <!--android:launchMode="singleTop"-->
-            <!--android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />-->
+        <!-- <activity
+            android:name="com.vungle.warren.ui.VungleActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.vungle.warren.ui.VungleFlexViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!--<activity-->
-            <!--android:name="com.vungle.warren.ui.VungleFlexViewActivity"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
-            <!--android:launchMode="singleTop"-->
-            <!--android:hardwareAccelerated="true"-->
-            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+        <receiver
+            android:name="com.vungle.warren.NetworkProviderReceiver"
+            android:enabled="false" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
 
-        <!--<activity-->
-            <!--android:name="com.vungle.warren.ui.VungleWebViewActivity"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"-->
-            <!--android:launchMode="singleTop" />-->
-
-        <!--<receiver-->
-            <!--android:name="com.vungle.warren.NetworkProviderReceiver"-->
-            <!--android:enabled="false">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
-
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver> -->
     </application>
 
 </manifest>

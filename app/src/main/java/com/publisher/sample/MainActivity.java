@@ -1,9 +1,9 @@
 package com.publisher.sample;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,17 +11,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.vungle.warren.Banners;
 import com.vungle.warren.Vungle;
 import com.vungle.warren.AdConfig;              // Custom ad configurations
 import com.vungle.warren.InitCallback;          // Initialization callback
 import com.vungle.warren.LoadAdCallback;        // Load ad callback
 import com.vungle.warren.PlayAdCallback;        // Play ad callback
+import com.vungle.warren.VungleApiClient;
+import com.vungle.warren.VungleBanner;
 import com.vungle.warren.VungleNativeAd;        // Flex-Feed ad
 import com.vungle.warren.Vungle.Consent;        // GDPR consent
 import com.vungle.warren.VungleSettings;
 import com.vungle.warren.error.VungleException; // onError message
 
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -40,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         @Nullable private final Button pauseResumeButton;
         @Nullable private final Button closeButton;
         @Nullable private final RelativeLayout container;
+        @Nullable
+        private final Button listButton;
 
         private VungleAd(String name) {
             this.name = name;
@@ -49,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             this.playButton = getPlayButton();
             this.pauseResumeButton = getPauseResumeButton();
             this.closeButton = getCloseButton();
+            this.listButton = getListButton();
             this.container = getContainer();
             this.nativeAdPlaying = false;
         }
@@ -106,12 +113,23 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
+
+        private Button getListButton() {
+            int buttonId = getResources().getIdentifier("btn_list_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            if (button != null) {
+                return button;
+            }
+            return null;
+        }
+
     }
 
     protected static String PACKAGE_NAME;
 
     private View nativeAdView;
     private VungleNativeAd vungleNativeAd;
+    private VungleBanner vungleBannerAd;
 
     private List<VungleAd> vungleAds = new ArrayList<>();
 
@@ -121,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
     final private String rewardedPlayable = "rewarded_playable";
     final private String mrec = "mrec";
     final private String inFeed = "in_feed";
+    final private String banner = "banner";
 
     final String LOG_TAG = "VungleSampleApp";
 
@@ -139,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         vungleAds.add(new VungleAd(rewardedPlayable));
         vungleAds.add(new VungleAd(mrec));
         vungleAds.add(new VungleAd(inFeed));
+        vungleAds.add(new VungleAd(banner));
 
         initUiElements();
         initSDK();
@@ -176,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onError(Throwable throwable) {
+            public void onError(VungleException throwable) {
                 if (throwable != null) {
                     Log.d(LOG_TAG, "InitCallback - onError: " + throwable.getLocalizedMessage());
                 } else {
@@ -218,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onError(final String placementReferenceID, Throwable throwable) {
+        public void onError(final String placementReferenceID, VungleException throwable) {
             Log.d(LOG_TAG, "PlayAdCallback - onError" +
                     "\n\tPlacement Reference ID = " + placementReferenceID +
                     "\n\tError = " + throwable.getLocalizedMessage());
@@ -231,23 +251,26 @@ public class MainActivity extends AppCompatActivity {
     private final LoadAdCallback vungleLoadAdCallback = new LoadAdCallback() {
         @Override
         public void onAdLoad(final String placementReferenceID) {
-            Log.d(LOG_TAG,"LoadAdCallback - onAdLoad" +
+            Log.d(LOG_TAG, "LoadAdCallback - onAdLoad" +
                     "\n\tPlacement Reference ID = " + placementReferenceID);
 
             VungleAd ad = getVungleAd(placementReferenceID);
             if (ad != null) {
                 enableButton(ad.playButton);
+                enableButton(ad.listButton);
             }
         }
 
         @Override
-        public void onError(final String placementReferenceID, Throwable throwable) {
+        public void onError(final String placementReferenceID, VungleException throwable) {
             Log.d(LOG_TAG, "LoadAdCallback - onError" +
                     "\n\tPlacement Reference ID = " + placementReferenceID +
                     "\n\tError = " + throwable.getLocalizedMessage());
 
             makeToast(throwable.getLocalizedMessage());
             checkInitStatus(throwable);
+            VungleAd ad = getVungleAd(placementReferenceID);
+            enableButton(ad.loadButton);
         }
     };
 
@@ -281,6 +304,9 @@ public class MainActivity extends AppCompatActivity {
             case mrec:
             case inFeed:
                 setNativeAd(ad);
+                break;
+            case banner:
+                setBannerAd(ad);
                 break;
             default:
                 Log.d(LOG_TAG, "Vungle ad type not recognized");
@@ -363,6 +389,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (ad.name == mrec) {
                             adConfig.setAdSize(AdConfig.AdSize.VUNGLE_MREC);
+                            adConfig.setMuted(true);
                         }
 
                         vungleNativeAd = Vungle.getNativeAd(ad.placementReferenceId, adConfig, vunglePlayAdCallback);
@@ -425,11 +452,112 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void setBannerAd(final VungleAd ad) {
+        disableButton(ad.pauseResumeButton);
+        disableButton(ad.closeButton);
+        disableButton(ad.listButton);
+        final AdConfig adConfig = new AdConfig();
+        adConfig.setAdSize(AdConfig.AdSize.BANNER);
+
+        // Loading Banner ad works same way as fullscreen ad and only requires the placement and AdSize to be configured properly
+        ad.loadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Vungle.isInitialized()) {
+                    // Load Vungle ad
+                    Banners.loadBanner(ad.placementReferenceId, adConfig.getAdSize(), vungleLoadAdCallback);
+                    // Button UI
+                    disableButton(ad.loadButton);
+                } else {
+                    makeToast("Vungle SDK not initialized");
+                }
+            }
+        });
+
+        ad.playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Vungle.isInitialized()) {
+
+                    if (Banners.canPlayAd(ad.placementReferenceId, adConfig.getAdSize())) {
+                        if (vungleBannerAd != null) {
+                            vungleBannerAd.destroyAd();
+                            vungleBannerAd = null;
+                            ad.container.removeAllViews();
+                        }
+
+                        vungleBannerAd = Banners.getBanner(ad.placementReferenceId, adConfig.getAdSize(), vunglePlayAdCallback);
+
+                        if (vungleBannerAd != null) {
+                            ad.container.addView(vungleBannerAd);
+                            ad.container.setVisibility(RelativeLayout.VISIBLE);
+                        }
+
+                        ad.nativeAdPlaying = true;
+
+                        // Button UI
+                        enableButton(ad.loadButton);
+                        disableButton(ad.playButton);
+                        enableButton(ad.pauseResumeButton);
+                        enableButton(ad.closeButton);
+
+                        ad.nativeAdPlaying = true;
+                        ad.pauseResumeButton.setText("PAUSE");
+                    } else {
+                        makeToast("Vungle ad not playable for " + ad.placementReferenceId);
+                    }
+                } else {
+                    makeToast("Vungle SDK not initialized");
+                }
+            }
+        });
+
+        ad.pauseResumeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ad.nativeAdPlaying = !ad.nativeAdPlaying;
+
+                if (vungleBannerAd != null) {
+                    vungleBannerAd.setAdVisibility(ad.nativeAdPlaying);
+                }
+
+                if (ad.nativeAdPlaying) {
+                    ad.pauseResumeButton.setText("PAUSE");
+                } else {
+                    ad.pauseResumeButton.setText("RESUME");
+                }
+            }
+        });
+
+        ad.closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (vungleBannerAd != null) {
+                    vungleBannerAd.destroyAd();
+                    vungleNativeAd = null;
+                    ad.container.removeView(vungleBannerAd);
+                    ad.container.setVisibility(RelativeLayout.GONE);
+                }
+
+                disableButton(ad.pauseResumeButton);
+                disableButton(ad.closeButton);
+            }
+        });
+
+        if (ad.listButton != null) {
+            ad.listButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(BannerListActivity.getIntent(MainActivity.this, ad.placementReferenceId));
+                }
+            });
+        }
+    }
+
     private AdConfig getAdConfig() {
         AdConfig adConfig = new AdConfig();
 
         adConfig.setBackButtonImmediatelyEnabled(true);
-        adConfig.setAutoRotate(false);
         adConfig.setMuted(false);
         adConfig.setOrdinal(5);
 
@@ -465,6 +593,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void enableButton(final Button button) {
+        if (button == null)
+            return;
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -475,6 +605,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void disableButton(final Button button) {
+        if (button == null)
+            return;
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
