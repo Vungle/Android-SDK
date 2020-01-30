@@ -52,6 +52,10 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
     // When appcompat is being used, core and localbroadcastmanager are the dependencies
@@ -59,14 +63,11 @@ dependencies {
     //  implementation "androidx.core:core:1.1.0"
     //  implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
 
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-
     // Vungle SDK
-    implementation 'com.vungle.early-access:publisher-sdk-android:6.5.0'
+    implementation 'com.vungle:publisher-sdk-android:6.5.1'
 
     // JAR Integration
-//    implementation files('libs/vungle-android-sdk-6.5.0.jar')
+//    implementation files('libs/vungle-android-sdk-6.5.1.jar')
 //    implementation files('libs/converter-gson-2.5.0.jar')
 //    implementation files('libs/gson-2.8.2.jar')
 //    implementation files('libs/logging-interceptor-3.12.0.jar')
@@ -76,7 +77,7 @@ dependencies {
 //    implementation files('libs/androidx-vng-moat-mobile-app-kit-2.5.1.jar')
 
     // AAR Integration
-//    implementation files('libs/vungle-android-sdk-6.5.0.aar')
+//    implementation files('libs/vungle-android-sdk-6.5.1.aar')
 //    implementation files('libs/converter-gson-2.5.0.jar')
 //    implementation files('libs/gson-2.8.2.jar')
 //    implementation files('libs/logging-interceptor-3.12.0.jar')
@@ -87,7 +88,4 @@ dependencies {
     // Recommended for SDK to be able to get Android Advertising ID
     implementation 'com.google.android.gms:play-services-basement:17.1.1'
     implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
-
-    // Optional
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }
