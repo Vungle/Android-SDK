@@ -1,6 +1,6 @@
 ## Changelog
 
-### VERSION 6.5.0
+### VERSION 6.5.1
 * Included new Target API 29 (Android 10) and AndroidX support (including dependencies based on AndroidX )
 * Optimized caching again to reduce data usage
 * Added addition support for new banner sizes (320x50, 300x50, 728x90)
