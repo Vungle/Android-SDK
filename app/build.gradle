@@ -56,12 +56,13 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    // Required AndroidX support libraries
+    implementation "androidx.core:core:1.1.0"
+    implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
 
     // When appcompat is being used, core and localbroadcastmanager are the dependencies
     // that is getting included
-    //  implementation "androidx.core:core:1.1.0"
-    //  implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
+    //  implementation 'androidx.appcompat:appcompat:1.1.0'
 
     // Vungle SDK
     implementation 'com.vungle:publisher-sdk-android:6.5.1'
