@@ -1,5 +1,9 @@
 ## Changelog
 
+### VERSION 6.5.2
+* Programmatic Demand Banner Support
+* Bug Fixes
+
 ### VERSION 6.5.1
 * Included new Target API 29 (Android 10) and AndroidX support (including dependencies based on AndroidX )
 * Optimized caching again to reduce data usage

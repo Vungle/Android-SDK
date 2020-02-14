@@ -1,10 +1,10 @@
 ## Getting Started
-Please refer to https://support.vungle.com/hc/en-us/articles/360032177151
+Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 
 Early Access Vungle SDK for Android
 =======================
 
-**Version 6.5.0**
+**Version 6.5.2**
 
 Welcome to the Vungle SDK which has been battle-tested to unlock amazing monetization opportunities for you.  The Vungle SDK enables the very best creatives in mobile advertising. 
 ## Attributions
