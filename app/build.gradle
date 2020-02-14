@@ -57,8 +57,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Required AndroidX support libraries
-    implementation "androidx.core:core:1.1.0"
-    implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
+    // implementation "androidx.core:core:1.1.0"
+    // implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
 
     // When appcompat is being used, core and localbroadcastmanager are the dependencies
     // that is getting included
