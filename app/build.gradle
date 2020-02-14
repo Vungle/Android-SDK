@@ -62,7 +62,7 @@ dependencies {
 
     // When appcompat is being used, core and localbroadcastmanager are the dependencies
     // that is getting included
-    //  implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
     // Vungle SDK
     implementation 'com.vungle:publisher-sdk-android:6.5.2'
