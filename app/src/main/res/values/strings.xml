@@ -13,15 +13,40 @@
     <string name="title_mrec">MREC 300x250</string>
     <string name="title_in_feed">In-Feed</string>
     <string name="title_banner">Banner</string>
+    <string name="title_banner_top">Top Banner</string>
+    <string name="title_banner_middle">Middle MREC</string>
+    <string name="title_banner_bottom">Bottom Banner</string>
+    <string name="title_fullscreen">Fullscreen</string>
+
+    <!--    Unity test-->
+<!--    <string name="app_id">5bf49746b1fd5362ddda51e2</string>-->
+<!--    <string name="placement_id_interstitial_legacy">LEGACY_INTERSTITIAL-4364832</string>-->
+<!--    <string name="placement_id_interstitial_dt">DYNAMIC_TEMPLATE_INTERSTITIAL-6969365</string>-->
+<!--    <string name="placement_id_rewarded_video">LEGACY_REWARDED-2115035</string>-->
+<!--    <string name="placement_id_rewarded_playable">DYNAMIC_TEMPLATE_REWARDED-5271535</string>-->
+<!--    <string name="placement_id_mrec">MREC-3349845</string>-->
+<!--    <string name="placement_id_in_feed">FLEX_FEED-2416159</string>-->
+<!--    <string name="placement_id_banner">BANNER-5454585</string>-->
+
+<!--    &lt;!&ndash;    Multiple banner&ndash;&gt;-->
+<!--    <string name="placement_id_banner_top">BANNER-5454585ER2-6990728</string>-->
+<!--    <string name="placement_id_banner_middle">MREC-3349845</string>-->
+<!--    <string name="placement_id_banner_bottom">BANNER3-3633049</string>-->
+
 
     <string name="app_id">5ae0db55e2d43668c97bd65e</string>
     <string name="placement_id_interstitial_legacy">LEGACY_INTERSTITIAL-4364832</string>
     <string name="placement_id_interstitial_dt">DYNAMIC_TEMPLATE_INTERSTITIAL-6969365</string>
-    <string name="placement_id_rewarded_video">REWARDED_VIDEO-4898828</string>
-    <string name="placement_id_rewarded_playable">REWARDED_PLAYABLE-1895470</string>
+    <string name="placement_id_rewarded_video">LEGACY_REWARDED-2115035</string>
+    <string name="placement_id_rewarded_playable">DYNAMIC_TEMPLATE_REWARDED-5271535</string>
     <string name="placement_id_mrec">MREC-2191415</string>
     <string name="placement_id_in_feed">FLEX_FEED-2416159</string>
     <string name="placement_id_banner">BANNER-5454585</string>
+
+    Multiple banner
+    <string name="placement_id_banner_top">BANNER2-6990728</string>
+    <string name="placement_id_banner_middle">MREC-2191415</string>
+    <string name="placement_id_banner_bottom">BANNER3-3633049</string>
 
     <!--Amazon-->
     <!--<string name="app_id">59d6a4bc0d22864317004ac9</string>-->
@@ -34,12 +59,16 @@
     <!--<string name="placement_id_banner">BANNER-5454585</string>-->
 
     <!--QA-->
-    <!--<string name="app_id">5bf49746b1fd5362ddda51e2</string>-->
-    <!--<string name="placement_id_interstitial_legacy">LOCAL-9231064</string>-->
-    <!--<string name="placement_id_interstitial_dt">MRAID-3374957</string>-->
-    <!--<string name="placement_id_rewarded_video">AC_REWARDED-8282123</string>-->
-    <!--<string name="placement_id_rewarded_playable">MRAID_REWARDED-5435759</string>-->
-    <!--<string name="placement_id_mrec">MREC-3349845</string>-->
-    <!--<string name="placement_id_in_feed">FLEXFEED-2744806</string>-->
-    <!--<string name="placement_id_banner">BANNER2-2291429</string>-->
+<!--    <string name="app_id">5bf49746b1fd5362ddda51e2</string>-->
+<!--    <string name="placement_id_interstitial_legacy">LOCAL-9231064</string>-->
+<!--    <string name="placement_id_interstitial_dt">MRAID-3374957</string>-->
+<!--    <string name="placement_id_rewarded_video">AC_REWARDED-8282123</string>-->
+<!--    <string name="placement_id_rewarded_playable">MRAID_REWARDED-5435759</string>-->
+<!--    <string name="placement_id_mrec">MREC-3349845</string>-->
+<!--    <string name="placement_id_in_feed">FLEXFEED-2744806</string>-->
+<!--    <string name="placement_id_banner">BANNER-2034855</string>-->
+
+<!--    <string name="placement_id_banner_top">BANNER-2034855</string>-->
+<!--    <string name="placement_id_banner_middle">MREC-3349845</string>-->
+<!--    <string name="placement_id_banner_bottom">BANNER3-2868066</string>-->
 </resources>

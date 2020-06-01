@@ -545,7 +545,7 @@
                 <LinearLayout
                     android:id="@+id/view_banner"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_height_triple_row"
+                    android:layout_height="@dimen/view_height_four_row"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/margin_vertical_view"
                     android:layout_marginBottom="@dimen/margin_vertical_view"
@@ -636,6 +636,7 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/btn_row_height"
@@ -660,6 +661,32 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_row_height"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_vertical"
+                        android:layout_marginBottom="@dimen/margin_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_horizontal"
+                        android:paddingRight="@dimen/padding_horizontal"
+                        android:scaleType="fitCenter">
+
+                        <Button
+                            android:id="@+id/btn_multiple_banner"
+                            android:layout_width="@dimen/btn_width"
+                            android:layout_height="@dimen/btn_height"
+                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
+                            android:layout_marginRight="@dimen/btn_margin_horizontal"
+                            android:layout_weight="1"
+                            android:background="@drawable/aqua_button_bg"
+                            android:text="Multiple Banner"
+                            android:textColor="@color/buttonText"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <RelativeLayout

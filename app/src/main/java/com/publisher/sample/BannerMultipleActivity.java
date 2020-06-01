@@ -1,9 +1,8 @@
 package com.publisher.sample;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,50 +10,42 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.vungle.warren.AdConfig;
 import com.vungle.warren.Banners;
+import com.vungle.warren.LoadAdCallback;
+import com.vungle.warren.PlayAdCallback;
 import com.vungle.warren.Vungle;
-import com.vungle.warren.AdConfig;              // Custom ad configurations
-import com.vungle.warren.InitCallback;          // Initialization callback
-import com.vungle.warren.LoadAdCallback;        // Load ad callback
-import com.vungle.warren.PlayAdCallback;        // Play ad callback
 import com.vungle.warren.VungleBanner;
-import com.vungle.warren.VungleNativeAd;        // Flex-Feed ad
-import com.vungle.warren.Vungle.Consent;        // GDPR consent
-import com.vungle.warren.VungleSettings;
-import com.vungle.warren.error.VungleException; // onError message
+import com.vungle.warren.VungleNativeAd;
+import com.vungle.warren.error.VungleException;
 
-
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import static com.vungle.warren.Vungle.getValidPlacements;
+public class BannerMultipleActivity extends AppCompatActivity {
 
-
-public class MainActivity extends AppCompatActivity {
-
-    private class VungleAd {
+    private class VungleBannerAd {
         @NonNull private final String name;
         @NonNull private final String placementReferenceId;
-        @NonNull private final TextView titleTextView;
         @NonNull private final Button loadButton;
         @NonNull private final Button playButton;
+        @NonNull private final Button pauseResumeButton;
+        @NonNull private final Button closeButton;
         @NonNull private boolean nativeAdPlaying;
-        @Nullable private final Button pauseResumeButton;
-        @Nullable private final Button closeButton;
         @Nullable private final RelativeLayout container;
-        @Nullable private final Button bannerListButton;
-        @Nullable private final Button bannerMultipleButton;
+        @Nullable private VungleBanner vungleBanner;
 
-        private VungleAd(String name) {
+        private VungleBannerAd(String name) {
             this.name = name;
             this.placementReferenceId = getPlacementReferenceId();
-            this.titleTextView = getTextView();
             this.loadButton = getLoadButton();
             this.playButton = getPlayButton();
             this.pauseResumeButton = getPauseResumeButton();
             this.closeButton = getCloseButton();
-            this.bannerListButton = getBannerListButton();
-            this.bannerMultipleButton = getBannerMultipleButton();
             this.container = getContainer();
             this.nativeAdPlaying = false;
         }
@@ -62,14 +53,6 @@ public class MainActivity extends AppCompatActivity {
         private String getPlacementReferenceId() {
             int stringId = getResources().getIdentifier("placement_id_" + name, "string", PACKAGE_NAME);
             return getString(stringId);
-        }
-
-        private TextView getTextView() {
-            int textViewId = getResources().getIdentifier("tv_" + name, "id", PACKAGE_NAME);
-            String textViewString = getString(getResources().getIdentifier("title_" + name, "string", PACKAGE_NAME));
-            TextView tv = (TextView) findViewById(textViewId);
-            tv.setText(textViewString + " - " + placementReferenceId);
-            return tv;
         }
 
         private Button getLoadButton() {
@@ -112,135 +95,60 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
-
-        private Button getBannerListButton() {
-            int buttonId = getResources().getIdentifier("btn_list_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            if (button != null) {
-                return button;
-            }
-            return null;
-        }
-
-        private Button getBannerMultipleButton() {
-            int buttonId = getResources().getIdentifier("btn_multiple_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            if (button != null) {
-                return button;
-            }
-            return null;
-        }
     }
 
     protected static String PACKAGE_NAME;
 
     private View nativeAdView;
+    private VungleBanner   vungleBannerAdTop;
     private VungleNativeAd vungleNativeAd;
-    private VungleBanner vungleBannerAd;
+    private VungleBanner   vungleBannerAdBottom;
 
-    private List<VungleAd> vungleAds = new ArrayList<>();
+    private VungleBanner vungleBanner;
 
-    final private String interstitialLegacy = "interstitial_legacy";
-    final private String interstitialDt = "interstitial_dt";
-    final private String rewardedVideo = "rewarded_video";
-    final private String rewardedPlayable = "rewarded_playable";
-    final private String mrec = "mrec";
-    final private String inFeed = "in_feed";
-    final private String banner = "banner";
+    private List<VungleBannerAd> vungleBannerAds = new ArrayList<>();
 
-    final String LOG_TAG = "VungleSampleApp";
+    final private String bannerTop = "banner_top";
+    final private String bannerMiddle = "banner_middle";
+    final private String bannerBottom = "banner_bottom";
 
-    private Consent vungleConsent;
+    private static final String LOG_TAG = "VungleSamplApp";
+
+    public static Intent getIntent(Context ctx) {
+        Intent intent = new Intent(ctx, BannerMultipleActivity.class);
+        return intent;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_banner_multiple);
 
         PACKAGE_NAME = getApplicationContext().getPackageName();
 
-        vungleAds.add(new VungleAd(interstitialLegacy));
-        vungleAds.add(new VungleAd(interstitialDt));
-        vungleAds.add(new VungleAd(rewardedVideo));
-        vungleAds.add(new VungleAd(rewardedPlayable));
-        vungleAds.add(new VungleAd(mrec));
-        vungleAds.add(new VungleAd(inFeed));
-        vungleAds.add(new VungleAd(banner));
+        Log.d(LOG_TAG, PACKAGE_NAME);
 
-        initUiElements();
-        initSDK();
+        vungleBannerAds.add(new VungleBannerAd(bannerTop));
+        vungleBannerAds.add(new VungleBannerAd(bannerMiddle));
+        vungleBannerAds.add(new VungleBannerAd(bannerBottom));
+
+        initUIElements();
     }
 
-    private void initSDK() {
-        final String appId = getString(R.string.app_id);
+    private void initUIElements() {
+        Log.d(LOG_TAG, "Initialize Multiple Banner Ad");
 
-        final long MEGABYTE = 1024L * 1024L;
-        final VungleSettings vungleSettings =
-                new VungleSettings.Builder()
-                        .setMinimumSpaceForAd(20 * MEGABYTE)
-                        .setMinimumSpaceForInit(21 * MEGABYTE)
-                        .setAndroidIdOptOut(false)
-                        .build();
+        for (VungleBannerAd vungleBannerAd : vungleBannerAds) {
+            setVungleBannerAdUi(vungleBannerAd);
 
-        Vungle.updateCCPAStatus(Consent.OPTED_OUT);
-        Vungle.updateConsentStatus(Consent.OPTED_OUT, "7.7.7");
-//        Vungle.updateConsentStatus(Consent.OPTED_OUT, null);
-
-        Vungle.init(appId, getApplicationContext(), new InitCallback() {
-            @Override
-            public void onSuccess() {
-                makeToast("Vungle SDK initialized");
-                Log.d(LOG_TAG, "InitCallback - onSuccess");
-                Log.d(LOG_TAG, "Vungle SDK Version - " + com.vungle.warren.BuildConfig.VERSION_NAME);
-                Log.d(LOG_TAG, "Valid placement list:");
-                for (String validPlacementReferenceIdId : getValidPlacements()) {
-                    Log.d(LOG_TAG, validPlacementReferenceIdId);
-                }
-
-                Vungle.loadAd("LEGACY_INTERSTITIAL-4364832", vungleLoadAdCallback);
-                Vungle.loadAd("DYNAMIC_TEMPLATE_INTERSTITIAL-6969365", vungleLoadAdCallback);
-                Vungle.loadAd("REWARDED_VIDEO-4898828", vungleLoadAdCallback);
-
-//                Vungle.updateCCPAStatus(Vungle.CCPAStatus.OPTED_OUT);
-//                Vungle.updateConsentStatus(Consent.OPTED_OUT, "7.7.7");
-//
-                Log.d(LOG_TAG, Vungle.getCCPAStatus().toString());
-//
-//                Vungle.updateCCPAStatus(Vungle.CCPAStatus.OPTED_IN);
-//
-//                Log.d(LOG_TAG, Vungle.getCCPAStatus().toString());
-//                 Set button state according to ad playability
-                for (VungleAd vungleAd : vungleAds) {
-                    if (Vungle.canPlayAd(vungleAd.placementReferenceId)) {
-                        enableButton(vungleAd.playButton);
-                    } else {
-                        enableButton(vungleAd.loadButton);
-                    }
-                }
+            if (Vungle.canPlayAd(vungleBannerAd.placementReferenceId)) {
+                enableButton(vungleBannerAd.playButton);
+            } else {
+                enableButton(vungleBannerAd.loadButton);
             }
-
-            @Override
-            public void onError(VungleException throwable) {
-                if (throwable != null) {
-                    Log.d(LOG_TAG, "InitCallback - onError: " + throwable.getLocalizedMessage());
-                } else {
-                    Log.d(LOG_TAG, "Throwable is null");
-                }
-            }
-
-            @Override
-            public void onAutoCacheAdAvailable(final String placementReferenceID) {
-                Log.d(LOG_TAG, "InitCallback - onAutoCacheAdAvailable" +
-                        "\n\tPlacement Reference ID = " + placementReferenceID);
-
-                VungleAd ad = getVungleAd(placementReferenceID);
-                if (ad != null) {
-                    enableButton(ad.playButton);
-                    disableButton(ad.loadButton);
-                }
-            }
-        }, vungleSettings);
+        }
     }
+
 
     private final PlayAdCallback vunglePlayAdCallback = new PlayAdCallback() {
         @Override
@@ -248,13 +156,17 @@ public class MainActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "PlayAdCallback - onAdStart" +
                     "\n\tPlacement Reference ID = " + placementReferenceID);
 
-            VungleAd ad = getVungleAd(placementReferenceID);
+            if (placementReferenceID.equals("LEGACY_INTERSTITIAL-4364832")) {
+                Vungle.loadAd("LEGACY_INTERSTITIAL-4364832", vungleLoadAdCallback);
+            }
+
+            VungleBannerAd ad = getVungleAd(placementReferenceID);
             if (ad != null) {
                 disableButton(ad.playButton);
             }
         }
 
-        // deprecated
+        // Deprecated
         @Override
         public void onAdEnd(final String placementReferenceID, final boolean completed, final boolean isCTAClicked) {
             Log.d(LOG_TAG, "PlayAdCallback - onAdEnd" +
@@ -277,8 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onAdRewarded(String placementReferenceID) {
-            Log.d(LOG_TAG, "PlayAdCallback - onAdRewarded" +
-                    "\n\tPlacement Reference ID = " + placementReferenceID);
+            // Not applicable for banner ads
         }
 
         @Override
@@ -294,7 +205,6 @@ public class MainActivity extends AppCompatActivity {
                     "\n\tError = " + throwable.getLocalizedMessage());
 
             makeToast(throwable.getLocalizedMessage());
-            checkInitStatus(throwable);
         }
     };
 
@@ -304,11 +214,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "LoadAdCallback - onAdLoad" +
                     "\n\tPlacement Reference ID = " + placementReferenceID);
 
-            VungleAd ad = getVungleAd(placementReferenceID);
+            VungleBannerAd ad = getVungleAd(placementReferenceID);
             if (ad != null) {
                 enableButton(ad.playButton);
-                disableButton(ad.loadButton);
-                enableButton(ad.bannerListButton);
             }
         }
 
@@ -319,26 +227,12 @@ public class MainActivity extends AppCompatActivity {
                     "\n\tError = " + throwable.getLocalizedMessage());
 
             makeToast(throwable.getLocalizedMessage());
-            checkInitStatus(throwable);
-            VungleAd ad = getVungleAd(placementReferenceID);
+            VungleBannerAd ad = getVungleAd(placementReferenceID);
             enableButton(ad.loadButton);
         }
     };
 
-    private void checkInitStatus(Throwable throwable) {
-        try {
-            VungleException ex = (VungleException) throwable;
-            Log.d(LOG_TAG, ex.getExceptionCode() + "");
-
-            if (ex.getExceptionCode() == VungleException.VUNGLE_NOT_INTIALIZED) {
-                initSDK();
-            }
-        } catch (ClassCastException cex) {
-            Log.d(LOG_TAG, cex.getMessage());
-        }
-    }
-
-    private void setVungleAdUi(final VungleAd ad) {
+    private void setVungleBannerAdUi(final VungleBannerAd ad) {
         if (Vungle.canPlayAd(ad.placementReferenceId)) {
             enableButton(ad.playButton);
         } else {
@@ -346,17 +240,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         switch (ad.name) {
-            case interstitialLegacy:
-            case interstitialDt:
-            case rewardedVideo:
-            case rewardedPlayable:
-                setFullscreenAd(ad);
-                break;
-            case mrec:
-            case inFeed:
+            case bannerMiddle:
                 setNativeAd(ad);
                 break;
-            case banner:
+            case bannerTop:
+                ad.vungleBanner = vungleBannerAdTop;
+                setBannerAd(ad);
+            case bannerBottom:
+                ad.vungleBanner = vungleBannerAdBottom;
                 setBannerAd(ad);
                 break;
             default:
@@ -365,54 +256,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setFullscreenAd(final VungleAd ad) {
-        // Set custom configuration for rewarded placements
-        if (ad.name.equals(rewardedVideo) || ad.name.equals(rewardedPlayable)) {
-            setCustomRewardedFields();
-        }
-
-        ad.loadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Vungle.isInitialized()) {
-                    // Play Vungle ad
-                    Vungle.loadAd(ad.placementReferenceId, vungleLoadAdCallback);
-                    // Button UI
-                    disableButton(ad.loadButton);
-                } else {
-                    makeToast("Vungle SDK not initialized");
-                }
-            }
-        });
-
-        ad.playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setCustomRewardedFields();
-                if (Vungle.isInitialized()) {
-                    if (Vungle.canPlayAd(ad.placementReferenceId)) {
-                        final AdConfig adConfig = getAdConfig();
-
-                        // Play Vungle ad
-                        Vungle.playAd(ad.placementReferenceId, adConfig, vunglePlayAdCallback);
-                        // Button UI
-                        enableButton(ad.loadButton);
-                        disableButton(ad.playButton);
-                    } else {
-                        makeToast("Vungle ad not playable for " + ad.placementReferenceId);
-                    }
-                } else {
-                    makeToast("Vungle SDK not initialized");
-                }
-            }
-        });
-    }
-
-    private void setNativeAd(final VungleAd ad) {
+    private void setNativeAd(final VungleBannerAd ad) {
         disableButton(ad.pauseResumeButton);
         disableButton(ad.closeButton);
 
-        // Loading VungleNativeAd works similar to fullscreen ad and only requires the placement to be configured properly
         ad.loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -440,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                             ad.container.removeView(nativeAdView);
                         }
 
-                        if (ad.name == mrec) {
+                        if (ad.name == bannerMiddle) {
                             adConfig.setAdSize(AdConfig.AdSize.VUNGLE_MREC);
                             adConfig.setMuted(true);
                         }
@@ -505,10 +352,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setBannerAd(final VungleAd ad) {
+    private void setBannerAd(final VungleBannerAd ad) {
         disableButton(ad.pauseResumeButton);
         disableButton(ad.closeButton);
-        disableButton(ad.bannerListButton);
+
         final AdConfig adConfig = new AdConfig();
         adConfig.setAdSize(AdConfig.AdSize.BANNER);
 
@@ -533,16 +380,16 @@ public class MainActivity extends AppCompatActivity {
                 if (Vungle.isInitialized()) {
 
                     if (Banners.canPlayAd(ad.placementReferenceId, adConfig.getAdSize())) {
-                        if (vungleBannerAd != null) {
-                            vungleBannerAd.destroyAd();
-                            vungleBannerAd = null;
+                        if (ad.vungleBanner != null) {
+                            ad.vungleBanner.destroyAd();
+                            ad.vungleBanner = null;
                             ad.container.removeAllViews();
                         }
 
-                        vungleBannerAd = Banners.getBanner(ad.placementReferenceId, adConfig.getAdSize(), vunglePlayAdCallback);
+                        ad.vungleBanner = Banners.getBanner(ad.placementReferenceId, adConfig.getAdSize(), vunglePlayAdCallback);
 
-                        if (vungleBannerAd != null) {
-                            ad.container.addView(vungleBannerAd);
+                        if (ad.vungleBanner != null) {
+                            ad.container.addView(ad.vungleBanner);
                             ad.container.setVisibility(RelativeLayout.VISIBLE);
                         }
 
@@ -570,8 +417,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ad.nativeAdPlaying = !ad.nativeAdPlaying;
 
-                if (vungleBannerAd != null) {
-                    vungleBannerAd.setAdVisibility(ad.nativeAdPlaying);
+                if (ad.vungleBanner != null) {
+                    ad.vungleBanner.setAdVisibility(ad.nativeAdPlaying);
                 }
 
                 if (ad.nativeAdPlaying) {
@@ -585,10 +432,10 @@ public class MainActivity extends AppCompatActivity {
         ad.closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (vungleBannerAd != null) {
-                    vungleBannerAd.destroyAd();
-                    vungleNativeAd = null;
-                    ad.container.removeView(vungleBannerAd);
+                if (ad.vungleBanner != null) {
+                    ad.vungleBanner.destroyAd();
+                    ad.vungleBanner = null;
+                    ad.container.removeView(ad.vungleBanner);
                     ad.container.setVisibility(RelativeLayout.GONE);
                 }
 
@@ -596,58 +443,10 @@ public class MainActivity extends AppCompatActivity {
                 disableButton(ad.closeButton);
             }
         });
-
-        if (ad.bannerListButton != null) {
-            ad.bannerListButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(BannerListActivity.getIntent(MainActivity.this, ad.placementReferenceId));
-                }
-            });
-        }
-
-        if (ad.bannerMultipleButton != null) {
-            ad.bannerMultipleButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(BannerMultipleActivity.getIntent(MainActivity.this));
-                }
-            });
-        }
     }
 
-    private AdConfig getAdConfig() {
-        AdConfig adConfig = new AdConfig();
-
-        adConfig.setBackButtonImmediatelyEnabled(true);
-        adConfig.setAdOrientation(AdConfig.MATCH_VIDEO);
-
-        adConfig.setMuted(false);
-        adConfig.setOrdinal(5);
-
-        return adConfig;
-    }
-
-    private void setCustomRewardedFields() {
-        Vungle.setIncentivizedFields("TestUser", "", "RewardedBody", "RewardedKeepWatching", "RewardedClose");
-    }
-
-
-    private void initUiElements() {
-        Log.d(LOG_TAG, "initUiElements");
-
-        TextView text_app_id = (TextView) findViewById(R.id.text_app_id);
-        text_app_id.setText("App ID - " + getString(R.string.app_id));
-
-        Log.d(LOG_TAG, "!!!VungleAd Test Begins!!!");
-
-        for (VungleAd vungleAd : vungleAds) {
-            setVungleAdUi(vungleAd);
-        }
-    }
-
-    private VungleAd getVungleAd(String placementReferenceId) {
-        for (VungleAd vungleAd : vungleAds) {
+    private VungleBannerAd getVungleAd(String placementReferenceId) {
+        for (VungleBannerAd vungleAd : vungleBannerAds) {
             if (vungleAd.placementReferenceId.equals(placementReferenceId)) {
                 return vungleAd;
             }
@@ -681,46 +480,5 @@ public class MainActivity extends AppCompatActivity {
 
     private void makeToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (vungleNativeAd != null) {
-            vungleNativeAd.setAdVisibility(true);
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (vungleNativeAd != null) {
-            vungleNativeAd.setAdVisibility(true);
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if (vungleNativeAd != null) {
-            vungleNativeAd.setAdVisibility(false);
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (vungleNativeAd != null) {
-            vungleNativeAd.setAdVisibility(false);
-        }
     }
 }

@@ -24,37 +24,29 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-#-dontobfuscate
-
 # Vungle
--keep class com.vungle.warren.** { *; }
--keep class com.vungle.warren.downloader.DownloadRequest
+-dontwarn com.vungle.warren.downloader.DownloadRequestMediator$Status
 -dontwarn com.vungle.warren.error.VungleError$ErrorCode
--dontwarn com.vungle.warren.downloader.DownloadRequest$Status
--keepclassmembers enum com.vungle.warren.** { *; }
 
 # Google
--keep class com.google.android.gms.internal.** { *; }
--dontwarn com.google.android.gms.ads.identifier.**
+-dontwarn com.google.android.gms.common.GoogleApiAvailabilityLight
+-dontwarn com.google.android.gms.ads.identifier.AdvertisingIdClient
+-dontwarn com.google.android.gms.ads.identifier.AdvertisingIdClient$Info
 
 # Moat SDK
 -keep class com.moat.** { *; }
 -dontwarn com.moat.**
 
-# OkHttp
--keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
--dontwarn okhttp3.internal.platform.ConscryptPlatform
-
-# Retrofit
--dontwarn okio.**
--dontwarn retrofit2.Platform$Java8
-
-## Retrofit2
--keepattributes Signature, InnerClasses, EnclosingMethod
--keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
--keepclassmembers,allowshrinking,allowobfuscation interface * {
-    @retrofit2.http.* <methods>;
+# GSON
+-keepattributes *Annotation*
+-keepattributes Signature
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
 }
--dontwarn retrofit2.KotlinExtensions
--if interface * { @retrofit2.http.* <methods>; }
--keep,allowobfuscation interface <1>
+
+# OkHttp + Okio
+-dontwarn javax.annotation.**
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+-dontwarn okhttp3.internal.platform.ConscryptPlatform

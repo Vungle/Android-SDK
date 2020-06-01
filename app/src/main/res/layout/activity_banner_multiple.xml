@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/container_banner_top"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="#808080"
+            android:gravity="center"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/view_banner_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height_banner_double_row"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_vertical_banner_view"
+            android:layout_marginBottom="@dimen/margin_vertical_banner_view"
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
+
+            <TextView
+                android:id="@+id/tv_banner_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_banner_top"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_placement" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_row_banner_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginBottom="@dimen/margin_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_horizontal"
+                android:paddingRight="@dimen/padding_horizontal"
+                android:scaleType="fitCenter">
+
+                <Button
+                    android:id="@+id/btn_load_banner_top"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="load"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_play_banner_top"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="play"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_row_banner_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginBottom="@dimen/margin_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_horizontal"
+                android:paddingRight="@dimen/padding_horizontal"
+                android:scaleType="fitCenter">
+
+                <Button
+                    android:id="@+id/btn_pause_resume_banner_top"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="pause/resume"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_close_banner_top"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="close"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_banner_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:background="#808080"
+            android:gravity="center"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/view_banner_middle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height_banner_double_row"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_vertical_banner_view"
+            android:layout_marginBottom="@dimen/margin_vertical_banner_view"
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
+
+            <TextView
+                android:id="@+id/tv_banner_middle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_banner_middle"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_placement" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_row_banner_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginBottom="@dimen/margin_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_horizontal"
+                android:paddingRight="@dimen/padding_horizontal"
+                android:scaleType="fitCenter">
+
+                <Button
+                    android:id="@+id/btn_load_banner_middle"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="load"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_play_banner_middle"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="play"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_row_banner_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginBottom="@dimen/margin_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_horizontal"
+                android:paddingRight="@dimen/padding_horizontal"
+                android:scaleType="fitCenter">
+
+                <Button
+                    android:id="@+id/btn_pause_resume_banner_middle"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="pause/resume"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_close_banner_middle"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="close"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/view_banner_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height_banner_double_row"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_vertical_banner_view"
+            android:layout_marginBottom="@dimen/margin_vertical_banner_view"
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
+
+            <TextView
+                android:id="@+id/tv_banner_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_banner_top"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_placement" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_row_banner_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginBottom="@dimen/margin_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_horizontal"
+                android:paddingRight="@dimen/padding_horizontal"
+                android:scaleType="fitCenter">
+
+                <Button
+                    android:id="@+id/btn_load_banner_bottom"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="load"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_play_banner_bottom"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="play"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_row_banner_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginBottom="@dimen/margin_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_horizontal"
+                android:paddingRight="@dimen/padding_horizontal"
+                android:scaleType="fitCenter">
+
+                <Button
+                    android:id="@+id/btn_pause_resume_banner_bottom"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="pause/resume"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_close_banner_bottom"
+                    android:layout_width="@dimen/btn_width_banner"
+                    android:layout_height="@dimen/btn_height_banner"
+                    android:layout_marginLeft="@dimen/btn_margin_banner_horizontal"
+                    android:layout_marginRight="@dimen/btn_margin_banner_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/aqua_button_bg"
+                    android:text="close"
+                    android:textColor="@color/buttonText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_banner_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="#808080"
+            android:gravity="center"
+            android:visibility="visible" />
+    </LinearLayout>
+</ScrollView>

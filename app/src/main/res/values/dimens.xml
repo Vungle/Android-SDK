@@ -4,8 +4,11 @@
     <dimen name="view_height_single_row">60dp</dimen>
     <dimen name="view_height_double_row">110dp</dimen>
     <dimen name="view_height_triple_row">160dp</dimen>
+    <dimen name="view_height_four_row">210dp</dimen>
     <dimen name="btn_width">100dp</dimen>
+    <dimen name="btn_width_banner">100dp</dimen>
     <dimen name="btn_height">35dp</dimen>
+    <dimen name="btn_height_banner">20dp</dimen>
     <dimen name="btn_row_height">40dp</dimen>
     <dimen name="btn_margin_horizontal">20dp</dimen>
     <dimen name="btn_margin_vertical">5dp</dimen>
@@ -17,4 +20,12 @@
     <dimen name="container_height_mrec">250dp</dimen>
     <dimen name="container_width_in_feed">350dp</dimen>
     <dimen name="container_height_in_feed">150dp</dimen>
+
+    <dimen name="view_height_banner_single_row">50dp</dimen>
+    <dimen name="view_height_banner_double_row">90dp</dimen>
+    <dimen name="view_height_banner_triple_row">130dp</dimen>
+    <dimen name="btn_row_banner_height">22dp</dimen>
+    <dimen name="btn_margin_banner_horizontal">20dp</dimen>
+    <dimen name="btn_margin_banner_vertical">0dp</dimen>
+    <dimen name="margin_vertical_banner_view">5dp</dimen>
 </resources>
