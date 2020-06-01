@@ -3,6 +3,11 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.publisher.sample">
 
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="29"
+        tools:overrideLibrary="com.moat.analytics.mobile.vng" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
