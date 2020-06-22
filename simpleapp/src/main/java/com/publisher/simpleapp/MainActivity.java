@@ -2,6 +2,7 @@ package com.publisher.simpleapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -154,11 +155,32 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
                 //
             }
 
+            // Deprecated
             @Override
             public void onAdEnd(String id, boolean completed, boolean isCTAClicked) {
                 setButtonState(false, true, false);
 
                 showToastMessage("Ad Play End : Completed : " + completed + " Clicked : " + isCTAClicked);
+            }
+
+            @Override
+            public void onAdEnd(String placementReferenceID) {
+                showToastMessage("Ad Play End");
+            }
+
+            @Override
+            public void onAdClick(String placementReferenceID) {
+                showToastMessage("Ad Clicked");
+            }
+
+            @Override
+            public void onAdRewarded(String placementReferenceID) {
+                showToastMessage("User Rewarded");
+            }
+
+            @Override
+            public void onAdLeftApplication(String placementReferenceID) {
+                showToastMessage("User Left Application");
             }
 
             @Override
