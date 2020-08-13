@@ -1,5 +1,12 @@
 ## Changelog
 
+### VERSION 6.7.1
+* Support for Android 11
+* Gson updated to 2.8.6
+* Okhttp updated to 3.12.12
+* Logging-interceptor no longer required
+* Various bug fixes
+
 ### VERSION 6.7.0
 * CCPA Support – Compliance with new government regulations while assuring your users their personal data is being used the way they want
 * Multiple banner ad support – Display multiple banners on the screen to leverage more ways to monetize your inventory and attract Premium Buyers

@@ -57,29 +57,27 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Required AndroidX support libraries
-     implementation "androidx.core:core:1.3.0"
+     implementation "androidx.core:core:1.3.1"
      implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
 
     // When appcompat is being used, core and localbroadcastmanager are the dependencies
     // that is getting included
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // Vungle SDK
-    implementation 'com.vungle:publisher-sdk-android:6.7.0'
+    implementation 'com.vungle:publisher-sdk-android:6.7.1'
 
     // JAR Integration
-//    implementation files('libs/vungle-android-sdk-6.7.0.jar')
-//    implementation files('libs/gson-2.8.5.jar')
-//    implementation files('libs/logging-interceptor-3.12.0.jar')
-//    implementation files('libs/okhttp-3.12.0.jar')
+//    implementation files('libs/vungle-android-sdk-6.7.1.jar')
+//    implementation files('libs/gson-2.8.6.jar')
+//    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 //    implementation files('libs/androidx-vng-moat-mobile-app-kit-2.6.3.jar')
 
     // AAR Integration
-//    implementation files('libs/vungle-android-sdk-6.7.0.aar')
-//    implementation files('libs/gson-2.8.5.jar')
-//    implementation files('libs/logging-interceptor-3.12.0.jar')
-//    implementation files('libs/okhttp-3.12.0.jar')
+//    implementation files('libs/vungle-android-sdk-6.7.1.aar')
+//    implementation files('libs/gson-2.8.6.jar')
+//    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 
     // Recommended for SDK to be able to get Android Advertising ID
