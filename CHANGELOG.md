@@ -2,11 +2,11 @@
 
 ### VERSION 6.7.1
 * Support for Android 11
+** Explicitly enabled WebSettings.setAllowFileAccess to improve video rendering in WebView 
+** Improvements to handling Intent.resolveActivity that could fail requiring new Android 11 permissions that could affect click of ads
 * Gson updated to 2.8.6
 * Okhttp updated to 3.12.12
 * Logging-interceptor no longer required
-* Explicitly enabled WebSettings.setAllowFileAccess to fix issue with Ads rendering in WebView 
-* Fixed issue related to Click action , removed logic related to Intent.resolveActivity that could fail requiring new Android 11 permissions
 * Various bug fixes
 
 ### VERSION 6.7.0
