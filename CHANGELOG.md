@@ -5,9 +5,9 @@
 * Gson updated to 2.8.6
 * Okhttp updated to 3.12.12
 * Logging-interceptor no longer required
-* Various bug fixes
 * Explicitly enabled WebSettings.setAllowFileAccess to fix issue with Ads rendering in WebView 
 * Fixed issue related to Click action , removed logic related to Intent.resolveActivity that could fail requiring new Android 11 permissions
+* Various bug fixes
 
 ### VERSION 6.7.0
 * CCPA Support – Compliance with new government regulations while assuring your users their personal data is being used the way they want
