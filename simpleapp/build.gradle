@@ -27,7 +27,7 @@ android {
 dependencies {
 
     // Vungle SDK
-//    implementation 'com.vungle:publisher-sdk-android:6.7.0'
+//    implementation 'com.vungle:publisher-sdk-android:6.7.1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
