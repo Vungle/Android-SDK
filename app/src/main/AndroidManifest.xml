@@ -40,31 +40,31 @@
         </activity>
 
         <!--JAR Integration-->
-        <activity
-            android:name="com.vungle.warren.ui.VungleActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.vungle.warren.ui.VungleFlexViewActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            android:hardwareAccelerated="true"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+<!--        <activity-->
+<!--            android:name="com.vungle.warren.ui.VungleActivity"-->
+<!--            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"-->
+<!--            android:launchMode="singleTop"-->
+<!--            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />-->
+<!--        <activity-->
+<!--            android:name="com.vungle.warren.ui.VungleFlexViewActivity"-->
+<!--            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"-->
+<!--            android:hardwareAccelerated="true"-->
+<!--            android:launchMode="singleTop"-->
+<!--            android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
 
-        <receiver
-            android:name="com.vungle.warren.NetworkProviderReceiver"
-            android:enabled="false" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
+<!--        <receiver-->
+<!--            android:name="com.vungle.warren.NetworkProviderReceiver"-->
+<!--            android:enabled="false" >-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
 
-        <provider
-            android:name="com.vungle.warren.utility.VungleProvider"
-            android:authorities="${applicationId}.vungle-provider"
-            android:exported="false" />
+<!--        <provider-->
+<!--            android:name="com.vungle.warren.utility.VungleProvider"-->
+<!--            android:authorities="${applicationId}.vungle-provider"-->
+<!--            android:exported="false" />-->
     </application>
 
 </manifest>
