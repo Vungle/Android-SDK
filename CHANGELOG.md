@@ -1,5 +1,10 @@
 ## Changelog
 
+### VERSION 6.8.0
+* Android 11 Support (Since 6.7.1)
+* Removed Flex Feed and Flex View formats
+* Stability improvements
+
 ### VERSION 6.7.1
 * Support for Android 11
   * Explicitly enabled WebSettings.setAllowFileAccess to improve video rendering in WebView 

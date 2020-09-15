@@ -17,8 +17,8 @@ import com.vungle.warren.AdConfig;              // Custom ad configurations
 import com.vungle.warren.InitCallback;          // Initialization callback
 import com.vungle.warren.LoadAdCallback;        // Load ad callback
 import com.vungle.warren.PlayAdCallback;        // Play ad callback
-import com.vungle.warren.VungleBanner;
-import com.vungle.warren.VungleNativeAd;        // Flex-Feed ad
+import com.vungle.warren.VungleBanner;          // Banner
+import com.vungle.warren.VungleNativeAd;        // MREC
 import com.vungle.warren.Vungle.Consent;        // GDPR consent
 import com.vungle.warren.VungleSettings;
 import com.vungle.warren.error.VungleException; // onError message
@@ -145,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
     final private String rewardedVideo = "rewarded_video";
     final private String rewardedPlayable = "rewarded_playable";
     final private String mrec = "mrec";
-    final private String inFeed = "in_feed";
     final private String banner = "banner";
 
     final String LOG_TAG = "VungleSampleApp";
@@ -164,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
         vungleAds.add(new VungleAd(rewardedVideo));
         vungleAds.add(new VungleAd(rewardedPlayable));
         vungleAds.add(new VungleAd(mrec));
-        vungleAds.add(new VungleAd(inFeed));
         vungleAds.add(new VungleAd(banner));
 
         initUiElements();
@@ -184,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
 
         Vungle.updateCCPAStatus(Consent.OPTED_OUT);
         Vungle.updateConsentStatus(Consent.OPTED_OUT, "7.7.7");
-//        Vungle.updateConsentStatus(Consent.OPTED_OUT, null);
 
         Vungle.init(appId, getApplicationContext(), new InitCallback() {
             @Override
@@ -197,19 +194,9 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(LOG_TAG, validPlacementReferenceIdId);
                 }
 
-                Vungle.loadAd("LEGACY_INTERSTITIAL-4364832", vungleLoadAdCallback);
-                Vungle.loadAd("DYNAMIC_TEMPLATE_INTERSTITIAL-6969365", vungleLoadAdCallback);
-                Vungle.loadAd("REWARDED_VIDEO-4898828", vungleLoadAdCallback);
-
-//                Vungle.updateCCPAStatus(Vungle.CCPAStatus.OPTED_OUT);
-//                Vungle.updateConsentStatus(Consent.OPTED_OUT, "7.7.7");
-//
                 Log.d(LOG_TAG, Vungle.getCCPAStatus().toString());
-//
-//                Vungle.updateCCPAStatus(Vungle.CCPAStatus.OPTED_IN);
-//
-//                Log.d(LOG_TAG, Vungle.getCCPAStatus().toString());
-//                 Set button state according to ad playability
+
+                // Set button state according to ad playability
                 for (VungleAd vungleAd : vungleAds) {
                     if (Vungle.canPlayAd(vungleAd.placementReferenceId)) {
                         enableButton(vungleAd.playButton);
@@ -353,7 +340,6 @@ public class MainActivity extends AppCompatActivity {
                 setFullscreenAd(ad);
                 break;
             case mrec:
-            case inFeed:
                 setNativeAd(ad);
                 break;
             case banner:
