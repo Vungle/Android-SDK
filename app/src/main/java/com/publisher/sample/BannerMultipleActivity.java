@@ -156,14 +156,16 @@ public class BannerMultipleActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "PlayAdCallback - onAdStart" +
                     "\n\tPlacement Reference ID = " + placementReferenceID);
 
-            if (placementReferenceID.equals("LEGACY_INTERSTITIAL-4364832")) {
-                Vungle.loadAd("LEGACY_INTERSTITIAL-4364832", vungleLoadAdCallback);
-            }
-
             VungleBannerAd ad = getVungleAd(placementReferenceID);
             if (ad != null) {
                 disableButton(ad.playButton);
             }
+        }
+
+        @Override
+        public void onAdViewed(String placementReferenceID) {
+            Log.d(LOG_TAG, "PlayAdCallback - onAdViewed" +
+                    "\n\tPlacement Reference ID = " + placementReferenceID);
         }
 
         // Deprecated

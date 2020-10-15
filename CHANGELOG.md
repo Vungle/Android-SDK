@@ -1,5 +1,9 @@
 ## Changelog
 
+### VERSION 6.8.1
+* onAdViewed - new callback introduced to more accurately track ad impressions
+* Stability improvements
+
 ### VERSION 6.8.0
 * Android 11 Support (Since 6.7.1)
 * Removed Flex Feed and Flex View formats

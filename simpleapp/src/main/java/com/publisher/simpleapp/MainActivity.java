@@ -151,21 +151,22 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
 
         Vungle.playAd(placementID, new AdConfig(), new PlayAdCallback() {
             @Override
-            public void onAdStart(String id) {
-                //
-            }
+            public void onAdStart(String placementReferenceID) { showToastMessage("Ad Start"); }
+
+            @Override
+            public void onAdViewed(String placementReferenceID) { showToastMessage("Ad Viewed");}
 
             // Deprecated
             @Override
             public void onAdEnd(String id, boolean completed, boolean isCTAClicked) {
                 setButtonState(false, true, false);
 
-                showToastMessage("Ad Play End : Completed : " + completed + " Clicked : " + isCTAClicked);
+                showToastMessage("Ad End : Completed : " + completed + " Clicked : " + isCTAClicked);
             }
 
             @Override
             public void onAdEnd(String placementReferenceID) {
-                showToastMessage("Ad Play End");
+                showToastMessage("Ad End");
             }
 
             @Override

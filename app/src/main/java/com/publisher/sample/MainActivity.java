@@ -180,8 +180,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAndroidIdOptOut(false)
                         .build();
 
-        Vungle.updateCCPAStatus(Consent.OPTED_OUT);
-        Vungle.updateConsentStatus(Consent.OPTED_OUT, "7.7.7");
+        // CCPA example
+//        Vungle.updateCCPAStatus(Consent.OPTED_OUT);
+//        Vungle.getCCPAStatus();
+
+        // GDPR example
+//        Vungle.updateConsentStatus(Consent.OPTED_OUT, "1.0.0");
+//        Vungle.getConsentStatus();
+//        Vungle.getConsentMessageVersion();
 
         Vungle.init(appId, getApplicationContext(), new InitCallback() {
             @Override
@@ -193,8 +199,6 @@ public class MainActivity extends AppCompatActivity {
                 for (String validPlacementReferenceIdId : getValidPlacements()) {
                     Log.d(LOG_TAG, validPlacementReferenceIdId);
                 }
-
-                Log.d(LOG_TAG, Vungle.getCCPAStatus().toString());
 
                 // Set button state according to ad playability
                 for (VungleAd vungleAd : vungleAds) {
@@ -240,8 +244,13 @@ public class MainActivity extends AppCompatActivity {
                 disableButton(ad.playButton);
             }
         }
+        @Override
+        public void onAdViewed(String placementReferenceID) {
+            Log.d(LOG_TAG, "PlayAdCallback - onAdViewed" +
+                    "\n\tPlacement Reference ID = " + placementReferenceID);
+        }
 
-        // deprecated
+        // Deprecated
         @Override
         public void onAdEnd(final String placementReferenceID, final boolean completed, final boolean isCTAClicked) {
             Log.d(LOG_TAG, "PlayAdCallback - onAdEnd" +
