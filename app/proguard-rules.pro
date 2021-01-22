@@ -33,10 +33,6 @@
 -dontwarn com.google.android.gms.ads.identifier.AdvertisingIdClient
 -dontwarn com.google.android.gms.ads.identifier.AdvertisingIdClient$Info
 
-# Moat SDK
--keep class com.moat.** { *; }
--dontwarn com.moat.**
-
 # GSON
 -keepattributes *Annotation*
 -keepattributes Signature

@@ -1,15 +1,19 @@
 ## Changelog
 
-### VERSION 6.8.1
+### VERSION 6.9.1 (January 21, 2021)
+* OM SDK Integration - The Open Measurement Software Development Kit (OM SDK) is designed to facilitate third-party viewability and verification measurement for ads served by Vungle
+* Stability improvements
+
+### VERSION 6.8.1 (October 14, 2020)
 * onAdViewed - new callback introduced to more accurately track ad impressions
 * Stability improvements
 
-### VERSION 6.8.0
+### VERSION 6.8.0 (September 15, 2020)
 * Android 11 Support (Since 6.7.1)
 * Removed Flex Feed and Flex View formats
 * Stability improvements
 
-### VERSION 6.7.1
+### VERSION 6.7.1 (August 17, 2020)
 * Support for Android 11
   * Explicitly enabled WebSettings.setAllowFileAccess to improve video rendering in WebView 
   * Improvements to handling Intent.resolveActivity that could fail requiring new Android 11 permissions that could affect click of ads
@@ -18,7 +22,7 @@
 * Logging-interceptor no longer required
 * Various bug fixes
 
-### VERSION 6.7.0
+### VERSION 6.7.0 (June 22, 2020)
 * CCPA Support – Compliance with new government regulations while assuring your users their personal data is being used the way they want
 * Multiple banner ad support – Display multiple banners on the screen to leverage more ways to monetize your inventory and attract Premium Buyers
 * Upgrade moat v2.6.3 – To enhance your analytics and improve strategic decisions based on data
@@ -27,14 +31,14 @@
 * Backend performance improvements to continually optimize your monetization efforts
 * Various bug fixes
 
-### VERSION 6.5.3
+### VERSION 6.5.3 (March 24, 2020)
 * Bugs and issues resolved
 
-### VERSION 6.5.2
+### VERSION 6.5.2 (February 14, 2020)
 * Programmatic Demand Banner Support
 * Bug Fixes
 
-### VERSION 6.5.1
+### VERSION 6.5.1 (January 30, 2020)
 * Included new Target API 29 (Android 10) and AndroidX support (including dependencies based on AndroidX )
 * Optimized caching again to reduce data usage
 * Added addition support for new banner sizes (320x50, 300x50, 728x90)
