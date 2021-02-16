@@ -201,6 +201,12 @@ public class BannerMultipleActivity extends AppCompatActivity {
         }
 
         @Override
+        public void creativeId(String creativeId) {
+            Log.d(LOG_TAG, "PlayAdCallback - creativeId" +
+                    "\n\tCreative ID = " + creativeId);
+        }
+
+        @Override
         public void onError(final String placementReferenceID, VungleException throwable) {
             Log.d(LOG_TAG, "PlayAdCallback - onError" +
                     "\n\tPlacement Reference ID = " + placementReferenceID +
