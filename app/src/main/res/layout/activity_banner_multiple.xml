@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <FrameLayout
             android:id="@+id/container_banner_top"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -114,7 +114,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <RelativeLayout
+        <FrameLayout
             android:id="@+id/container_banner_middle"
             android:layout_width="wrap_content"
             android:layout_height="250dp"
@@ -317,7 +317,7 @@
 
         </LinearLayout>
 
-        <RelativeLayout
+        <FrameLayout
             android:id="@+id/container_banner_bottom"
             android:layout_width="wrap_content"
             android:layout_height="50dp"

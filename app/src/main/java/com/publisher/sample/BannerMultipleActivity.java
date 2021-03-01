@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,7 +35,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
         @NonNull private final Button pauseResumeButton;
         @NonNull private final Button closeButton;
         @NonNull private boolean nativeAdPlaying;
-        @Nullable private final RelativeLayout container;
+        @Nullable private final FrameLayout container;
         @Nullable private VungleBanner vungleBanner;
 
         private VungleBannerAd(String name) {
@@ -87,9 +86,9 @@ public class BannerMultipleActivity extends AppCompatActivity {
             return null;
         }
 
-        private RelativeLayout getContainer() {
+        private FrameLayout getContainer() {
             int containerId = getResources().getIdentifier("container_" + name, "id", PACKAGE_NAME);
-            RelativeLayout container = (RelativeLayout) findViewById(containerId);
+            FrameLayout container = (FrameLayout) findViewById(containerId);
             if (container != null) {
                 return container;
             }
@@ -305,7 +304,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
                         if (vungleNativeAd != null) {
                             nativeAdView = vungleNativeAd.renderNativeView();
                             ad.container.addView(nativeAdView);
-                            ad.container.setVisibility(RelativeLayout.VISIBLE);
+                            ad.container.setVisibility(View.VISIBLE);
                         }
 
                         ad.nativeAdPlaying = true;
@@ -351,7 +350,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
                     vungleNativeAd.finishDisplayingAd();
                     vungleNativeAd = null;
                     ad.container.removeView(nativeAdView);
-                    ad.container.setVisibility(RelativeLayout.GONE);
+                    ad.container.setVisibility(View.GONE);
                 }
 
                 disableButton(ad.pauseResumeButton);
@@ -398,7 +397,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
 
                         if (ad.vungleBanner != null) {
                             ad.container.addView(ad.vungleBanner);
-                            ad.container.setVisibility(RelativeLayout.VISIBLE);
+                            ad.container.setVisibility(View.VISIBLE);
                         }
 
                         ad.nativeAdPlaying = true;
@@ -444,7 +443,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
                     ad.vungleBanner.destroyAd();
                     ad.vungleBanner = null;
                     ad.container.removeView(ad.vungleBanner);
-                    ad.container.setVisibility(RelativeLayout.GONE);
+                    ad.container.setVisibility(View.GONE);
                 }
 
                 disableButton(ad.pauseResumeButton);

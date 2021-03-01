@@ -54,7 +54,6 @@ dependencies {
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.13.1'
 
     // Required AndroidX support libraries
     implementation "androidx.core:core:1.3.2"
@@ -67,17 +66,19 @@ dependencies {
     // Vungle SDK
 //    implementation 'com.vungle:publisher-sdk-android:6.9.1'
 
+    implementation 'com.github.vungle:vungle-android-sdk:6.10.0-QA5'
+
 //    implementation 'com.github.vungle:vungle-android-sdk:6.10.0-QA4'
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 //    implementation 'com.vungle:omsdk-android:1.3.15'
 
-    implementation 'com.github.vungle:vungle-android-sdk:6.10.0-QA3'
-    implementation files('libs/gson-2.8.6.jar')
-    implementation files('libs/okhttp-3.12.12.jar')
-    implementation files('libs/okio-1.15.0.jar')
-    implementation 'com.vungle:omsdk-android:1.3.15'
+//    implementation 'com.github.vungle:vungle-android-sdk:6.10.0-QA3'
+//    implementation files('libs/gson-2.8.6.jar')
+//    implementation files('libs/okhttp-3.12.12.jar')
+//    implementation files('libs/okio-1.15.0.jar')
+//    implementation 'com.vungle:omsdk-android:1.3.15'
 
     // AAR Integration
 //    implementation files('libs/vungle-android-sdk-6.9.1.aar')
@@ -92,6 +93,6 @@ dependencies {
 //    implementation files('libs/okio-1.15.0.jar')
 
     // Recommended for SDK to be able to get Android Advertising ID
-    implementation 'com.google.android.gms:play-services-basement:17.5.0'
+    implementation 'com.google.android.gms:play-services-basement:17.6.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
 }
