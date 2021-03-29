@@ -23,7 +23,7 @@ android {
     buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId "com.publisher.vungle.sample"
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -56,7 +56,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     // Required AndroidX support libraries
-    implementation "androidx.core:core:1.3.2"
+    implementation "androidx.core:core:1.1.0"
     implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
 
     // When appcompat is being used, core and localbroadcastmanager are the dependencies
@@ -67,13 +67,13 @@ dependencies {
     implementation 'com.github.vungle:vungle-android-sdk:6.10.1-RC1'
 
     // AAR Integration
-//    implementation files('libs/vungle-android-sdk-6.9.1.aar')
+//    implementation files('libs/vungle-android-sdk-6.10.1.aar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 
     // JAR Integration
-//    implementation files('libs/vungle-android-sdk-6.9.1.jar')
+//    implementation files('libs/vungle-android-sdk-6.10.1.jar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
