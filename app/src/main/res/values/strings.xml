@@ -6,10 +6,8 @@
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="close">Close</string>
-    <string name="title_interstitial_legacy">Legacy</string>
-    <string name="title_interstitial_dt">Dynamic Template</string>
+    <string name="title_interstitial">Interstitial</string>
     <string name="title_rewarded_video">Rewarded Video</string>
-    <string name="title_rewarded_playable">Rewarded Playable</string>
     <string name="title_mrec">MREC 300x250</string>
     <string name="title_banner">Banner</string>
     <string name="title_banner_top">Top Banner</string>
@@ -17,10 +15,8 @@
     <string name="title_banner_bottom">Bottom Banner</string>
     <string name="title_fullscreen">Fullscreen</string>
     <string name="app_id">5ae0db55e2d43668c97bd65e</string>
-    <string name="placement_id_interstitial_legacy">LEGACY_INTERSTITIAL-4364832</string>
-    <string name="placement_id_interstitial_dt">DYNAMIC_TEMPLATE_INTERSTITIAL-6969365</string>
-    <string name="placement_id_rewarded_video">LEGACY_REWARDED-2115035</string>
-    <string name="placement_id_rewarded_playable">DYNAMIC_TEMPLATE_REWARDED-5271535</string>
+    <string name="placement_id_interstitial">DYNAMIC_TEMPLATE_INTERSTITIAL-6969365</string>
+    <string name="placement_id_rewarded_video">DYNAMIC_TEMPLATE_REWARDED-5271535</string>
     <string name="placement_id_mrec">MREC-2191415</string>
     <string name="placement_id_banner">BANNER-5454585</string>
     <string name="placement_id_banner_top">BANNER2-6990728</string>

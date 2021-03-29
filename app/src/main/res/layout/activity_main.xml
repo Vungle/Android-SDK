@@ -51,7 +51,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/view_interstitial"
+                android:id="@+id/view_ad_formats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -64,7 +64,7 @@
                     android:gravity="bottom" />
 
                 <LinearLayout
-                    android:id="@+id/view_interstitial_legacy"
+                    android:id="@+id/view_interstitial"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/view_height_single_row"
                     android:layout_gravity="center_horizontal"
@@ -74,11 +74,11 @@
                     android:scaleType="fitCenter">
 
                     <TextView
-                        android:id="@+id/tv_interstitial_legacy"
+                        android:id="@+id/tv_interstitial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="@string/title_interstitial_legacy"
+                        android:text="@string/title_interstitial"
                         android:textAlignment="center"
                         android:textSize="@dimen/text_size_placement" />
 
@@ -94,7 +94,7 @@
                         android:scaleType="fitCenter">
 
                         <Button
-                            android:id="@+id/btn_load_interstitial_legacy"
+                            android:id="@+id/btn_load_interstitial"
                             android:layout_width="@dimen/btn_width"
                             android:layout_height="@dimen/btn_height"
                             android:layout_marginLeft="@dimen/btn_margin_horizontal"
@@ -107,7 +107,7 @@
                             android:textStyle="bold" />
 
                         <Button
-                            android:id="@+id/btn_play_interstitial_legacy"
+                            android:id="@+id/btn_play_interstitial"
                             android:layout_width="@dimen/btn_width"
                             android:layout_height="@dimen/btn_height"
                             android:layout_marginLeft="@dimen/btn_margin_horizontal"
@@ -120,70 +120,6 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/line_color"
-                    android:gravity="bottom" />
-
-                <LinearLayout
-                    android:id="@+id/view_interstitial_dt"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_height_single_row"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/margin_vertical_view"
-                    android:layout_marginBottom="@dimen/margin_vertical_view"
-                    android:orientation="vertical"
-                    android:scaleType="fitCenter">
-
-                    <TextView
-                        android:id="@+id/tv_interstitial_dt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/title_interstitial_legacy"
-                        android:textAlignment="center"
-                        android:textSize="@dimen/text_size_placement" />
-
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_row_height"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/margin_vertical"
-                        android:layout_marginBottom="@dimen/margin_vertical"
-                        android:orientation="horizontal"
-                        android:paddingLeft="@dimen/padding_horizontal"
-                        android:paddingRight="@dimen/padding_horizontal"
-                        android:scaleType="fitCenter">
-
-                        <Button
-                            android:id="@+id/btn_load_interstitial_dt"
-                            android:layout_width="@dimen/btn_width"
-                            android:layout_height="@dimen/btn_height"
-                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
-                            android:layout_marginRight="@dimen/btn_margin_horizontal"
-                            android:layout_weight="1"
-                            android:background="@drawable/aqua_button_bg"
-                            android:text="load"
-                            android:textColor="@color/buttonText"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <Button
-                            android:id="@+id/btn_play_interstitial_dt"
-                            android:layout_width="@dimen/btn_width"
-                            android:layout_height="@dimen/btn_height"
-                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
-                            android:layout_marginRight="@dimen/btn_margin_horizontal"
-                            android:layout_weight="1"
-                            android:background="@drawable/aqua_button_bg"
-                            android:text="play"
-                            android:textColor="@color/buttonText"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
                 </LinearLayout>
 
                 <View
@@ -237,70 +173,6 @@
 
                         <Button
                             android:id="@+id/btn_play_rewarded_video"
-                            android:layout_width="@dimen/btn_width"
-                            android:layout_height="@dimen/btn_height"
-                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
-                            android:layout_marginRight="@dimen/btn_margin_horizontal"
-                            android:layout_weight="1"
-                            android:background="@drawable/aqua_button_bg"
-                            android:text="play"
-                            android:textColor="@color/buttonText"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/line_color"
-                    android:gravity="bottom" />
-
-                <LinearLayout
-                    android:id="@+id/view_rewarded_playable"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_height_single_row"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/margin_vertical_view"
-                    android:layout_marginBottom="@dimen/margin_vertical_view"
-                    android:orientation="vertical"
-                    android:scaleType="fitCenter">
-
-                    <TextView
-                        android:id="@+id/tv_rewarded_playable"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/title_rewarded_playable"
-                        android:textAlignment="center"
-                        android:textSize="@dimen/text_size_placement" />
-
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_row_height"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/margin_vertical"
-                        android:layout_marginBottom="@dimen/margin_vertical"
-                        android:orientation="horizontal"
-                        android:paddingLeft="@dimen/padding_horizontal"
-                        android:paddingRight="@dimen/padding_horizontal"
-                        android:scaleType="fitCenter">
-
-                        <Button
-                            android:id="@+id/btn_load_rewarded_playable"
-                            android:layout_width="@dimen/btn_width"
-                            android:layout_height="@dimen/btn_height"
-                            android:layout_marginLeft="@dimen/btn_margin_horizontal"
-                            android:layout_marginRight="@dimen/btn_margin_horizontal"
-                            android:layout_weight="1"
-                            android:background="@drawable/aqua_button_bg"
-                            android:text="load"
-                            android:textColor="@color/buttonText"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <Button
-                            android:id="@+id/btn_play_rewarded_playable"
                             android:layout_width="@dimen/btn_width"
                             android:layout_height="@dimen/btn_height"
                             android:layout_marginLeft="@dimen/btn_margin_horizontal"

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         @NonNull private final TextView titleTextView;
         @NonNull private final Button loadButton;
         @NonNull private final Button playButton;
-        @NonNull private boolean nativeAdPlaying;
+        @NonNull private boolean bannerAdPlaying;
         @Nullable private final Button pauseResumeButton;
         @Nullable private final Button closeButton;
         @Nullable private final FrameLayout container;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             this.bannerListButton = getBannerListButton();
             this.bannerMultipleButton = getBannerMultipleButton();
             this.container = getContainer();
-            this.nativeAdPlaying = false;
+            this.bannerAdPlaying = false;
         }
 
         private String getPlacementReferenceId() {
@@ -138,10 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
     private List<VungleAd> vungleAds = new ArrayList<>();
 
-    final private String interstitialLegacy = "interstitial_legacy";
-    final private String interstitialDt = "interstitial_dt";
+    final private String interstitial = "interstitial";
     final private String rewardedVideo = "rewarded_video";
-    final private String rewardedPlayable = "rewarded_playable";
     final private String mrec = "mrec";
     final private String banner = "banner";
 
@@ -156,10 +154,8 @@ public class MainActivity extends AppCompatActivity {
 
         PACKAGE_NAME = getApplicationContext().getPackageName();
 
-        vungleAds.add(new VungleAd(interstitialLegacy));
-        vungleAds.add(new VungleAd(interstitialDt));
+        vungleAds.add(new VungleAd(interstitial));
         vungleAds.add(new VungleAd(rewardedVideo));
-        vungleAds.add(new VungleAd(rewardedPlayable));
         vungleAds.add(new VungleAd(mrec));
         vungleAds.add(new VungleAd(banner));
 
@@ -346,10 +342,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         switch (ad.name) {
-            case interstitialLegacy:
-            case interstitialDt:
+            case interstitial:
             case rewardedVideo:
-            case rewardedPlayable:
                 setFullscreenAd(ad);
                 break;
             case mrec:
@@ -366,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFullscreenAd(final VungleAd ad) {
         // Set custom configuration for rewarded placements
-        if (ad.name.equals(rewardedVideo) || ad.name.equals(rewardedPlayable)) {
+        if (ad.name.equals(rewardedVideo)) {
             setCustomRewardedFields();
         }
 
@@ -374,9 +368,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Vungle.isInitialized()) {
-                    // Play Vungle ad
                     Vungle.loadAd(ad.placementReferenceId, vungleLoadAdCallback);
-                    // Button UI
+
                     disableButton(ad.loadButton);
                 } else {
                     makeToast("Vungle SDK not initialized");
@@ -392,9 +385,8 @@ public class MainActivity extends AppCompatActivity {
                     if (Vungle.canPlayAd(ad.placementReferenceId)) {
                         final AdConfig adConfig = getAdConfig();
 
-                        // Play Vungle ad
                         Vungle.playAd(ad.placementReferenceId, adConfig, vunglePlayAdCallback);
-                        // Button UI
+
                         enableButton(ad.loadButton);
                         disableButton(ad.playButton);
                     } else {
@@ -441,7 +433,7 @@ public class MainActivity extends AppCompatActivity {
                             ad.container.setVisibility(View.VISIBLE);
                         }
 
-                        ad.nativeAdPlaying = true;
+                        ad.bannerAdPlaying = true;
 
                         // Button UI
                         enableButton(ad.loadButton);
@@ -449,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
                         enableButton(ad.pauseResumeButton);
                         enableButton(ad.closeButton);
 
-                        ad.nativeAdPlaying = true;
+                        ad.bannerAdPlaying = true;
                         ad.pauseResumeButton.setText("PAUSE");
                     } else {
                         makeToast("Vungle ad not playable for " + ad.placementReferenceId);
@@ -463,13 +455,13 @@ public class MainActivity extends AppCompatActivity {
         ad.pauseResumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ad.nativeAdPlaying = !ad.nativeAdPlaying;
+                ad.bannerAdPlaying = !ad.bannerAdPlaying;
 
                 if (vungleBannerAd != null) {
-                    vungleBannerAd.setAdVisibility(ad.nativeAdPlaying);
+                    vungleBannerAd.setAdVisibility(ad.bannerAdPlaying);
                 }
 
-                if (ad.nativeAdPlaying) {
+                if (ad.bannerAdPlaying) {
                     ad.pauseResumeButton.setText("PAUSE");
                 } else {
                     ad.pauseResumeButton.setText("RESUME");
