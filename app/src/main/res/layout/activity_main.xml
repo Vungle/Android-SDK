@@ -416,14 +416,14 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <RelativeLayout
+                <FrameLayout
                     android:id="@+id/container_mrec"
                     android:layout_width="@dimen/container_width_mrec"
                     android:layout_height="@dimen/container_height_mrec"
                     android:layout_gravity="center"
                     android:background="#808080"
                     android:gravity="center"
-                    android:visibility="gone"></RelativeLayout>
+                    android:visibility="gone"></FrameLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -578,14 +578,14 @@
 
                 </LinearLayout>
 
-                <RelativeLayout
+                <FrameLayout
                     android:id="@+id/container_banner"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="#808080"
                     android:gravity="center"
-                    android:visibility="gone"></RelativeLayout>
+                    android:visibility="gone"></FrameLayout>
 
                 <View
                     android:layout_width="match_parent"
