@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vungle.warren.AdConfig;
+import com.vungle.warren.BannerAdConfig;
 import com.vungle.warren.Banners;
 import com.vungle.warren.LoadAdCallback;
 import com.vungle.warren.PlayAdCallback;
@@ -252,11 +253,14 @@ public class BannerMultipleActivity extends AppCompatActivity {
         disableButton(ad.pauseResumeButton);
         disableButton(ad.closeButton);
 
+        final BannerAdConfig adConfig = new BannerAdConfig();
+        adConfig.setAdSize(adSize);
+
         ad.loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Vungle.isInitialized()) {
-                    Banners.loadBanner(ad.placementReferenceId, adSize, vungleLoadAdCallback);
+                    Banners.loadBanner(ad.placementReferenceId, adConfig, vungleLoadAdCallback);
 
                     disableButton(ad.loadButton);
                 } else {
@@ -275,7 +279,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
                             ad.container.removeAllViews();
                         }
 
-                        vungleBannerAd = Banners.getBanner(ad.placementReferenceId, adSize, vunglePlayAdCallback);
+                        vungleBannerAd = Banners.getBanner(ad.placementReferenceId, adConfig, vunglePlayAdCallback);
 
                         if (vungleBannerAd != null) {
                             ad.container.addView(vungleBannerAd);

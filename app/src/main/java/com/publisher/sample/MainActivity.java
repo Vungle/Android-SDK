@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.vungle.warren.BannerAdConfig;
 import com.vungle.warren.Banners;
 import com.vungle.warren.Vungle;
 import com.vungle.warren.AdConfig;              // Custom ad configurations
@@ -37,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         @NonNull private final TextView titleTextView;
         @NonNull private final Button loadButton;
         @NonNull private final Button playButton;
-        @NonNull private boolean bannerAdPlaying;
         @Nullable private final Button pauseResumeButton;
         @Nullable private final Button closeButton;
         @Nullable private final FrameLayout container;
         @Nullable private final Button bannerListButton;
         @Nullable private final Button bannerMultipleButton;
+        @NonNull private boolean bannerAdPlaying;
 
         private VungleAd(String name) {
             this.name = name;
@@ -133,10 +134,9 @@ public class MainActivity extends AppCompatActivity {
 
     protected static String PACKAGE_NAME;
 
-    private VungleBanner vungleMrecAd;
     private VungleBanner vungleBannerAd;
 
-    private List<VungleAd> vungleAds = new ArrayList<>();
+    final private List<VungleAd> vungleAds = new ArrayList<>();
 
     final private String interstitial = "interstitial";
     final private String rewardedVideo = "rewarded_video";
@@ -403,11 +403,15 @@ public class MainActivity extends AppCompatActivity {
         disableButton(ad.pauseResumeButton);
         disableButton(ad.closeButton);
 
+        final BannerAdConfig adConfig = new BannerAdConfig();
+        adConfig.setAdSize(adSize);
+        adConfig.setMuted(true);
+
         ad.loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Vungle.isInitialized()) {
-                    Banners.loadBanner(ad.placementReferenceId, adSize, vungleLoadAdCallback);
+                    Banners.loadBanner(ad.placementReferenceId, adConfig, vungleLoadAdCallback);
 
                     disableButton(ad.loadButton);
                 } else {
@@ -420,13 +424,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Vungle.isInitialized()) {
-                    if (Banners.canPlayAd(ad.placementReferenceId, adSize)) {
+                    if (Banners.canPlayAd(ad.placementReferenceId, adConfig.getAdSize())) {
                         if (vungleBannerAd != null) {
                             vungleBannerAd = null;
                             ad.container.removeAllViews();
                         }
 
-                        vungleBannerAd = Banners.getBanner(ad.placementReferenceId, adSize, vunglePlayAdCallback);
+                        vungleBannerAd = Banners.getBanner(ad.placementReferenceId, adConfig, vunglePlayAdCallback);
 
                         if (vungleBannerAd != null) {
                             ad.container.addView(vungleBannerAd);
@@ -473,9 +477,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (vungleBannerAd != null) {
-                    vungleMrecAd = null;
                     ad.container.removeView(vungleBannerAd);
                     ad.container.setVisibility(View.GONE);
+                    vungleBannerAd = null;
                 }
 
                 disableButton(ad.pauseResumeButton);
@@ -505,17 +509,14 @@ public class MainActivity extends AppCompatActivity {
     private AdConfig getAdConfig() {
         AdConfig adConfig = new AdConfig();
 
-        adConfig.setBackButtonImmediatelyEnabled(true);
-        adConfig.setAdOrientation(AdConfig.MATCH_VIDEO);
-
+        adConfig.setAdOrientation(AdConfig.AUTO_ROTATE);
         adConfig.setMuted(false);
-        adConfig.setOrdinal(5);
 
         return adConfig;
     }
 
     private void setCustomRewardedFields() {
-        Vungle.setIncentivizedFields("TestUser", "", "RewardedBody", "RewardedKeepWatching", "RewardedClose");
+        Vungle.setIncentivizedFields("TestUser", "RewardTitle", "RewardedBody", "RewardedKeepWatching", "RewardedClose");
     }
 
 

@@ -64,7 +64,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // Vungle SDK
-    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-RC1'
+    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-RC2'
 
     // AAR Integration
 //    implementation files('libs/vungle-android-sdk-6.10.1.aar')
