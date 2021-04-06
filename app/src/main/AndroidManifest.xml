@@ -37,16 +37,16 @@
         </activity>
 
         <!--JAR Integration-->
-<!--        <activity-->
-<!--            android:name="com.vungle.warren.ui.VungleActivity"-->
-<!--            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"-->
-<!--            android:launchMode="singleTop"-->
-<!--            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />-->
+        <activity
+            android:name="com.vungle.warren.ui.VungleActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
-<!--        <provider-->
-<!--            android:name="com.vungle.warren.utility.VungleProvider"-->
-<!--            android:authorities="${applicationId}.vungle-provider"-->
-<!--            android:exported="false" />-->
+        <provider
+            android:name="com.vungle.warren.utility.VungleProvider"
+            android:authorities="${applicationId}.vungle-provider"
+            android:exported="false" />
     </application>
 
 </manifest>

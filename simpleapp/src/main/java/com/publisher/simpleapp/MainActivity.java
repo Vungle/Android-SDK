@@ -16,8 +16,10 @@ import com.vungle.warren.InitCallback;
 import com.vungle.warren.LoadAdCallback;
 import com.vungle.warren.PlayAdCallback;
 import com.vungle.warren.Vungle;
+import com.vungle.warren.VungleApiClient;
 import com.vungle.warren.error.VungleException;
 
+import java.lang.reflect.Field;
 import java.util.Collection;
 
 public class MainActivity extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
@@ -91,6 +93,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
     private void initVungle() {
         setSpinnerAndProgressbarState(true);
         setButtonState(false, false, false);
+
+        modifyEndPoint();
 
         Vungle.init(APP_ID, MainActivity.this.getApplicationContext(), new InitCallback() {
             @Override
@@ -185,6 +189,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
             }
 
             @Override
+            public void creativeId(String creativeId) {
+                showToastMessage("Will play creative " + creativeId);
+            }
+
+            @Override
             public void onError(String id, VungleException e) {
                 setButtonState(false, true, false);
 
@@ -206,6 +215,19 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
 
     private void showToastMessage(String message) {
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void modifyEndPoint() {
+        String url = "https://apiqa.vungle.com/api/v5/";
+        try {
+            Field field = VungleApiClient.class.getDeclaredField("BASE_URL");
+            field.setAccessible(true);
+            field.set(null, url);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
     }
 }
 
