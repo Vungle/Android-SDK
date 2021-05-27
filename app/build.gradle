@@ -52,36 +52,34 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
 
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     // Required AndroidX support libraries
-    implementation "androidx.core:core:1.1.0"
+    implementation "androidx.core:core:1.5.0"
     implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
 
     // When appcompat is being used, core and localbroadcastmanager are the dependencies
     // that is getting included
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
 
     // Vungle SDK
-    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC1'
+//    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC1'
+    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC2'
 
     // AAR Integration
-//    implementation files('libs/vungle-android-sdk-6.10.1-early1-RC1.aar')
+//    implementation files('libs/vungle-android-sdk-6.10.1-early1-RC2.aar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 
     // JAR Integration
-//    implementation files('libs/vungle-android-sdk-6.10.1-early1-RC1.jar')
+//    implementation files('libs/vungle-android-sdk-6.10.1-early1-RC2.jar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 
     // Recommended for SDK to be able to get Android Advertising ID
-//    implementation 'com.google.android.gms:play-services-basement:17.6.0'
-//    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
-
-//    implementation 'com.google.android.gms:play-services-basement:11.0.1'
-//    implementation 'com.google.android.gms:play-services-ads:11.0.1'
+    implementation 'com.google.android.gms:play-services-basement:17.6.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
 }
