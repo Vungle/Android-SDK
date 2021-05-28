@@ -65,7 +65,8 @@ dependencies {
 
     // Vungle SDK
 //    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC1'
-    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC2'
+//    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC2'
+    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC3'
 
     // AAR Integration
 //    implementation files('libs/vungle-android-sdk-6.10.1-early1-RC2.aar')
