@@ -25,9 +25,6 @@ android {
 }
 
 dependencies {
-
-    // Vungle SDK
-//    implementation 'com.github.vungle:vungle-android-sdk:6.10.1's
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 //    implementation files('libs/vungle-android-sdk-6.10.1.aar')
