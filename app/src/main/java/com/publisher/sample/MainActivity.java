@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 import static com.vungle.warren.Vungle.getValidPlacements;
 
-
 public class MainActivity extends AppCompatActivity {
     protected static String PACKAGE_NAME;
 
@@ -43,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
     final private String banner = "banner";
 
     final String LOG_TAG = "VungleSampleApp";
-
-//    private Consent vungleConsent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "InitCallback - onSuccess");
                 Log.d(LOG_TAG, "Vungle SDK Version - " + com.vungle.warren.BuildConfig.VERSION_NAME);
                 Log.d(LOG_TAG, "Valid placement list:");
+
                 for (String validPlacementReferenceIdId : getValidPlacements()) {
                     Log.d(LOG_TAG, validPlacementReferenceIdId);
                 }
@@ -101,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
                         enableButton(vungleAd.loadButton);
                     }
                 }
+
+                // Set custom configuration for rewarded placements
+                setCustomRewardedFields();
             }
 
             @Override
@@ -258,11 +259,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setFullscreenAd(final VungleAd ad) {
-        // Set custom configuration for rewarded placements
-        if (ad.name.equals(rewardedVideo)) {
-            setCustomRewardedFields();
-        }
-
         ad.loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -366,6 +362,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (vungleBannerAd != null) {
                     ad.container.removeView(vungleBannerAd);
+                    ad.container.setVisibility(View.GONE);
                     vungleBannerAd.destroyAd();
                     vungleBannerAd = null;
                 }

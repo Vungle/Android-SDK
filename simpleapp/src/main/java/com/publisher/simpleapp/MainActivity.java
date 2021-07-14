@@ -24,7 +24,7 @@ import java.util.Collection;
 
 public class MainActivity extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private static final String APP_ID = "591236625b2480ac40000028";
+    private static final String APP_ID = "5ae0db55e2d43668c97bd65e";
 
     private String placementID;
     private Spinner spinnerPlacement;
@@ -93,8 +93,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
     private void initVungle() {
         setSpinnerAndProgressbarState(true);
         setButtonState(false, false, false);
-
-        modifyEndPoint();
 
         Vungle.init(APP_ID, MainActivity.this.getApplicationContext(), new InitCallback() {
             @Override
@@ -215,19 +213,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
 
     private void showToastMessage(String message) {
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void modifyEndPoint() {
-        String url = "https://apiqa.vungle.com/api/v5/";
-        try {
-            Field field = VungleApiClient.class.getDeclaredField("BASE_URL");
-            field.setAccessible(true);
-            field.set(null, url);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
     }
 }
 
