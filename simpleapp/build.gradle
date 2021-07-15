@@ -25,7 +25,9 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.vungle:publisher-sdk-android:6.10.1'
+
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 //    implementation files('libs/vungle-android-sdk-6.10.1.aar')
 //    implementation files('libs/gson-2.8.6.jar')
