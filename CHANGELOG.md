@@ -1,5 +1,15 @@
 ## Changelog
 
+### VERSION 6.10.1 (August 5, 2021)
+* Moved to mavenCentral repository
+* Increased minimum supported API level to 21
+* Addition of creativeId event to PlayAdCallback
+* Stability improvements
+#### Mediation In-App Bidding (Closed Beta)
+* Banner / MREC Bidding Support in Bidding 
+* Caching enhancements for in-app bidding Placements
+* New SDK APIs for In-App bidding (Only applicable to mediation partners)
+
 ### VERSION 6.9.1 (January 21, 2021)
 * OM SDK Integration - The Open Measurement Software Development Kit (OM SDK) is designed to facilitate third-party viewability and verification measurement for ads served by Vungle
 * Stability improvements

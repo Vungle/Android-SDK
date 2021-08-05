@@ -1,14 +1,14 @@
 ## Getting Started
 Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 
-Early Access Vungle SDK for Android
+Vungle SDK for Android
 =======================
 
-**Version 6.9.1**
+**Version 6.10.1**
 
-Welcome to the Vungle SDK which has been battle-tested to unlock amazing monetization opportunities for you.  The Vungle SDK enables the very best creatives in mobile advertising. 
+Welcome to the Vungle SDK which has been battle-tested to unlock amazing monetization opportunities for you. The Vungle SDK enables the very best creatives in mobile advertising.
+ 
 ## Attributions
-
 | Component                       | Version | Description                                                                               | License                                                                                            |
 |---------------------------------|---------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | Android X (Jetpack)             | 1.1.0   | Core and LocalBroadcastManager Android X libraries from Jetpack                           | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)                                          |
