@@ -2,6 +2,7 @@
 
 ### VERSION 6.10.1 (August 5, 2021)
 * Moved to mavenCentral repository
+  * SDK artifacts for gradle integration now distributed through mavenCentral, using the same maven artifactID
 * Increased minimum supported API level to 21
 * Addition of creativeId event to PlayAdCallback
 * Stability improvements
