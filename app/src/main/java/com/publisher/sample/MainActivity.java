@@ -394,8 +394,8 @@ public class MainActivity extends AppCompatActivity {
     private AdConfig getAdConfig() {
         AdConfig adConfig = new AdConfig();
 
-        adConfig.setAdOrientation(AdConfig.AUTO_ROTATE);
-        adConfig.setMuted(false);
+        adConfig.setAdOrientation(AdConfig.MATCH_VIDEO);
+        adConfig.setMuted(true);
 
         return adConfig;
     }
