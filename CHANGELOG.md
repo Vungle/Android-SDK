@@ -1,7 +1,7 @@
 ## Changelog
 
 ### VERSION 6.10.2 (September 1, 2021)
-* Fixed: Low occurring `ConcurrentModificationException` crash
+* Fixed low occurring `ConcurrentModificationException` crash
 
 ### VERSION 6.10.1 (August 5, 2021)
 * Moved to mavenCentral repository
