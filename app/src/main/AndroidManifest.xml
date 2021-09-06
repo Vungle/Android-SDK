@@ -41,7 +41,8 @@
             android:name="com.vungle.warren.ui.VungleActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:launchMode="singleTop"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:exported="false" />
 
         <provider
             android:name="com.vungle.warren.utility.VungleProvider"
