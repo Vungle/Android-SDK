@@ -29,9 +29,8 @@
 -dontwarn com.vungle.warren.error.VungleError$ErrorCode
 
 # Google
--dontwarn com.google.android.gms.common.GoogleApiAvailabilityLight
--dontwarn com.google.android.gms.ads.identifier.AdvertisingIdClient
--dontwarn com.google.android.gms.ads.identifier.AdvertisingIdClient$Info
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
 
 # GSON
 -keepattributes *Annotation*
@@ -46,3 +45,66 @@
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
 -dontwarn org.codehaus.mojo.animal_sniffer.*
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
+
+# IntelliJ IDEA
+-dontwarn org.jetbrains.annotations.**
+
+#In case keep annotations don't work uncomment this
+#-keep class com.vungle.warren.Vungle { *; }
+#-keepclassmembers enum com.vungle.warren.** { *; }
+
+# Vungle
+-dontwarn com.vungle.warren.downloader.DownloadRequestMediator$Status
+-dontwarn com.vungle.warren.error.VungleError$ErrorCode
+
+# Google
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
+
+# GSON
+-keepattributes *Annotation*
+-keepattributes Signature
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+
+# OkHttp + Okio
+-dontwarn javax.annotation.**
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
+
+#In case keep annotations don't work uncomment this
+#-keep class com.vungle.warren.Vungle { *; }
+#-keepclassmembers enum com.vungle.warren.** { *; }
+#-keepparameternames
+#-renamesourcefileattribute SourceFile
+#-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod
+#
+#-keep public class * {
+#      public protected *;
+#}
+#
+#-keepclassmembernames class * {
+#    java.lang.Class class$(java.lang.String);
+#    java.lang.Class class$(java.lang.String, boolean);
+#}
+#
+#-keepclasseswithmembernames,includedescriptorclasses class * {
+#    native <methods>;
+#}
+#
+#-keepclassmembers,allowoptimization enum * {
+#    public static **[] values();
+#    public static ** valueOf(java.lang.String);
+#}
+#
+#-keepclassmembers class * implements java.io.Serializable {
+#    static final long serialVersionUID;
+#    private static final java.io.ObjectStreamField[] serialPersistentFields;
+#    private void writeObject(java.io.ObjectOutputStream);
+#    private void readObject(java.io.ObjectInputStream);
+#    java.lang.Object writeReplace();
+#    java.lang.Object readResolve();
+#}

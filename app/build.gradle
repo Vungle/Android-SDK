@@ -65,16 +65,21 @@ dependencies {
 
     // Vungle SDK
 //    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC1'
-    implementation 'com.github.vungle:vungle-android-sdk:6.10.3-RC1'
+//    implementation 'com.github.vungle:vungle-android-sdk:6.10.3-RC1'
 
     // AAR Integration
-//    implementation files('libs/vungle-android-sdk-6.10.1-early1-RC1.aar')
+    implementation files('libs/vungle-android-sdk-6.10.3-RC1.aar')
+    implementation files('libs/gson-2.8.6.jar')
+    implementation files('libs/okhttp-3.12.12.jar')
+    implementation files('libs/okio-1.15.0.jar')
+
+    // JAR Integration
+//    implementation files('libs/vungle-android-sdk-6.10.3-RC1.jar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 
-    // JAR Integration
-//    implementation files('libs/vungle-android-sdk-6.10.1-early1-RC1.jar')
+//    implementation files('libs/vungle-android-sdk-6.10.2-GA-RC1.jar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
