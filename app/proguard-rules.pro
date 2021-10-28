@@ -48,6 +48,10 @@
 
 -dontwarn module-info
 
+#In case keep annotations don't work uncomment this
+#-keep class com.vungle.warren.Vungle { *; }
+#-keepclassmembers enum com.vungle.warren.** { *; }
+
 # IntelliJ IDEA
 #-dontwarn org.jetbrains.annotations.**
 
