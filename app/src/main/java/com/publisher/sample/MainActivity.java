@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAndroidIdOptOut(false)
                         .build();
 
-        Vungle.updateUserCoppaStatus(false);
+        Vungle.updateUserCoppaStatus(true);
         // CCPA example
 //        Vungle.updateCCPAStatus(Consent.OPTED_OUT);
 //        Vungle.getCCPAStatus();
