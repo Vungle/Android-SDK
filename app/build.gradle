@@ -20,7 +20,7 @@ android {
         }
     }
     compileSdkVersion 31
-    buildToolsVersion '29.0.3'
+    buildToolsVersion '30.0.3'
     defaultConfig {
         applicationId "com.publisher.vungle.sample"
         minSdkVersion 21
@@ -64,25 +64,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // Vungle SDK
-//    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-early1-RC1'
-//    implementation 'com.github.vungle:vungle-android-sdk:6.10.3-RC1'
-    implementation 'com.github.vungle:vungle-android-sdk:6.10.3-RC2'
+    implementation 'com.github.vungle:vungle-android-sdk:6.10.3-RC3'
 
     // AAR Integration
-//    implementation files('libs/vungle-android-sdk-6.10.3-RC1.aar')
-//    implementation files('libs/publisher-sdk-android-release.aar')
+//    implementation files('libs/vungle-android-sdk-6.10.3-RC3.aar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
 
     // JAR Integration
-//    implementation files('libs/vungle-android-sdk-6.10.3-RC1.jar')
-//    implementation files('libs/classes.jar')
-//    implementation files('libs/gson-2.8.6.jar')
-//    implementation files('libs/okhttp-3.12.12.jar')
-//    implementation files('libs/okio-1.15.0.jar')
-
-//    implementation files('libs/vungle-android-sdk-6.10.2-GA-RC1.jar')
+//    implementation files('libs/vungle-android-sdk-6.10.3-RC3.jar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')
@@ -90,9 +81,9 @@ dependencies {
     // Recommended for SDK to be able to get Android Advertising ID
     implementation 'com.google.android.gms:play-services-tasks:17.2.1'
     implementation 'com.google.android.gms:play-services-appset:16.0.0'
-//    implementation 'com.google.android.gms:play-services-basement:17.6.0'
-//    implementation 'com.google.android.gms:play-services-ads-identifier:17.1.0'
+    implementation 'com.google.android.gms:play-services-basement:17.6.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.1.0'
 
-    implementation 'com.google.android.gms:play-services-basement:11.0.1'
-    implementation 'com.google.android.gms:play-services-ads:11.0.1'
+//    implementation 'com.google.android.gms:play-services-basement:11.0.1'
+//    implementation 'com.google.android.gms:play-services-ads:11.0.1'
 }
