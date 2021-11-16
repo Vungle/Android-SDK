@@ -29,108 +29,7 @@ import java.util.ArrayList;
 
 import static com.vungle.warren.Vungle.getValidPlacements;
 
-
 public class MainActivity extends AppCompatActivity {
-
-    private class VungleAd {
-        @NonNull private final String name;
-        @NonNull private final String placementReferenceId;
-        @NonNull private final TextView titleTextView;
-        @NonNull private final Button loadButton;
-        @NonNull private final Button playButton;
-        @Nullable private final Button pauseResumeButton;
-        @Nullable private final Button closeButton;
-        @Nullable private final FrameLayout container;
-        @Nullable private final Button bannerListButton;
-        @Nullable private final Button bannerMultipleButton;
-        @NonNull private boolean bannerAdPlaying;
-
-        private VungleAd(String name) {
-            this.name = name;
-            this.placementReferenceId = getPlacementReferenceId();
-            this.titleTextView = getTextView();
-            this.loadButton = getLoadButton();
-            this.playButton = getPlayButton();
-            this.pauseResumeButton = getPauseResumeButton();
-            this.closeButton = getCloseButton();
-            this.bannerListButton = getBannerListButton();
-            this.bannerMultipleButton = getBannerMultipleButton();
-            this.container = getContainer();
-            this.bannerAdPlaying = false;
-        }
-
-        private String getPlacementReferenceId() {
-            int stringId = getResources().getIdentifier("placement_id_" + name, "string", PACKAGE_NAME);
-            return getString(stringId);
-        }
-
-        private TextView getTextView() {
-            int textViewId = getResources().getIdentifier("tv_" + name, "id", PACKAGE_NAME);
-            String textViewString = getString(getResources().getIdentifier("title_" + name, "string", PACKAGE_NAME));
-            TextView tv = (TextView) findViewById(textViewId);
-            tv.setText(textViewString + " - " + placementReferenceId);
-            return tv;
-        }
-
-        private Button getLoadButton() {
-            int buttonId = getResources().getIdentifier("btn_load_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            disableButton(button);
-            return button;
-        }
-
-        private Button getPlayButton() {
-            int buttonId = getResources().getIdentifier("btn_play_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            disableButton(button);
-            return button;
-        }
-
-        private Button getPauseResumeButton() {
-            int buttonId = getResources().getIdentifier("btn_pause_resume_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            if (button != null) {
-                return button;
-            }
-            return null;
-        }
-
-        private Button getCloseButton() {
-            int buttonId = getResources().getIdentifier("btn_close_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            if (button != null) {
-                return button;
-            }
-            return null;
-        }
-
-        private FrameLayout getContainer() {
-            int containerId = getResources().getIdentifier("container_" + name, "id", PACKAGE_NAME);
-            FrameLayout container = (FrameLayout) findViewById(containerId);
-            if (container != null) {
-                return container;
-            }
-            return null;
-        }
-
-        private Button getBannerListButton() {
-            int buttonId = getResources().getIdentifier("btn_list_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            if (button != null) {
-                return button;
-            }
-            return null;
-        }
-
-        private Button getBannerMultipleButton() {
-            int buttonId = getResources().getIdentifier("btn_multiple_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            if (button != null) {
-                return button;
-            }
-            return null;
-        }
-    }
 
     protected static String PACKAGE_NAME;
 
@@ -174,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAndroidIdOptOut(false)
                         .build();
 
-        Vungle.updateUserCoppaStatus(true);
+        // COPPA example
+//        Vungle.updateUserCoppaStatus(true);
+
         // CCPA example
 //        Vungle.updateCCPAStatus(Consent.OPTED_OUT);
 //        Vungle.getCCPAStatus();
@@ -569,5 +470,105 @@ public class MainActivity extends AppCompatActivity {
 
     private void makeToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+    private class VungleAd {
+        @NonNull private final String name;
+        @NonNull private final String placementReferenceId;
+        @NonNull private final TextView titleTextView;
+        @NonNull private final Button loadButton;
+        @NonNull private final Button playButton;
+        @Nullable private final Button pauseResumeButton;
+        @Nullable private final Button closeButton;
+        @Nullable private final FrameLayout container;
+        @Nullable private final Button bannerListButton;
+        @Nullable private final Button bannerMultipleButton;
+        @NonNull private boolean bannerAdPlaying;
+
+        private VungleAd(String name) {
+            this.name = name;
+            this.placementReferenceId = getPlacementReferenceId();
+            this.titleTextView = getTextView();
+            this.loadButton = getLoadButton();
+            this.playButton = getPlayButton();
+            this.pauseResumeButton = getPauseResumeButton();
+            this.closeButton = getCloseButton();
+            this.bannerListButton = getBannerListButton();
+            this.bannerMultipleButton = getBannerMultipleButton();
+            this.container = getContainer();
+            this.bannerAdPlaying = false;
+        }
+
+        private String getPlacementReferenceId() {
+            int stringId = getResources().getIdentifier("placement_id_" + name, "string", PACKAGE_NAME);
+            return getString(stringId);
+        }
+
+        private TextView getTextView() {
+            int textViewId = getResources().getIdentifier("tv_" + name, "id", PACKAGE_NAME);
+            String textViewString = getString(getResources().getIdentifier("title_" + name, "string", PACKAGE_NAME));
+            TextView tv = (TextView) findViewById(textViewId);
+            tv.setText(textViewString + " - " + placementReferenceId);
+            return tv;
+        }
+
+        private Button getLoadButton() {
+            int buttonId = getResources().getIdentifier("btn_load_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            disableButton(button);
+            return button;
+        }
+
+        private Button getPlayButton() {
+            int buttonId = getResources().getIdentifier("btn_play_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            disableButton(button);
+            return button;
+        }
+
+        private Button getPauseResumeButton() {
+            int buttonId = getResources().getIdentifier("btn_pause_resume_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            if (button != null) {
+                return button;
+            }
+            return null;
+        }
+
+        private Button getCloseButton() {
+            int buttonId = getResources().getIdentifier("btn_close_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            if (button != null) {
+                return button;
+            }
+            return null;
+        }
+
+        private FrameLayout getContainer() {
+            int containerId = getResources().getIdentifier("container_" + name, "id", PACKAGE_NAME);
+            FrameLayout container = (FrameLayout) findViewById(containerId);
+            if (container != null) {
+                return container;
+            }
+            return null;
+        }
+
+        private Button getBannerListButton() {
+            int buttonId = getResources().getIdentifier("btn_list_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            if (button != null) {
+                return button;
+            }
+            return null;
+        }
+
+        private Button getBannerMultipleButton() {
+            int buttonId = getResources().getIdentifier("btn_multiple_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            if (button != null) {
+                return button;
+            }
+            return null;
+        }
     }
 }
