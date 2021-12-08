@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
 
     defaultConfig {
         applicationId "com.publisher.simpleapp"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -27,11 +27,19 @@ android {
 dependencies {
 
     // Vungle SDK
-    implementation 'com.github.vungle:vungle-android-sdk:6.10.1-RC2'
+    implementation 'com.vungle:publisher-sdk-android:6.10.3'
+
+    // Recommended for SDK to be able to get Google app set ID
+    implementation 'com.google.android.gms:play-services-tasks:17.2.1'
+    implementation 'com.google.android.gms:play-services-appset:16.0.0'
+
+    // Recommended for SDK to be able to get Google Advertising ID
+    implementation 'com.google.android.gms:play-services-basement:17.6.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.1.0'
 
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-//    implementation files('libs/vungle-android-sdk-6.10.1-RC2.aar')
+//    implementation files('libs/vungle-android-sdk-6.10.3.aar')
 //    implementation files('libs/gson-2.8.6.jar')
 //    implementation files('libs/okhttp-3.12.12.jar')
 //    implementation files('libs/okio-1.15.0.jar')

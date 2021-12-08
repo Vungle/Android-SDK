@@ -73,14 +73,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAndroidIdOptOut(false)
                         .build();
 
-        // COPPA example
+        // COPPA example (default: false)
 //        Vungle.updateUserCoppaStatus(true);
 
-        // CCPA example
+        // CCPA example (default: OPTED_IN)
 //        Vungle.updateCCPAStatus(Consent.OPTED_OUT);
 //        Vungle.getCCPAStatus();
 
-        // GDPR example
+        // GDPR example (default: OPTED_IN)
 //        Vungle.updateConsentStatus(Consent.OPTED_OUT, "1.0.0");
 //        Vungle.getConsentStatus();
 //        Vungle.getConsentMessageVersion();
