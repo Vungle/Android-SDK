@@ -4,7 +4,7 @@ Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 Vungle SDK for Android
 =======================
 
-**Version 6.10.2**
+**Version 6.10.3**
 
 Welcome to the Vungle SDK which has been battle-tested to unlock amazing monetization opportunities for you. The Vungle SDK enables the very best creatives in mobile advertising.
  
