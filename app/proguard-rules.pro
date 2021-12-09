@@ -29,9 +29,8 @@
 -dontwarn com.vungle.warren.error.VungleError$ErrorCode
 
 # Google
--dontwarn com.google.android.gms.common.GoogleApiAvailabilityLight
--dontwarn com.google.android.gms.ads.identifier.AdvertisingIdClient
--dontwarn com.google.android.gms.ads.identifier.AdvertisingIdClient$Info
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
 
 # GSON
 -keepattributes *Annotation*
@@ -46,3 +45,5 @@
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
 -dontwarn org.codehaus.mojo.animal_sniffer.*
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
+
+-dontwarn module-info

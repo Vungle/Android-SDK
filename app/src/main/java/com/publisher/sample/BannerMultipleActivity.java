@@ -240,6 +240,9 @@ public class BannerMultipleActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (vungleBannerAd != null) {
                     ad.container.removeView(vungleBannerAd);
+                    ad.container.setVisibility(View.GONE);
+                    vungleBannerAd.destroyAd();
+                    vungleBannerAd = null;
                 }
 
                 disableButton(ad.pauseResumeButton);

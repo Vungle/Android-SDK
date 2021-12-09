@@ -1,5 +1,10 @@
 ## Changelog
 
+### VERSION 6.10.3 (December 9, 2021)
+* Added support for Google’s  [Android 12](https://developer.android.com/about/versions/12).
+* SDK now supports Android  [Target API 31](https://developer.android.com/sdk/api_diff/31/changes).
+* Added the framework for COPPA API, which can be used as an additional tool to assist publishers with obligations under COPPA. This API is in Beta release, and behavior might change in future versions of SDK.
+
 ### VERSION 6.10.2 (September 1, 2021)
 * Fixed low occurring `ConcurrentModificationException` crash
 
