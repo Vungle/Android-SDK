@@ -39,9 +39,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
-
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
@@ -54,14 +51,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // Vungle SDK
-//    implementation 'com.github.vungle:vungle-android-sdk:6.10.3-RC3'
     implementation 'com.vungle:publisher-sdk-android:6.10.3'
 
-    // Recommended for SDK to be able to get Google app set ID
+    // Recommended Google Play Services libraries to support app set ID (v6.10.3)
     implementation 'com.google.android.gms:play-services-tasks:17.2.1'
     implementation 'com.google.android.gms:play-services-appset:16.0.0'
 
-    // Recommended for SDK to be able to get Google Advertising ID
+    // Recommended Google Play Services libraries to support Google Advertising ID
     implementation 'com.google.android.gms:play-services-basement:17.6.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:17.1.0'
 
