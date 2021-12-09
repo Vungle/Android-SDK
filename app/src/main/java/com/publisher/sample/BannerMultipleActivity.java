@@ -26,79 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BannerMultipleActivity extends AppCompatActivity {
-
-    private class VungleBannerAd {
-        @NonNull private final String name;
-        @NonNull private final String placementReferenceId;
-        @NonNull private final Button loadButton;
-        @NonNull private final Button playButton;
-        @NonNull private final Button pauseResumeButton;
-        @NonNull private final Button closeButton;
-        @NonNull private boolean bannerAdPlaying;
-        @Nullable private final FrameLayout container;
-        @Nullable private VungleBanner vungleBanner;
-
-        private VungleBannerAd(String name) {
-            this.name = name;
-            this.placementReferenceId = getPlacementReferenceId();
-            this.loadButton = getLoadButton();
-            this.playButton = getPlayButton();
-            this.pauseResumeButton = getPauseResumeButton();
-            this.closeButton = getCloseButton();
-            this.container = getContainer();
-            this.bannerAdPlaying = false;
-        }
-
-        private String getPlacementReferenceId() {
-            int stringId = getResources().getIdentifier("placement_id_" + name, "string", PACKAGE_NAME);
-            return getString(stringId);
-        }
-
-        private Button getLoadButton() {
-            int buttonId = getResources().getIdentifier("btn_load_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            disableButton(button);
-            return button;
-        }
-
-        private Button getPlayButton() {
-            int buttonId = getResources().getIdentifier("btn_play_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            disableButton(button);
-            return button;
-        }
-
-        private Button getPauseResumeButton() {
-            int buttonId = getResources().getIdentifier("btn_pause_resume_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            if (button != null) {
-                return button;
-            }
-            return null;
-        }
-
-        private Button getCloseButton() {
-            int buttonId = getResources().getIdentifier("btn_close_" + name, "id", PACKAGE_NAME);
-            Button button = (Button) findViewById(buttonId);
-            if (button != null) {
-                return button;
-            }
-            return null;
-        }
-
-        private FrameLayout getContainer() {
-            int containerId = getResources().getIdentifier("container_" + name, "id", PACKAGE_NAME);
-            FrameLayout container = (FrameLayout) findViewById(containerId);
-            if (container != null) {
-                return container;
-            }
-            return null;
-        }
-    }
-
     protected static String PACKAGE_NAME;
 
-    private VungleBanner   vungleBannerAd;
+    private VungleBanner vungleBannerAd;
 
     private List<VungleBannerAd> vungleBannerAds = new ArrayList<>();
 
@@ -149,11 +79,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
         public void onAdStart(final String placementReferenceID) {
             Log.d(LOG_TAG, "PlayAdCallback - onAdStart" +
                     "\n\tPlacement Reference ID = " + placementReferenceID);
-
-            VungleBannerAd ad = getVungleAd(placementReferenceID);
-            if (ad != null) {
-                disableButton(ad.playButton);
-            }
+            disableButton(getVungleAd(placementReferenceID).playButton);
         }
 
         @Override
@@ -201,12 +127,12 @@ public class BannerMultipleActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onError(final String placementReferenceID, VungleException throwable) {
+        public void onError(final String placementReferenceID, VungleException vungleException) {
             Log.d(LOG_TAG, "PlayAdCallback - onError" +
                     "\n\tPlacement Reference ID = " + placementReferenceID +
-                    "\n\tError = " + throwable.getLocalizedMessage());
+                    "\n\tError = " + vungleException.getLocalizedMessage());
 
-            makeToast(throwable.getLocalizedMessage());
+            makeToast(vungleException.getLocalizedMessage());
         }
     };
 
@@ -216,21 +142,17 @@ public class BannerMultipleActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "LoadAdCallback - onAdLoad" +
                     "\n\tPlacement Reference ID = " + placementReferenceID);
 
-            VungleBannerAd ad = getVungleAd(placementReferenceID);
-            if (ad != null) {
-                enableButton(ad.playButton);
-            }
+            enableButton(getVungleAd(placementReferenceID).playButton);
         }
 
         @Override
-        public void onError(final String placementReferenceID, VungleException throwable) {
+        public void onError(final String placementReferenceID, VungleException vungleException) {
             Log.d(LOG_TAG, "LoadAdCallback - onError" +
                     "\n\tPlacement Reference ID = " + placementReferenceID +
-                    "\n\tError = " + throwable.getLocalizedMessage());
+                    "\n\tError = " + vungleException.getLocalizedMessage());
 
-            makeToast(throwable.getLocalizedMessage());
-            VungleBannerAd ad = getVungleAd(placementReferenceID);
-            enableButton(ad.loadButton);
+            makeToast(vungleException.getLocalizedMessage());
+            enableButton(getVungleAd(placementReferenceID).loadButton);
         }
     };
 
@@ -250,17 +172,15 @@ public class BannerMultipleActivity extends AppCompatActivity {
     }
 
     private void setBannerAd(final VungleBannerAd ad, final AdConfig.AdSize adSize) {
-        disableButton(ad.pauseResumeButton);
-        disableButton(ad.closeButton);
-
-        final BannerAdConfig adConfig = new BannerAdConfig();
-        adConfig.setAdSize(adSize);
+        final BannerAdConfig bannerAdConfig = new BannerAdConfig();
+        bannerAdConfig.setAdSize(adSize);
+        bannerAdConfig.setMuted(true);
 
         ad.loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Vungle.isInitialized()) {
-                    Banners.loadBanner(ad.placementReferenceId, adConfig, vungleLoadAdCallback);
+                    Banners.loadBanner(ad.placementReferenceId, bannerAdConfig, vungleLoadAdCallback);
 
                     disableButton(ad.loadButton);
                 } else {
@@ -279,15 +199,12 @@ public class BannerMultipleActivity extends AppCompatActivity {
                             ad.container.removeAllViews();
                         }
 
-                        vungleBannerAd = Banners.getBanner(ad.placementReferenceId, adConfig, vunglePlayAdCallback);
+                        vungleBannerAd = Banners.getBanner(ad.placementReferenceId, bannerAdConfig, vunglePlayAdCallback);
 
                         if (vungleBannerAd != null) {
                             ad.container.addView(vungleBannerAd);
                             ad.container.setVisibility(View.VISIBLE);
                         }
-
-                        ad.bannerAdPlaying = true;
-
                         // Button UI
                         enableButton(ad.loadButton);
                         disableButton(ad.playButton);
@@ -314,11 +231,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
                     vungleBannerAd.setAdVisibility(ad.bannerAdPlaying);
                 }
 
-                if (ad.bannerAdPlaying) {
-                    ad.pauseResumeButton.setText("PAUSE");
-                } else {
-                    ad.pauseResumeButton.setText("RESUME");
-                }
+                ad.pauseResumeButton.setText(ad.bannerAdPlaying ? "PAUSE" : "RESUME");
             }
         });
 
@@ -348,8 +261,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
     }
 
     private void enableButton(final Button button) {
-        if (button == null)
-            return;
+        if (button == null) { return; }
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -360,8 +272,7 @@ public class BannerMultipleActivity extends AppCompatActivity {
     }
 
     private void disableButton(final Button button) {
-        if (button == null)
-            return;
+        if (button == null) { return; }
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -372,6 +283,70 @@ public class BannerMultipleActivity extends AppCompatActivity {
     }
 
     private void makeToast(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    private class VungleBannerAd {
+        @NonNull private final String name;
+        @NonNull private final String placementReferenceId;
+        @NonNull private final Button loadButton;
+        @NonNull private final Button playButton;
+        @NonNull private final Button pauseResumeButton;
+        @NonNull private final Button closeButton;
+        @NonNull private boolean bannerAdPlaying;
+        @Nullable private final FrameLayout container;
+
+        private VungleBannerAd(String name) {
+            this.name = name;
+            this.placementReferenceId = getPlacementReferenceId();
+            this.loadButton = getLoadButton();
+            this.playButton = getPlayButton();
+            this.pauseResumeButton = getPauseResumeButton();
+            this.closeButton = getCloseButton();
+            this.container = getContainer();
+            this.bannerAdPlaying = false;
+        }
+
+        private String getPlacementReferenceId() {
+            int stringId = getResources().getIdentifier("placement_id_" + name, "string", PACKAGE_NAME);
+            return getString(stringId);
+        }
+
+        private Button getLoadButton() {
+            int buttonId = getResources().getIdentifier("btn_load_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            disableButton(button);
+            return button;
+        }
+
+        private Button getPlayButton() {
+            int buttonId = getResources().getIdentifier("btn_play_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            disableButton(button);
+            return button;
+        }
+
+        private Button getPauseResumeButton() {
+            int buttonId = getResources().getIdentifier("btn_pause_resume_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            disableButton(button);
+            return button;
+        }
+
+        private Button getCloseButton() {
+            int buttonId = getResources().getIdentifier("btn_close_" + name, "id", PACKAGE_NAME);
+            Button button = (Button) findViewById(buttonId);
+            disableButton(button);
+            return button;
+        }
+
+        private FrameLayout getContainer() {
+            int containerId = getResources().getIdentifier("container_" + name, "id", PACKAGE_NAME);
+            FrameLayout container = (FrameLayout) findViewById(containerId);
+            if (container != null) {
+                return container;
+            }
+            return null;
+        }
     }
 }
