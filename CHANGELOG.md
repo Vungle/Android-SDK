@@ -1,5 +1,10 @@
 ## Changelog
 
+### VERSION 6.10.4 (February 9, 2022)
+* Updated SDK to be fully compliant with [Google Privacy Policies](https://developer.android.com/about/versions/12). 
+* COPPA API is now generally available.
+* Stability Improvements.
+
 ### VERSION 6.10.3 (December 9, 2021)
 * Added support for Google’s  [Android 12](https://developer.android.com/about/versions/12).
 * SDK now supports Android  [Target API 31](https://developer.android.com/sdk/api_diff/31/changes).
