@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         // COPPA example
         // Please call updateUserCoppaStatus before SDK initialization
-        Vungle.updateUserCoppaStatus(true);
+//        Vungle.updateUserCoppaStatus(true);
 
         // CCPA example (default: OPTED_IN)
 //        Vungle.updateCCPAStatus(Consent.OPTED_OUT);
