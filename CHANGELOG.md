@@ -1,5 +1,8 @@
 ## Changelog
 
+### VERSION 6.10.5 (March 10, 2022)
+* Fixed a random crash owing to a synchronization issue around handling Gson lib JsonObject.
+
 ### VERSION 6.10.4 (February 9, 2022)
 * Updated SDK to be fully compliant with [Google Privacy Policies](https://developer.android.com/about/versions/12). 
 * COPPA API is now generally available.
