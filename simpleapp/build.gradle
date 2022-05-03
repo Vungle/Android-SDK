@@ -15,6 +15,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,20 +31,20 @@ android {
 
 dependencies {
     // Vungle SDK
-    implementation 'com.vungle:publisher-sdk-android:6.10.3'
+//    implementation 'com.vungle:publisher-sdk-android:6.11.0'
 
     // Recommended for SDK to be able to get Google app set ID
-    implementation 'com.google.android.gms:play-services-tasks:17.2.1'
-    implementation 'com.google.android.gms:play-services-appset:16.0.0'
+    implementation 'com.google.android.gms:play-services-tasks:18.0.1'
+    implementation 'com.google.android.gms:play-services-appset:16.0.2'
 
     // Recommended for SDK to be able to get Google Advertising ID
-    implementation 'com.google.android.gms:play-services-basement:17.6.0'
-    implementation 'com.google.android.gms:play-services-ads-identifier:17.1.0'
+    implementation 'com.google.android.gms:play-services-basement:18.0.1'
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
-//    implementation files('libs/vungle-android-sdk-6.10.3.aar')
-//    implementation files('libs/gson-2.8.6.jar')
-//    implementation files('libs/okhttp-3.12.12.jar')
-//    implementation files('libs/okio-1.15.0.jar')
+    implementation files('libs/vungle-android-sdk-6.11.0.aar')
+    implementation files('libs/gson-2.8.6.jar')
+    implementation files('libs/okhttp-3.14.9.jar')
+    implementation files('libs/okio-1.17.3.jar')
 //    implementation files('libs/core-1.1.0.jar')
 //    implementation files('libs/localbroadcastmanager-1.0.0.jar')
 

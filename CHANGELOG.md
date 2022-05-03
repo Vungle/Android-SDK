@@ -1,5 +1,10 @@
 ## Changelog
 
+### VERSION 6.11.0 (May 3 2022)
+* Added support for Native Ads format for non-HB placements (closed beta)
+* In-app bidding enhancements
+* Support of deep-linking URLs into other apps
+
 ### VERSION 6.10.5 (March 10, 2022)
 * Fixed a random crash owing to a synchronization issue around handling Gson lib JsonObject.
 
