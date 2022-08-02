@@ -1,6 +1,11 @@
 ## Changelog
 
-### VERSION 6.11.0 (May 3 2022)
+### VERSION 6.11.0 (August 2, 2022)
+* New ad format: Rewarded Interstitial (closed beta)
+* In-app bidding enhancements
+* Performance optimizations & bug fixes
+
+### VERSION 6.11.0 (May 3, 2022)
 * Added support for Native Ads format for non-HB placements (closed beta)
 * In-app bidding enhancements
 * Support of deep-linking URLs into other apps
