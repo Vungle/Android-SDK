@@ -1,6 +1,6 @@
 ## Changelog
 
-### VERSION 6.11.0 (August 2, 2022)
+### VERSION 6.12.0 (August 2, 2022)
 * New ad format: Rewarded Interstitial (closed beta)
 * In-app bidding enhancements
 * Performance optimizations & bug fixes
