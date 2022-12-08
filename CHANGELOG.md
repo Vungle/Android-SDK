@@ -1,6 +1,6 @@
 ## Changelog
 
-### VERSION 6.12.1 (December 5, 2022)
+### VERSION 6.12.1 (December 6, 2022)
 * In-app bidding enhancements
 * Performance optimizations & bug fixes
 
