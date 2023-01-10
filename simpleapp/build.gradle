@@ -34,14 +34,14 @@ dependencies {
 //    implementation 'com.vungle:publisher-sdk-android:6.11.0'
 
     // Recommended for SDK to be able to get Google app set ID
-    implementation 'com.google.android.gms:play-services-tasks:18.0.1'
+    implementation 'com.google.android.gms:play-services-tasks:18.0.2'
     implementation 'com.google.android.gms:play-services-appset:16.0.2'
 
     // Recommended for SDK to be able to get Google Advertising ID
-    implementation 'com.google.android.gms:play-services-basement:18.0.1'
+    implementation 'com.google.android.gms:play-services-basement:18.1.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
-    implementation files('libs/vungle-android-sdk-6.11.0.aar')
+    implementation files('libs/vungle-android-sdk-6.12.1.aar')
     implementation files('libs/gson-2.8.6.jar')
     implementation files('libs/okhttp-3.14.9.jar')
     implementation files('libs/okio-1.17.3.jar')
