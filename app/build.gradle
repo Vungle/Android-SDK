@@ -58,7 +58,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.0'
 
     // Vungle SDK
-//    implementation 'com.vungle:publisher-sdk-android:6.12.1'
+    implementation 'com.vungle:publisher-sdk-android:6.12.1'
 
     // Recommended Google Play Services libraries to support app set ID (v6.10.3 and above)
     implementation 'com.google.android.gms:play-services-tasks:18.0.2'
@@ -69,10 +69,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
     // AAR Integration
-    implementation files('libs/vungle-android-sdk-6.12.1.aar')
-    implementation files('libs/gson-2.8.6.jar')
-    implementation files('libs/okhttp-3.14.9.jar')
-    implementation files('libs/okio-1.17.3.jar')
+//    implementation files('libs/vungle-android-sdk-6.12.1.aar')
+//    implementation files('libs/gson-2.8.6.jar')
+//    implementation files('libs/okhttp-3.14.9.jar')
+//    implementation files('libs/okio-1.17.3.jar')
 
     // JAR Integration
 //    implementation files('libs/vungle-android-sdk-6.12.1.jar')
