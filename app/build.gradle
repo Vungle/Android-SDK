@@ -10,7 +10,7 @@ android {
         }
     }
     
-    compileSdkVersion 31
+    compileSdkVersion 33
     buildToolsVersion '30.0.3'
     defaultConfig {
         applicationId "com.publisher.vungle.sample"
