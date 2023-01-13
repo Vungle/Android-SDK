@@ -1,6 +1,7 @@
 ## Changelog
 
 ### VERSION 6.12.1 (January 10, 2023)
+* SDK now supports Android  [Target API 33](https://developer.android.com/sdk/api_diff/33/changes).
 * In-app bidding enhancements
 * Performance optimizations & bug fixes
 
