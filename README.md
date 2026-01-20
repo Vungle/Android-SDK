@@ -1,3 +1,11 @@
+# **Deprecated**
+
+This repository is **no longer maintained** and is kept for **historical reference only**.
+
+**Do not use the integration examples in this repository for new integrations.**
+
+Please refer to the **VungleAds-SDK** Samples repository for help integrating our 7.x SDK versions here: https://github.com/Vungle/VungleAds-SDK
+
 ## Getting Started
 Please refer to https://support.vungle.com/hc/en-us/articles/360002922871
 
